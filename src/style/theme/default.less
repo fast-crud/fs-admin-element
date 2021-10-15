@@ -1,0 +1,27 @@
+.el-container{
+  background-color: @bg-color;
+}
+.el-header {
+  background-color: @bg-color
+}
+.el-aside {
+  background-color:@bg-color
+}
+.el-menu{
+  background-color: @bg-color;
+  &.el-menu-submenu-popup{
+    background-color: transparent;
+  }
+}
+.el-menu{
+  .el-menu-submenu > .ant-menu{
+    background-color:@bg-color
+  }
+
+  .el-menu-item-active{
+    background-color: @bg-menu-item-color;
+  }
+  .el-menu-item-selected{
+    background-color: @bg-menu-item-color !important;
+  }
+}
