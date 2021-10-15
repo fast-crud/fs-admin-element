@@ -1,6 +1,6 @@
-# fs-admin-antdv
+# fs-admin-element
 
-基于vue3、antdv 的 admin管理后台脚手架    
+基于vue3、element-plus 的 admin管理后台脚手架    
 更多信息请参考： [fast-crud](https://github.com/fast-crud/fast-crud)
 # server端
 
