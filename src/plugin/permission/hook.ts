@@ -14,7 +14,7 @@ export function registerRouterHook() {
         // @ts-ignore
         if (!util.hasPermissions(to.meta.permission)) {
           //没有权限
-          ElMessage.warn("对不起，您没有权限");
+          ElMessage.warning("对不起，您没有权限");
           //throw new Error("对不起，您没有权限");
           NProgress.done();
           return false;
