@@ -6,20 +6,21 @@
       </template>
 
       <template #form_topics="scope">
-        <el-input-search
+        <el-input
           v-for="(item, index) in scope.form.topics"
           :key="index"
-          v-model:value="scope.form.topics[index]"
+          v-model="scope.form.topics[index]"
           :disabled="scope.mode === 'view'"
-          class="mb-1"
-          @search="removeTopic(index, scope.form, scope.key)"
+          class="mb-5"
         >
-          <template #enterButton>
-            <el-button :disabled="scope.mode === 'view'">
-              <DeleteOutlined />
-            </el-button>
+          <template #append>
+            <el-button
+              :disabled="scope.mode === 'view'"
+              icon="el-icon-delete"
+              @click="removeTopic(index, scope.form, scope.key)"
+            />
           </template>
-        </el-input-search>
+        </el-input>
         <el-button :disabled="scope.mode === 'view'" @click="addTopic(scope.form, scope.key)">添加主题</el-button>
       </template>
     </fs-crud>

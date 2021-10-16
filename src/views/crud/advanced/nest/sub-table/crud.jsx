@@ -14,14 +14,9 @@ export default function ({ expose, props, ctx }) {
   return {
     crudOptions: {
       table: {
-        customRow(record, index) {
-          const clazz = record.id === props.modelValue ? "fs-current-row" : "";
-          return {
-            onClick() {
-              ctx.emit("update:modelValue", record.id);
-            },
-            class: clazz
-          };
+        highlightCurrentRow: true,
+        onCurrentChange: (currentRow) => {
+          ctx.emit("update:modelValue", currentRow.id);
         }
       },
       request: {

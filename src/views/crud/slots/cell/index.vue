@@ -5,11 +5,9 @@
         <el-alert class="ml-1" type="info" title=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
       </template>
       <template #cell_like="scope">
-        <el-statistic title="自定义复杂显示" :value="scope.row.like" style="margin-right: 50px">
-          <template #suffix>
-            <like-outlined />
-          </template>
-        </el-statistic>
+        <el-badge style="margin-top: 10px" :value="scope.row.like" class="item">
+          <el-button size="small">自定义复杂显示</el-button>
+        </el-badge>
       </template>
       <template #cell_createDate="scope">
         创建时间：{{ dateFormat(scope.row.createDate) }}<br />

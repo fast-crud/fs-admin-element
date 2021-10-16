@@ -5,7 +5,7 @@
         <el-alert class="ml-1" type="info" title=" ↑↑↑ 这里演示查询字段通过插槽自定义" />
       </template>
       <template #search_radio="scope">
-        <el-input-number v-model:value="scope.form.radio" style="width: 200px" placeholder="字段插槽自定义" />
+        <el-input-number v-model="scope.form.radio" style="width: 200px" placeholder="字段插槽自定义" />
       </template>
       <template #search-middle="scope">
         <el-form-item label="自定义">

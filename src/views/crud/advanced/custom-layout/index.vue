@@ -5,7 +5,7 @@
         <el-alert
           class="ml-1"
           type="warning"
-          message="将fs-crud.vue的源码复制出来自己修改布局，此处演示把翻页组件挪到上面来，你可以将这个自定义的fs-crud.vue全局注册为公共组件（注意：后续升级fs可能会由于fs-crud的逻辑与官方不同步出现不可知的问题）"
+          title="将fs-crud.vue的源码复制出来自己修改布局，此处演示把翻页组件挪到上面来，你可以将这个自定义的fs-crud.vue全局注册为公共组件（注意：后续升级fs可能会由于fs-crud的逻辑与官方不同步出现不可知的问题）"
         />
       </template>
     </fs-crud>

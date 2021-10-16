@@ -3,7 +3,7 @@
     <el-col :span="12">
       <fs-crud ref="crudRef" v-bind="crudBinding">
         <template #actionbar-right>
-          <el-alert type="warning" class="ml-1" message="<--对话框内嵌套子表格" />
+          <el-alert type="warning" class="ml-1" title="<--对话框内嵌套子表格" />
         </template>
       </fs-crud>
     </el-col>

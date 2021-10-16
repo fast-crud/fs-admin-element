@@ -5,7 +5,7 @@
     </template>
     <fs-crud v-if="crudBinding" ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert type="warning" class="ml-1" message="先从后台获取全部数据，然后本地分页展示" />
+        <el-alert type="warning" class="ml-1" title="先从后台获取全部数据，然后本地分页展示" />
       </template>
     </fs-crud>
   </fs-page>

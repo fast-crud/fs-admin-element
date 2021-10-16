@@ -22,23 +22,19 @@ export default function ({ expose, asideTableRef }) {
   return {
     crudOptions: {
       table: {
-        customRow(record, index) {
-          const clazz = record.id === currentRow.value ? "fs-current-row" : "";
-          return {
-            onClick() {
-              onCurrentRowChange(record.id);
-            },
-            class: clazz
-          };
+        "highlight-current-row": true,
+        // 监听 el-table的单行选中事件
+        onCurrentChange(currentRow) {
+          console.log("选中行", currentRow);
+          asideTableRef.value.setSearchFormData({ form: { gradeId: currentRow.id } });
+          asideTableRef.value.doRefresh();
         }
       },
-      pagination: {
-        showSizeChanger: false, // antdv
-        showQuickJumper: false // antdv
-      },
+      pagination: {},
       form: {
         wrapper: {
-          is: "el-drawer"
+          is: "el-drawer",
+          size: "50%"
         }
       },
       request: {

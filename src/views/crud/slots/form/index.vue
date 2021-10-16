@@ -6,16 +6,16 @@
       </template>
 
       <template #form-header-left>
-        <el-tag color="red">form-header-left插槽</el-tag>
+        <el-tag color="danger">form-header-left插槽</el-tag>
       </template>
       <template #form-header-right>
-        <el-tag color="red">form-header-right插槽</el-tag>
+        <el-tag color="danger">form-header-right插槽</el-tag>
       </template>
       <template #form-header-action-left>
-        <el-tag color="red">form-header-action-left插槽</el-tag>
+        <el-tag color="danger">form-header-action-left插槽</el-tag>
       </template>
       <template #form-header-action-right>
-        <el-tag color="red">form-header-action-right插槽</el-tag>
+        <el-tag color="danger">form-header-action-right插槽</el-tag>
       </template>
       <template #form-body-top>
         <el-alert type="warning" title="form-body-top 插槽" />

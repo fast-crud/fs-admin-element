@@ -1,7 +1,7 @@
 <template>
   <fs-crud ref="crudRef" v-bind="crudBinding">
     <template #actionbar-right>
-      <el-alert type="warning" class="ml-1" message="左侧表格点击行可以触发这里的查询" />
+      <el-alert type="warning" class="ml-1" title="左侧表格点击行可以触发这里的查询" />
     </template>
   </fs-crud>
 </template>
