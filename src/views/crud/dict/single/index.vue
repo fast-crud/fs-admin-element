@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="warning" message="单例dict，修改一个，影响全部" />
+        <el-alert class="ml-1" type="warning" title="单例dict，修改一个，影响全部" />
       </template>
     </fs-crud>
   </fs-page>

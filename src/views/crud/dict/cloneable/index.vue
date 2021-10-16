@@ -5,7 +5,7 @@
         <el-alert
           class="ml-1"
           type="warning"
-          message="分发时复制，当columns[x].dict分发到addForm、editForm、viewForm、search、table.columns时将会clone一份"
+          title="分发时复制，当columns[x].dict分发到addForm、editForm、viewForm、search、table.columns时将会clone一份"
         />
       </template>
     </fs-crud>

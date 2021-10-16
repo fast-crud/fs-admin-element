@@ -17,14 +17,7 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
-  const selectedRowKeys = ref([]);
-
-  const onSelectChange = (changed) => {
-    console.log("selection", changed);
-    selectedRowKeys.value = changed;
-  };
   return {
-    selectedRowKeys, //返回给index.vue去使用
     crudOptions: {
       request: {
         pageRequest,
@@ -32,9 +25,7 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
-      table: {
-        rowSelection: { selectedRowKeys: selectedRowKeys, onChange: onSelectChange }
-      },
+      table: {},
       columns: {
         id: {
           title: "ID",

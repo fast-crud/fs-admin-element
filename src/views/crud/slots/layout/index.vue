@@ -1,11 +1,11 @@
 <template>
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #header-top> <el-alert type="warning" message="header-top 插槽" /></template>
-      <template #header-bottom><el-alert type="warning" message="header-bottom 插槽" /></template>
-      <template #header-middle> <el-alert type="warning" message="header-middle 插槽" /></template>
-      <template #footer-top> <el-alert type="warning" message="footer-top 插槽" /></template>
-      <template #footer-bottom> <el-alert type="warning" message="footer-bottom 插槽" /></template>
+      <template #header-top> <el-alert type="warning" title="header-top 插槽" /></template>
+      <template #header-bottom><el-alert type="warning" title="header-bottom 插槽" /></template>
+      <template #header-middle> <el-alert type="warning" title="header-middle 插槽" /></template>
+      <template #footer-top> <el-alert type="warning" title="footer-top 插槽" /></template>
+      <template #footer-bottom> <el-alert type="warning" title="footer-bottom 插槽" /></template>
 
       <template #pagination-left>
         <el-button type="danger">pagination-left插槽</el-button>

@@ -51,7 +51,7 @@ export default function ({ expose }) {
             label: "text",
             data: [
               { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "blue" },
+              { id: "gz", text: "广州", color: "warning" },
               { id: "bj", text: "北京" },
               { id: "wh", text: "武汉" },
               { id: "sh", text: "上海" }

@@ -24,18 +24,18 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
-      table: {
-        slots: {
-          expandedRowRender: (scope) => {
-            return (
-              <div>
-                index: {scope.index} ; row: {JSON.stringify(scope.record)}
-              </div>
-            );
-          }
-        }
-      },
+      table: {},
       columns: {
+        $expand: {
+          title: "展开",
+          form: { show: false },
+          column: {
+            type: "expand",
+            align: "center",
+            width: "55px",
+            columnSetDisabled: true //禁止在列设置中选择
+          }
+        },
         id: {
           title: "ID",
           key: "id",

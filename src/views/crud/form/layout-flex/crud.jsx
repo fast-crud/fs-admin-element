@@ -46,8 +46,6 @@ export default function ({ expose }) {
           form: {
             // flex模式控制跨列, 需要配置如下三条，通过colspan可以简化
             // col: { span: 24 },
-            // labelCol: { span: 2 },
-            // wrapperCol: { span: 21 }
           }
         }
       }

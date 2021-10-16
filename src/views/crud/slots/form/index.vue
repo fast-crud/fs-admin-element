@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="info" message=" ← 在表单的各个位置都可以插入自定义内容" />
+        <el-alert class="ml-1" type="info" title=" ← 在表单的各个位置都可以插入自定义内容" />
       </template>
 
       <template #form-header-left>
@@ -18,10 +18,10 @@
         <el-tag color="red">form-header-action-right插槽</el-tag>
       </template>
       <template #form-body-top>
-        <el-alert type="warning" message="form-body-top 插槽" />
+        <el-alert type="warning" title="form-body-top 插槽" />
       </template>
       <template #form-body-bottom>
-        <el-alert type="warning" message="form-body-bottom 插槽" />
+        <el-alert type="warning" title="form-body-bottom 插槽" />
       </template>
 
       <template #form-footer-left>

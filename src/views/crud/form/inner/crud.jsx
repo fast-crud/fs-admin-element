@@ -26,12 +26,7 @@ export default function ({ expose }) {
       form: {
         wrapper: {
           //设置如下三个参数即可在fast-crud内部弹出表单
-          getContainer() {
-            return expose.crudRef.value.$el;
-          },
-          maskStyle: {
-            position: "absolute"
-          },
+          "append-to-body": false,
           customClass: "fs-dialog-inner"
         }
       },
@@ -52,7 +47,7 @@ export default function ({ expose }) {
             label: "text",
             data: [
               { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "blue" },
+              { id: "gz", text: "广州", color: null },
               { id: "bj", text: "北京" },
               { id: "wh", text: "武汉" },
               { id: "sh", text: "上海" }

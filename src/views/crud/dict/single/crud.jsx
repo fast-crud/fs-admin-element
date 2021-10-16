@@ -19,8 +19,8 @@ export default function ({ expose }) {
     cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
     data: [
       { value: "1", label: "开启", color: "success" },
-      { value: "2", label: "停止", color: "blue" },
-      { value: "0", label: "关闭", color: "blue" }
+      { value: "2", label: "停止", color: null },
+      { value: "0", label: "关闭", color: null }
     ]
   });
 
@@ -70,8 +70,7 @@ export default function ({ expose }) {
           type: "text",
           form: {
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             },
             valueChange({ form }) {
               console.log("changed", form.modifyDict);
@@ -85,7 +84,6 @@ export default function ({ expose }) {
           column: {
             component: {
               name: "el-switch",
-              vModel: "checked",
               on: {
                 onChange({ $event }) {
                   remoteDict.url = $event

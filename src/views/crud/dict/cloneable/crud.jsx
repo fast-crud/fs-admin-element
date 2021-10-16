@@ -57,27 +57,39 @@ export default function ({ expose }) {
           type: "text",
           column: {
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             },
             valueChange({ row, getComponentRef }) {
-              // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
-              // 这里dict修改不会影响列里面的数据
-              const targetDict = getComponentRef("remote").dict;
-              targetDict.url = row.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
+              // 这里不能使用remoteDict,因为在分发时已经clone到column配置中了
+              // 这里dict修改不会影响form里面的字典数据，但会影响所有列里面的字典
+              let componentRef = getComponentRef("remote");
+              if (componentRef == null) {
+                return;
+              }
+              const targetDict = componentRef.dict;
+              if (targetDict == null) {
+                return;
+              }
+              targetDict.url = row.modifyDict
+                ? "/mock/dicts/moreOpenStatusEnum?remote"
+                : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           },
           form: {
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             },
             valueChange({ form, getComponentRef }) {
               // 这里不能使用remoteDict,因为在分发时已经clone到form配置中了
               // 这里dict修改不会影响列里面的数据
               const targetDict = getComponentRef("remote").dict;
-              targetDict.url = form.modifyDict ? "/mock/dicts/moreOpenStatusEnum?remote" : "/mock/dicts/OpenStatusEnum?remote";
+              if (targetDict == null) {
+                return;
+              }
+              targetDict.url = form.modifyDict
+                ? "/mock/dicts/moreOpenStatusEnum?remote"
+                : "/mock/dicts/OpenStatusEnum?remote";
               targetDict.reloadDict();
             }
           }

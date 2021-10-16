@@ -24,7 +24,8 @@ export default function ({ expose }) {
       },
       form: {
         wrapper: {
-          is: "el-drawer"
+          is: "el-drawer",
+          size: "50%" //抽屉宽度50%
         }
       },
       columns: {
@@ -34,6 +35,7 @@ export default function ({ expose }) {
           search: { show: true },
           form: {
             component: {
+              "show-word-limit": true,
               maxlength: 20
             }
           }

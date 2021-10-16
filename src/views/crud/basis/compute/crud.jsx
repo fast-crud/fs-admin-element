@@ -1,7 +1,7 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
 import { useCompute } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 import { ref, computed } from "vue";
 const { asyncCompute, compute } = useCompute();
 export default function ({ expose }) {
@@ -80,6 +80,7 @@ export default function ({ expose }) {
           title: "ref引用切换",
           type: "text",
           form: {
+            // index.vue slot显示
             helper: "点我切换右边的输入框显示"
           }
         },
@@ -100,14 +101,12 @@ export default function ({ expose }) {
           column: {
             show: false,
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             }
           },
           form: {
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             },
             helper: "点我触发动态计算"
           }
@@ -134,7 +133,6 @@ export default function ({ expose }) {
           form: {
             component: {
               name: "el-select",
-              vModel: "value",
               placeholder: "异步计算远程获取options",
               options: asyncCompute({
                 async asyncFn(watchValue, context) {
@@ -153,14 +151,13 @@ export default function ({ expose }) {
           form: {
             component: {
               name: "el-select",
-              vModel: "value",
               placeholder: "异步计算远程获取options",
               options: asyncCompute({
                 watch({ form }) {
                   return form.compute;
                 },
                 async asyncFn(watchValue) {
-                  message.info("监听switch,触发远程获取options");
+                  ElMessage.info("监听switch,触发远程获取options");
                   const url = watchValue
                     ? "/mock/dicts/OpenStatusEnum?remote"
                     : "/mock/dicts/moreOpenStatusEnum?remote";
@@ -181,8 +178,7 @@ export default function ({ expose }) {
           column: {
             fixed: "right",
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             }
           },
           form: {

@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="warning" message="dict配置作为原型，任何用到的地方都复制一份" />
+        <el-alert class="ml-1" type="warning" title="dict配置作为原型，任何用到的地方都复制一份" />
       </template>
     </fs-crud>
   </fs-page>

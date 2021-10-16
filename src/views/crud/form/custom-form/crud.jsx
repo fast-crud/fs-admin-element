@@ -24,6 +24,9 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
+      form: {
+        labelWidth: "150px"
+      },
       columns: {
         title: {
           title: "商品标题",

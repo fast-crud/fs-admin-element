@@ -15,7 +15,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 export default defineComponent({
   name: "FeatureSearch",
   setup() {
@@ -43,7 +43,7 @@ export default defineComponent({
       crudRef,
       getSearchFormData() {
         const form = expose.getSearchFormData();
-        message.info(`searchForm:${JSON.stringify(form)}`);
+        ElMessage.info(`searchForm:${JSON.stringify(form)}`);
       },
       setSearchFormData() {
         expose.setSearchFormData({ form: { radio: "1", test: 2 }, mergeForm: true });

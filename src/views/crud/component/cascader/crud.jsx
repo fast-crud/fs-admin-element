@@ -27,8 +27,8 @@ export default function ({ crudRef }) {
       form: {
         // 单列布局
         col: { span: 24 },
-        labelCol: { span: 4 },
-        wrapperCol: { span: 18 }
+        // 表单label宽度
+        labelWidth: "150px"
       },
       columns: {
         id: {
@@ -74,7 +74,6 @@ export default function ({ crudRef }) {
           }),
           form: {
             component: {
-              vModel: "value",
               options: [
                 {
                   code: "11",

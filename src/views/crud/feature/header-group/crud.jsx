@@ -23,6 +23,10 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
+      form: {
+        layout: "flex",
+        labelWidth: "100px" //表单label宽度
+      },
       table: { size: "small" },
       columns: {
         id: {

@@ -11,13 +11,13 @@
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-tooltip title="我能控制表格显隐">
+        <el-tooltip content="我能控制表格显隐">
           <span class="ml-1">表格显隐:<el-switch v-model:checked="showTableRef"></el-switch></span>
         </el-tooltip>
-        <el-alert class="ml-1" type="info" message="点击下方右边的编辑按钮查看示例效果-----------> ↓↓↓↓↓" />
+        <el-alert class="ml-1" type="info" title="点击下方右边的编辑按钮查看示例效果-----------> ↓↓↓↓↓" />
       </template>
       <template #form_refSwitch>
-        <el-switch v-model:checked="showRef"></el-switch>
+        <el-switch v-model="showRef"></el-switch>
       </template>
     </fs-crud>
   </fs-page>

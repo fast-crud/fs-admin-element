@@ -4,7 +4,7 @@
       <div class="fs-multiple-page-control-content-inner">
         <el-tabs
           class="fs-multiple-page-control fs-multiple-page-sort"
-          :active-key="page.getCurrent"
+          model-value="page.getCurrent"
           type="card"
           hide-add
           @tabClick="handleClick"
@@ -29,36 +29,34 @@
     </div>
 
     <div class="fs-multiple-page-control-btn">
-      <el-dropdown-button size="default" split-button @click="closeAll">
-        <span class="iconify" data-icon="ion:close-circle" data-inline="false"></span>
-        <template #icon><DownOutlined /></template>
-        <template #overlay>
-          <el-menu @click="(command) => handleControlItemClick(command)">
-            <el-menu-item key="left">
+      <el-dropdown size="large" split-button trigger="click" @command="handleControlItemClick">
+        <fs-icon icon="ion:close-circle" />
+        <template #dropdown>
+          <el-dropdown-menu>
+            <el-dropdown-item command="left">
               <fs-icon name="arrow-left" class="fs-mr-10" />
               关闭左侧
-            </el-menu-item>
-            <el-menu-item key="right">
+            </el-dropdown-item>
+            <el-dropdown-item command="right">
               <fs-icon name="arrow-right" class="fs-mr-10" />
               关闭右侧
-            </el-menu-item>
-            <el-menu-item key="other">
+            </el-dropdown-item>
+            <el-dropdown-item command="other">
               <fs-icon name="times" class="fs-mr-10" />
               关闭其它
-            </el-menu-item>
-            <el-menu-item key="all">
+            </el-dropdown-item>
+            <el-dropdown-item command="all">
               <fs-icon name="times-circle" class="fs-mr-10" />
               全部关闭
-            </el-menu-item>
-          </el-menu>
+            </el-dropdown-item>
+          </el-dropdown-menu>
         </template>
-      </el-dropdown-button>
+      </el-dropdown>
     </div>
   </div>
 </template>
 
 <script>
-import Sortable from "sortablejs";
 import { usePageStore } from "../../../store/modules/page";
 import { computed } from "vue";
 export default {
@@ -212,7 +210,7 @@ export default {
     overflow-x: auto;
   }
   .fs-multiple-page-control-btn {
-    flex: 0;
+    flex-shrink: 0;
   }
   .el-tabs__header {
     margin: 0;

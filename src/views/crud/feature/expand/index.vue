@@ -1,11 +1,7 @@
 <template>
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #pagination-left>
-        <el-tooltip title="批量删除">
-          <fs-button icon="DeleteOutlined" @click="handleBatchDelete"></fs-button>
-        </el-tooltip>
-      </template>
+      <template #cell_$expand="scope">index: {{ scope.$index }} ; row: {{ scope.row }} </template>
     </fs-crud>
   </fs-page>
 </template>
@@ -45,13 +41,13 @@ export default defineComponent({
           content: `确定要批量删除这${selectedRowKeys.value.length}条记录吗`,
           async onOk() {
             await BatchDelete(selectedRowKeys.value);
-            message.info("删除成功");
+            ElMessage.info("删除成功");
             expose.doRefresh();
             selectedRowKeys.value = [];
           }
         });
       } else {
-        message.error("请先勾选记录");
+        ElMessage.error("请先勾选记录");
       }
     };
 

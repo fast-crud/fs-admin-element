@@ -24,7 +24,7 @@ import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import * as permissionApi from "../permission/api";
 import * as api from "./api";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 import FsPermissionTree from "../permission/fs-permission-tree.vue";
 function useAuthz() {
   const checkedKeys = ref();
@@ -76,7 +76,7 @@ function useAuthz() {
     authzClose();
     //await updateChecked(roleId);
 
-    message.success("授权成功");
+    ElMessage.success("授权成功");
   }
 
   return {

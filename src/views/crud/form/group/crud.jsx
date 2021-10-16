@@ -48,7 +48,7 @@ export default function ({ expose }) {
           title: "简介",
           type: "textarea",
           column: {
-            ellipsis: true
+            "show-overflow-tooltip": true
           }
         },
         content: {
@@ -72,6 +72,7 @@ export default function ({ expose }) {
         }
       },
       form: {
+        labelWidth: "150px",
         group: {
           type: "collapse", // tab
           accordion: true, //手风琴模式

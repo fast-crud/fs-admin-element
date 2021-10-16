@@ -2,14 +2,14 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="info" message=" ↑↑↑ 这里演示查询字段通过插槽自定义" />
+        <el-alert class="ml-1" type="info" title=" ↑↑↑ 这里演示查询字段通过插槽自定义" />
       </template>
       <template #search_radio="scope">
         <el-input-number v-model:value="scope.form.radio" style="width: 200px" placeholder="字段插槽自定义" />
       </template>
       <template #search-middle="scope">
         <el-form-item label="自定义">
-          <el-tooltip title="注意：search-middle插槽自定义的内容，无法被重置">
+          <el-tooltip content="注意：search-middle插槽自定义的内容，无法被重置">
             <el-input v-model:value="scope.form.custom" placeholder="search-middle插槽" />
           </el-tooltip>
         </el-form-item>

@@ -63,7 +63,6 @@ export default function ({ expose }) {
           column: {
             component: {
               name: "fs-dict-switch",
-              vModel: "checked",
               onChange: compute((context) => {
                 //动态onChange方法测试
                 return () => {

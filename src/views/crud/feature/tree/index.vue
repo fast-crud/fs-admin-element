@@ -1,10 +1,8 @@
 <template>
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #pagination-left>
-        <el-tooltip title="批量删除">
-          <fs-button icon="DeleteOutlined" @click="handleBatchDelete"></fs-button>
-        </el-tooltip>
+      <template #actionbar-right>
+        <el-alert class="ml-5" type="info" title="只需让返回的数据中带children字段即可" />
       </template>
     </fs-crud>
   </fs-page>
@@ -26,7 +24,7 @@ export default defineComponent({
     // 暴露的方法
     const { expose } = useExpose({ crudRef, crudBinding });
     // 你的crud配置
-    const { crudOptions, selectedRowKeys } = createCrudOptions({ expose });
+    const { crudOptions } = createCrudOptions({ expose });
     // 初始化crud配置
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     const { resetCrudOptions } = useCrud({ expose, crudOptions });
@@ -38,27 +36,9 @@ export default defineComponent({
       expose.doRefresh();
     });
 
-    const handleBatchDelete = () => {
-      if (selectedRowKeys.value?.length > 0) {
-        Modal.confirm({
-          title: "确认",
-          content: `确定要批量删除这${selectedRowKeys.value.length}条记录吗`,
-          async onOk() {
-            await BatchDelete(selectedRowKeys.value);
-            message.info("删除成功");
-            expose.doRefresh();
-            selectedRowKeys.value = [];
-          }
-        });
-      } else {
-        message.error("请先勾选记录");
-      }
-    };
-
     return {
       crudBinding,
-      crudRef,
-      handleBatchDelete
+      crudRef
     };
   }
 });

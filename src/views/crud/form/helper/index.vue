@@ -5,7 +5,7 @@
         <el-alert
           class="ml-1"
           type="info"
-          message="在表单字段下方可以显示该字段的帮助说明，点击右边编辑按钮查看示例效果"
+          title="在表单字段下方可以显示该字段的帮助说明，点击右边编辑按钮查看示例效果"
         />
       </template>
     </fs-crud>

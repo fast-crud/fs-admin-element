@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-divider type="vertical" />
+        <el-divider direction="vertical" />
         <el-button @click="openCustomForm">打开自定义表单对话框</el-button>
       </template>
     </fs-crud>
@@ -14,7 +14,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import _ from "lodash-es";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 export default defineComponent({
   name: "FormCustomForm",
   setup() {
@@ -46,7 +46,6 @@ export default defineComponent({
             title: "新表单字段",
             component: {
               name: "el-input",
-              vModel: "value",
               allowClear: true
             }
           },
@@ -54,7 +53,6 @@ export default defineComponent({
             title: "分组字段",
             component: {
               name: "el-input",
-              vModel: "value",
               allowClear: true
             }
           }
@@ -69,8 +67,8 @@ export default defineComponent({
         },
         doSubmit({ form }) {
           console.log("form submit:", form);
-          message.info("自定义表单提交:" + JSON.stringify(form));
-          message.warn("抛出异常可以阻止表单关闭");
+          ElMessage.info("自定义表单提交:" + JSON.stringify(form));
+          ElMessage.warn("抛出异常可以阻止表单关闭");
           throw new Error("抛出异常可以阻止表单关闭");
         }
       });

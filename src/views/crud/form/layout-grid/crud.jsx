@@ -25,11 +25,7 @@ export default function ({ expose }) {
       },
       form: {
         // 具体可配置请参考 grid 布局： http://www.ruanyifeng.com/blog/2019/03/grid-layout-tutorial.html
-        display: "grid",
-        wrapper: {
-          //grid模式下，labelWidth需要靠样式控制
-          customClass: "page-layout"
-        }
+        display: "grid"
       },
       columns: {
         name: {

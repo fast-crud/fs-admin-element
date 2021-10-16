@@ -21,6 +21,17 @@ export default function ({ expose }) {
         delRequest
       },
       columns: {
+        id: {
+          title: "ID",
+          key: "id",
+          type: "number",
+          column: {
+            width: 50
+          },
+          form: {
+            show: false
+          }
+        },
         radio: {
           title: "本地排序",
           search: { show: true },
@@ -29,9 +40,7 @@ export default function ({ expose }) {
             url: "/mock/dicts/OpenStatusEnum?single"
           }),
           column: {
-            sorter(a, b) {
-              return a.radio < b.radio ? 1 : -1;
-            }
+            sortable: true
           }
         },
         radio1: {
@@ -42,7 +51,7 @@ export default function ({ expose }) {
             url: "/mock/dicts/OpenStatusEnum?single"
           }),
           column: {
-            sorter: true
+            sortable: "custom"
           }
         },
         radio2: {

@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="info" message=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
+        <el-alert class="ml-1" type="info" title=" ↓↓↓ 通过cell字段插槽，可以做一些很复杂的显示" />
       </template>
       <template #cell_like="scope">
         <el-statistic title="自定义复杂显示" :value="scope.row.like" style="margin-right: 50px">

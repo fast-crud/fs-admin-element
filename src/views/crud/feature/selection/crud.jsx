@@ -16,31 +16,38 @@ export default function ({ expose }) {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
-  const selectedRowKeys = ref([]);
+  const selectedIds = ref([]);
 
-  const onSelectChange = (changed) => {
+  const onSelectionChange = (changed) => {
     console.log("selection", changed);
-    selectedRowKeys.value = changed;
+    selectedIds.value = changed.map((item) => item.id);
   };
   return {
-    selectedRowKeys, //返回给index.vue去使用
+    selectedIds, //返回给index.vue去使用
     crudOptions: {
-      table: {
-        rowSelection: {
-          selectedRowKeys: selectedRowKeys,
-          onChange: onSelectChange,
-          getCheckboxProps: (record) => ({
-            disabled: record.id === 1 // 此处演示第一行禁用
-          })
-        }
-      },
       request: {
         pageRequest,
         addRequest,
         editRequest,
         delRequest
       },
+      table: {
+        onSelectionChange
+      },
       columns: {
+        $checked: {
+          title: "选择",
+          form: { show: false },
+          column: {
+            type: "selection",
+            align: "center",
+            width: "55px",
+            columnSetDisabled: true, //禁止在列设置中选择
+            selectable(row, index) {
+              return row.id !== 1; //设置第一行不允许选择
+            }
+          }
+        },
         id: {
           title: "ID",
           key: "id",

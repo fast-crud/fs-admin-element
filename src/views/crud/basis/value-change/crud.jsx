@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -43,7 +43,7 @@ export default function ({ expose }) {
           form: {
             valueChange({ value, key, form }) {
               console.log("valueChanged,", key, value, form);
-              message.info(`valueChanged:${key}=${value}`);
+              ElMessage.info(`valueChanged:${key}=${value}`);
             }
           }
         },
@@ -54,7 +54,7 @@ export default function ({ expose }) {
             valueChange: {
               handle({ value, key, form, immediate }) {
                 console.log("valueChange,", key, value, "isImmediate=", immediate);
-                message.info(`valueChanged:${key}=${value},isImmediate=${immediate}`);
+                ElMessage.info(`valueChanged:${key}=${value},isImmediate=${immediate}`);
               },
               immediate: true
             }

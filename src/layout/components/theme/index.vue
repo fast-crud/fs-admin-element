@@ -1,14 +1,7 @@
 <template>
   <div class="fs-theme" @click="show()">
     <fs-iconify icon="ion:sparkles-outline" />
-    <el-drawer
-      v-model:visible="visible"
-      title="主题设置"
-      placement="right"
-      width="350px"
-      :closable="false"
-      :after-visible-change="afterVisibleChange"
-    >
+    <el-drawer v-model="visible" title="主题设置" width="350px">
       <fs-theme-color-picker
         :primary-color="setting.getTheme.primaryColor"
         @change="setting.setPrimaryColor"
@@ -27,7 +20,6 @@ export default defineComponent({
   components: { FsThemeColorPicker },
   setup() {
     const visible = ref(false);
-    function afterVisibleChange() {}
     function show() {
       visible.value = true;
     }
@@ -36,7 +28,6 @@ export default defineComponent({
     return {
       visible,
       show,
-      afterVisibleChange,
       setting
     };
   }

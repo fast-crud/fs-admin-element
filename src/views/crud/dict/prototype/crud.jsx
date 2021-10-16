@@ -74,12 +74,15 @@ export default function ({ expose }) {
           form: {
             helper: "此处可以动态切换左边select的options",
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             },
             valueChange({ form, value, getComponentRef }) {
               console.log("form", value);
-              const targetDict = getComponentRef("remote").getDict();
+              let componentRef = getComponentRef("remote");
+              if (componentRef == null) {
+                return componentRef;
+              }
+              const targetDict = componentRef.getDict();
               targetDict.url = form.modifyDict
                 ? "/mock/dicts/moreOpenStatusEnum?remote"
                 : "/mock/dicts/OpenStatusEnum?remote";
@@ -88,8 +91,7 @@ export default function ({ expose }) {
           },
           column: {
             component: {
-              name: "el-switch",
-              vModel: "checked"
+              name: "el-switch"
             },
             valueChange({ value, getComponentRef }) {
               console.log("value", value);

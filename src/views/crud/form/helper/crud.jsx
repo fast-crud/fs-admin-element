@@ -44,7 +44,7 @@ export default function ({ expose }) {
           form: {
             helper: {
               render() {
-                return <div style={"color:red"}>jsx自定义render</div>;
+                return <div style={"color:blue"}>jsx自定义render</div>;
               }
             }
           }
@@ -57,7 +57,7 @@ export default function ({ expose }) {
             helper: {
               position: "label",
               tooltip: {
-                placement: "topLeft"
+                placement: "top-start"
               },
               text: "在label通过tooltip方式显示的helper"
               // render() {

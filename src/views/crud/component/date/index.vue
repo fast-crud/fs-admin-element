@@ -4,7 +4,7 @@
       <template #actionbar-right>
         <el-alert
           style="margin-left: 10px"
-          message="关于日期时间，建议前后端统一使用时间戳（long类型）进行交互，可以避免时区转化带来的问题"
+          title="关于日期时间，建议前后端统一使用时间戳（long类型）进行交互，可以避免时区转化带来的问题"
         />
       </template>
     </fs-crud>

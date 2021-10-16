@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #form_slotField="scope">
-        <el-tooltip title="这是一个字段插槽示例">
+        <el-tooltip content="这是一个字段插槽示例">
           <el-input v-model:value="scope.form.slotField" placeholder="我是插槽字段"
         /></el-tooltip>
       </template>

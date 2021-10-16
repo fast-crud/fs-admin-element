@@ -1,7 +1,7 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
 import { useCompute } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 import { ref, computed } from "vue";
 const { asyncCompute, compute } = useCompute();
 export default function ({ expose }) {

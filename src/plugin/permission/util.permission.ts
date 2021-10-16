@@ -1,6 +1,6 @@
 import { usePermissionStore } from "./store.permission";
 import { NoPermissionError } from "./errors";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 const util = {
   hasPermissions: (value: string | string[]): boolean => {
     let need: string[] = [];
@@ -20,7 +20,7 @@ const util = {
   },
   requirePermissions: (value) => {
     if (!util.hasPermissions(value)) {
-      message.error("对不起，您没有权限执行此操作");
+      ElMessage.error("对不起，您没有权限执行此操作");
       throw new NoPermissionError();
     }
   }

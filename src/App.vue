@@ -16,6 +16,7 @@ export default {
     //刷新页面方法
     const routerEnabled = ref(true);
     async function reload() {
+      console.log("router reload");
       routerEnabled.value = false;
       await nextTick();
       routerEnabled.value = true;

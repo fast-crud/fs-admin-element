@@ -7,14 +7,14 @@
             <el-row>
               <el-col :span="2"> 搜索框： </el-col>
               <el-col :span="2">
-                <el-switch v-model:checked="crudBinding.search.show" active-color="#13ce66" inactive-color="#ff4949" />
+                <el-switch v-model="crudBinding.search.show" active-color="#13ce66" inactive-color="#ff4949" />
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="2"> 动作条： </el-col>
               <el-col :span="2">
                 <el-switch
-                  v-model:checked="crudBinding.actionbar.show"
+                  v-model="crudBinding.actionbar.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -22,7 +22,7 @@
               <el-col :span="3">
                 添加：
                 <el-switch
-                  v-model:checked="crudBinding.actionbar.buttons.add.show"
+                  v-model="crudBinding.actionbar.buttons.add.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -30,7 +30,7 @@
               <el-col :span="3">
                 自定义：
                 <el-switch
-                  v-model:checked="crudBinding.actionbar.buttons.test.show"
+                  v-model="crudBinding.actionbar.buttons.test.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -39,12 +39,12 @@
             <el-row>
               <el-col :span="2"> 工具条： </el-col>
               <el-col :span="2">
-                <el-switch v-model:checked="crudBinding.toolbar.show" active-color="#13ce66" inactive-color="#ff4949" />
+                <el-switch v-model="crudBinding.toolbar.show" active-color="#13ce66" inactive-color="#ff4949" />
               </el-col>
               <el-col :span="3">
                 查询：
                 <el-switch
-                  v-model:checked="crudBinding.toolbar.buttons.search.show"
+                  v-model="crudBinding.toolbar.buttons.search.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -52,7 +52,7 @@
               <el-col :span="3">
                 刷新：
                 <el-switch
-                  v-model:checked="crudBinding.toolbar.buttons.refresh.show"
+                  v-model="crudBinding.toolbar.buttons.refresh.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -60,7 +60,7 @@
               <el-col :span="3">
                 紧凑：
                 <el-switch
-                  v-model:checked="crudBinding.toolbar.buttons.compact.show"
+                  v-model="crudBinding.toolbar.buttons.compact.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -68,7 +68,7 @@
               <el-col :span="3">
                 导出：
                 <el-switch
-                  v-model:checked="crudBinding.toolbar.buttons.export.show"
+                  v-model="crudBinding.toolbar.buttons.export.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -76,7 +76,7 @@
               <el-col :span="3">
                 列设置：
                 <el-switch
-                  v-model:checked="crudBinding.toolbar.buttons.columns.show"
+                  v-model="crudBinding.toolbar.buttons.columns.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -85,14 +85,14 @@
             <el-row>
               <el-col :span="2"> 表格： </el-col>
               <el-col :span="2">
-                <el-switch v-model:checked="crudBinding.table.show" active-color="#13ce66" inactive-color="#ff4949" />
+                <el-switch v-model="crudBinding.table.show" active-color="#13ce66" inactive-color="#ff4949" />
               </el-col>
             </el-row>
             <el-row>
               <el-col :span="2"> 操作列： </el-col>
               <el-col :span="2">
                 <el-switch
-                  v-model:checked="crudBinding.rowHandle.show"
+                  v-model="crudBinding.rowHandle.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -100,7 +100,7 @@
               <el-col :span="3">
                 查看：
                 <el-switch
-                  v-model:checked="crudBinding.rowHandle.buttons.view.show"
+                  v-model="crudBinding.rowHandle.buttons.view.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -108,7 +108,7 @@
               <el-col :span="3">
                 修改：
                 <el-switch
-                  v-model:checked="crudBinding.rowHandle.buttons.edit.show"
+                  v-model="crudBinding.rowHandle.buttons.edit.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -116,7 +116,7 @@
               <el-col :span="3">
                 删除：
                 <el-switch
-                  v-model:checked="crudBinding.rowHandle.buttons.remove.show"
+                  v-model="crudBinding.rowHandle.buttons.remove.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -124,7 +124,7 @@
               <el-col :span="3">
                 自定义：
                 <el-switch
-                  v-model:checked="crudBinding.rowHandle.buttons.custom.show"
+                  v-model="crudBinding.rowHandle.buttons.custom.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />
@@ -134,7 +134,7 @@
               <el-col :span="2"> 翻页： </el-col>
               <el-col :span="2">
                 <el-switch
-                  v-model:checked="crudBinding.pagination.show"
+                  v-model="crudBinding.pagination.show"
                   active-color="#13ce66"
                   inactive-color="#ff4949"
                 />

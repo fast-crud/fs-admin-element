@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert style="margin-left: 10px" message="富文本" />
+        <el-alert style="margin-left: 10px" title="富文本编辑器" />
       </template>
     </fs-crud>
   </fs-page>

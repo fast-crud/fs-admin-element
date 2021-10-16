@@ -1,7 +1,7 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
 import { dict, compute } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -53,7 +53,7 @@ export default function ({ expose }) {
               }),
               on: {
                 onClick({ row }) {
-                  message.success("按钮点击:" + row.button);
+                  ElMessage.success("按钮点击:" + row.button);
                 }
               }
             }
@@ -94,7 +94,7 @@ export default function ({ expose }) {
             component: {
               name: "fs-button", //列展示组件为button
               vModel: "text", // 将row.link2的值赋值给text属性
-              type: "link", // 按钮展示为链接样式
+              type: "text", // 按钮展示为链接样式
               on: {
                 //注册点击事件
                 onClick({ row }) {

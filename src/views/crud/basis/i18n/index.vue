@@ -6,7 +6,7 @@
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <el-alert class="ml-1" type="warning" message="右上角切换语言查看效果" />
+        <el-alert class="ml-1" type="warning" title="右上角切换语言查看效果" />
       </template>
     </fs-crud>
   </fs-page>
@@ -17,7 +17,7 @@ import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import { useExpose } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 export default defineComponent({
   name: "BasisI18n",
   setup() {

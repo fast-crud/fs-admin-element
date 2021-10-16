@@ -65,8 +65,8 @@ export default function ({ expose }) {
       form: {
         // 单列布局
         col: { span: 24 },
-        labelCol: { span: 4 },
-        wrapperCol: { span: 18 }
+        // 表单label宽度
+        labelWidth: "150px"
       },
       rowHandle: {
         fixed: "right",
@@ -98,7 +98,7 @@ export default function ({ expose }) {
             label: "text",
             data: [
               { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: "blue" },
+              { id: "gz", text: "广州", color: null },
               { id: "bj", text: "北京" },
               { id: "wh", text: "武汉" },
               { id: "sh", text: "上海" }
@@ -145,7 +145,6 @@ export default function ({ expose }) {
           form: {
             component: {
               name: "el-select",
-              vModel: "value",
               filterOption: false,
               //labelInValue: true,
               mode: "multiple",
@@ -169,7 +168,6 @@ export default function ({ expose }) {
         },
         customDictGetData: {
           title: "自定义字典请求",
-          search: { show: false },
           type: "dict-select",
           dict: dict({
             getData({ dict }) {
@@ -181,6 +179,7 @@ export default function ({ expose }) {
               });
             }
           }),
+          search: { show: false },
           form: {
             value: "2", //默认值, 注意search也会影响到，需要将search.value=null，取消search的默认值
             helper: "dict.getData可以覆盖全局配置的getRemoteDictFunc"
@@ -194,7 +193,6 @@ export default function ({ expose }) {
         },
         disabledOptions: {
           title: "禁用某个选项",
-          key: "disabledOptions",
           type: "dict-select",
           dict: dict({
             cloneable: true,
@@ -251,7 +249,6 @@ export default function ({ expose }) {
         },
         multiple: {
           title: "多选自动染色",
-          sortable: true,
           type: "dict-select",
           form: {
             title: "多选本地",
@@ -266,7 +263,7 @@ export default function ({ expose }) {
               { value: "wh", label: "武汉" },
               { value: "sh", label: "上海" },
               { value: "hz", label: "杭州" },
-              { value: "bj", label: "北京", color: "red" }
+              { value: "bj", label: "北京", color: "danger" }
             ]
           }),
           column: {
@@ -282,10 +279,9 @@ export default function ({ expose }) {
           form: {
             component: {
               name: "el-select",
-              vModel: "value",
               options: [
                 { value: "sz", label: "深圳", color: "success" },
-                { value: "gz", label: "广州", color: "blue" },
+                { value: "gz", label: "广州", color: null },
                 { value: "bj", label: "北京" },
                 { value: "wh", label: "武汉" },
                 { value: "sh", label: "上海" }

@@ -9,7 +9,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col span="12">
+      <el-col :span="12">
         <el-card title="打开表单对话框">
           <el-button @click="openFormWrapper">打开表单对话框</el-button>
           <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
@@ -21,7 +21,7 @@
 
 <script>
 import { defineComponent, ref } from "vue";
-import { message } from "ant-design-vue";
+import { ElMessage } from "element-plus";
 
 function useFormDirect() {
   const formRef = ref();
@@ -42,7 +42,6 @@ function useFormDirect() {
         title: "新表单字段",
         component: {
           name: "el-input",
-          vModel: "value",
           allowClear: true
         },
         rules: [{ required: true, message: "此项必填" }]
@@ -51,7 +50,6 @@ function useFormDirect() {
         title: "分组字段",
         component: {
           name: "el-input",
-          vModel: "value",
           allowClear: true
         },
         rules: [{ required: true, message: "此项必填" }]
@@ -67,8 +65,8 @@ function useFormDirect() {
     },
     doSubmit({ form }) {
       console.log("form submit:", form);
-      message.info("自定义表单提交:" + JSON.stringify(form));
-      message.success("保存成功");
+      ElMessage.info("自定义表单提交:" + JSON.stringify(form));
+      ElMessage.success("保存成功");
     }
   });
 
@@ -85,19 +83,12 @@ function useFormWrapper() {
   const formWrapperRef = ref();
   const formWrapperOptions = ref({
     labelPosition: "right",
-    labelWidth: "80px",
+    labelWidth: "120px",
     col: {
       span: 12
     },
-    labelAlign: "right",
-    labelCol: {
-      span: 6
-    },
-    wrapperCol: {
-      span: 16
-    },
     wrapper: {
-      is: "el-modal",
+      is: "el-dialog",
       width: "960px",
       destroyOnClose: true,
       footer: null,
@@ -109,7 +100,6 @@ function useFormWrapper() {
         title: "新表单字段",
         component: {
           name: "el-input",
-          vModel: "value",
           allowClear: true
         },
         rules: [{ required: true, message: "此项必填" }]
@@ -118,7 +108,6 @@ function useFormWrapper() {
         title: "分组字段",
         component: {
           name: "el-input",
-          vModel: "value",
           allowClear: true
         },
         rules: [{ required: true, message: "此项必填" }]
@@ -134,8 +123,8 @@ function useFormWrapper() {
     },
     doSubmit({ form }) {
       console.log("form submit:", form);
-      message.info("自定义表单提交:" + JSON.stringify(form));
-      message.warn("抛出异常可以阻止表单关闭");
+      ElMessage.info("自定义表单提交:" + JSON.stringify(form));
+      ElMessage.warn("抛出异常可以阻止表单关闭");
       throw new Error("抛出异常可以阻止表单关闭");
     }
   });

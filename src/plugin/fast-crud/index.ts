@@ -31,17 +31,16 @@ function install(app, options: any = {}) {
         },
         rowHandle: {
           buttons: {
-            view: { type: "link", text: null, icon: "ion:eye-outline" },
-            edit: { type: "link", text: null, icon: "ion:create-outline" },
-            remove: { type: "link", style: { color: "red" }, text: null, icon: "ion:trash-outline" }
+            view: { text: null, icon: "ion:eye-outline" },
+            edit: { text: null, icon: "ion:create-outline" },
+            remove: { type: "danger", text: null, icon: "ion:trash-outline" }
           },
           dropdown: {
-            more: {
-              type: "link"
-            }
+            more: {}
           }
         },
         request: {
+          // 查询参数转换
           transformQuery: ({ page, form, sort }) => {
             const limit = page.pageSize;
             const currentPage = page.currentPage ?? 1;
@@ -58,6 +57,7 @@ function install(app, options: any = {}) {
               sort
             };
           },
+          // page请求结果转换
           transformRes: ({ res }) => {
             const pageSize = res.limit;
             let currentPage = res.offset / pageSize;
@@ -68,7 +68,8 @@ function install(app, options: any = {}) {
           }
         },
         form: {
-          display: "flex"
+          display: "flex", //表单布局
+          labelWidth: "100px" //表单label宽度
         }
       };
 
