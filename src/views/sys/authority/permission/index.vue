@@ -11,8 +11,10 @@
       <fs-permission-tree
         class="permission-tree"
         :tree="crudBinding.data"
+        :editable="true"
         :checkable="false"
         :actions="permission"
+        :default-expand-all="true"
         @add="addHandle"
         @edit="editHandle"
         @remove="removeHandle"

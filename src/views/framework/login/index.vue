@@ -7,8 +7,6 @@
       :model="formState"
       :rules="rules"
       v-bind="layout"
-      @finish="handleFinish"
-      @finishFailed="handleFinishFailed"
     >
       <!--      <div class="login-title">登录</div>-->
       <el-tabs :active-key="formState.loginType" :tab-bar-style="{ textAlign: 'center', borderBottom: 'unset' }">
@@ -17,15 +15,16 @@
 
           <!--      <div class="login-title">登录</div>-->
           <el-form-item required has-feedback name="username">
-            <el-input v-model:value="formState.username" placeholder="请输入用户名" size="large" autocomplete="off">
+            <el-input v-model="formState.username" placeholder="请输入用户名" size="large" autocomplete="off">
               <template #prefix>
                 <span class="iconify" data-icon="ion:phone-portrait-outline" data-inline="false"></span>
               </template>
             </el-input>
           </el-form-item>
           <el-form-item has-feedback name="password">
-            <el-input-password
-              v-model:value="formState.password"
+            <el-input
+              v-model="formState.password"
+              type="password"
               placeholder="请输入密码"
               size="large"
               autocomplete="off"
@@ -33,12 +32,26 @@
               <template #prefix>
                 <span class="iconify" data-icon="ion:lock-closed-outline" data-inline="false"></span>
               </template>
-            </el-input-password>
+            </el-input>
+          </el-form-item>
+          <el-form-item has-feedback name="imgCode">
+            <el-row :gutter="16">
+              <el-col class="gutter-row" :span="16">
+                <el-input v-model="formState.imgCode" placeholder="请输入图片验证码" size="large" autocomplete="off">
+                  <template #prefix>
+                    <span class="iconify" data-icon="ion:image-outline" data-inline="false"></span>
+                  </template>
+                </el-input>
+              </el-col>
+              <el-col class="gutter-row" :span="8">
+                <img class="image-code" :src="imageCodeUrl" @click="resetImageCode" />
+              </el-col>
+            </el-row>
           </el-form-item>
         </el-tab-pane>
         <el-tab-pane key="smsCode" tab="短信验证码登录" :disabled="true" title="暂不支持">
           <el-form-item required has-feedback name="mobile">
-            <el-input v-model:value="formState.mobile" placeholder="请输入手机号" size="large" autocomplete="off">
+            <el-input v-model="formState.mobile" placeholder="请输入手机号" size="large" autocomplete="off">
               <template #prefix>
                 <span class="iconify" data-icon="ion:phone-portrait-outline" data-inline="false"></span>
               </template>
@@ -47,12 +60,7 @@
           <el-form-item has-feedback name="imgCode">
             <el-row :gutter="16">
               <el-col class="gutter-row" :span="16">
-                <el-input
-                  v-model:value="formState.imgCode"
-                  placeholder="请输入图片验证码"
-                  size="large"
-                  autocomplete="off"
-                >
+                <el-input v-model="formState.imgCode" placeholder="请输入图片验证码" size="large" autocomplete="off">
                   <template #prefix>
                     <span class="iconify" data-icon="ion:image-outline" data-inline="false"></span>
                   </template>
@@ -67,7 +75,7 @@
           <el-form-item name="smsCode">
             <el-row :gutter="16">
               <el-col class="gutter-row" :span="16">
-                <el-input v-model:value="formState.smsCode" size="large" placeholder="短信验证码">
+                <el-input v-model="formState.smsCode" size="large" placeholder="短信验证码">
                   <template #prefix>
                     <span class="iconify" data-icon="ion:mail-outline" data-inline="false"></span>
                   </template>
@@ -87,7 +95,9 @@
         </el-tab-pane>
       </el-tabs>
       <el-form-item>
-        <el-button type="primary" size="large" html-type="submit" :loading="loading" class="login-button">登录</el-button>
+        <el-button type="primary" size="large" :loading="loading" class="login-button" @click="handleFinish"
+          >登录</el-button
+        >
       </el-form-item>
 
       <el-form-item class="user-login-other">
@@ -175,7 +185,7 @@ export default defineComponent({
 
     const imageCodeUrl = ref();
     function resetImageCode() {
-      let url = "/basic/code";
+      let url = "/images/code.jpg";
       imageCodeUrl.value = url + "?t=" + new Date().getTime();
     }
     resetImageCode();

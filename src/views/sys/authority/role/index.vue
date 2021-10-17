@@ -9,8 +9,9 @@
         ref="permissionTreeRef"
         v-model:checkedKeys="checkedKeys"
         :tree="permissionTreeData"
+        :default-expand-all="true"
         :editable="false"
-        checkable
+        show-checkbox="true"
         :replace-fields="{ key: 'id', label: 'title' }"
       >
       </fs-permission-tree>

@@ -4,27 +4,20 @@
     ref="treeRef"
     class="fs-permission-tree"
     :class="{ 'is-editable': editable }"
-    :selectable="false"
-    show-line
-    :show-icon="false"
-    :default-expand-all="true"
-    :tree-data="computedTree"
+    :data="computedTree"
+    :filter-node-method="filterNodeMethod"
     @check="onChecked"
   >
-    <template #title="scope">
-      <div class="node-title-pane">
-        <div class="node-title">{{ scope.title }}</div>
+    <template #default="{ data }">
+      <div :class="data.class + ' node-title-pane'">
+        <div class="node-title">{{ data.title }}</div>
         <div v-if="editable === true" class="node-suffix">
-          <fs-icon v-if="actions.add !== false" :icon="$fsui.icons.add" @click.stop="add(scope)" />
+          <fs-icon v-if="actions.add !== false" :icon="$fsui.icons.add" @click.stop="add(data)" />
+          <fs-icon v-if="actions.edit !== false && data.id !== -1" :icon="$fsui.icons.edit" @click.stop="edit(data)" />
           <fs-icon
-            v-if="actions.edit !== false && scope.id !== -1"
-            :icon="$fsui.icons.edit"
-            @click.stop="edit(scope)"
-          />
-          <fs-icon
-            v-if="actions.remove !== false && scope.id !== -1"
+            v-if="actions.remove !== false && data.id !== -1"
             :icon="$fsui.icons.remove"
-            @click.stop="remove(scope)"
+            @click.stop="remove(data)"
           />
         </div>
       </div>
@@ -36,7 +29,7 @@
 import _ from "lodash-es";
 import getEachDeep from "deepdash-es/getEachDeep";
 const eachDeep = getEachDeep(_);
-import { defineComponent, ref, computed } from "vue";
+import { defineComponent, ref, computed, nextTick, onMounted } from "vue";
 export default defineComponent({
   name: "FsPermissionTree",
   props: {
@@ -57,6 +50,18 @@ export default defineComponent({
   emits: ["add", "edit", "remove"],
   setup(props, ctx) {
     const treeRef = ref();
+    const handleExpand = async () => {
+      await nextTick();
+      const twig = treeRef.value.$el.querySelector(".is-twig-node");
+      twig.parentNode.parentNode.isTwig = true;
+    };
+    const filterNodeMethod = (value, data, node) => {
+      console.log("value,data,node", value, data, node);
+      return true;
+    };
+    onMounted(() => {
+      treeRef.value.filter();
+    });
     const computedTree = computed(() => {
       if (props.tree == null) {
         return null;
@@ -69,7 +74,7 @@ export default defineComponent({
         if (!(value instanceof Object) || value instanceof Array) {
           return;
         }
-        if (value.class === "is-leaf") {
+        if (value.class === "is-leaf-node") {
           //处理过，无需再次处理
           return;
         }
@@ -89,11 +94,12 @@ export default defineComponent({
           }
         }
         // 所有的子节点都没有children
-        parent.class = "is-twig"; // 连接叶子节点的末梢枝杈节点
+        parent.class = "is-twig-node"; // 连接叶子节点的末梢枝杈节点
         for (const child of parent.children) {
-          child.class = "is-leaf";
+          child.class = "is-leaf-node";
         }
       });
+      console.log("nodes ", clone);
       return [
         {
           title: "根节点",
@@ -102,14 +108,14 @@ export default defineComponent({
         }
       ];
     });
-    function add(scope) {
-      ctx.emit("add", scope.dataRef);
+    function add(data) {
+      ctx.emit("add", data);
     }
-    function edit(scope) {
-      ctx.emit("edit", scope.dataRef);
+    function edit(data) {
+      ctx.emit("edit", data);
     }
-    function remove(scope) {
-      ctx.emit("remove", scope.dataRef);
+    function remove(data) {
+      ctx.emit("remove", data);
     }
     function onChecked(a, b, c) {
       console.log("chedcked", a, b, c);
@@ -132,6 +138,8 @@ export default defineComponent({
     }
     return {
       computedTree,
+      handleExpand,
+      filterNodeMethod,
       add,
       edit,
       remove,
@@ -167,7 +175,7 @@ export default defineComponent({
   }
 
   &.is-editable {
-    .ant-tree-title {
+    .el-tree-node__content {
       &:hover {
         .node-suffix {
           visibility: visible;
