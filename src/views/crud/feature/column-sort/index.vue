@@ -2,7 +2,7 @@
   <fs-page>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
-        <a-alert
+        <el-alert
           class="ml-1"
           type="info"
           title="配置order即可控制字段的顺序，数字越小越靠前，默认为1，（配置0或负数排前面，配置2以上排后面）"
