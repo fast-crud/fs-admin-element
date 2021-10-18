@@ -4,7 +4,7 @@ import router from "./router";
 
 // 基础组件
 import ElementPlus from "element-plus";
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+import zhCn from "element-plus/es/locale/lang/zh-cn";
 import "element-plus/dist/index.css";
 import "dayjs/locale/zh-cn";
 
