@@ -354,7 +354,7 @@ export const crudResources = [
             component: "/crud/feature/search/index.vue"
           },
           {
-            title: "列排序",
+            title: "字段排序",
             name: "FeatureColumnSort",
             path: "/crud/feature/column-sort",
             component: "/crud/feature/column-sort/index.vue"
