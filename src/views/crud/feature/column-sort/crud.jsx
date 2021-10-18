@@ -23,7 +23,7 @@ export default function ({ expose }) {
       toolbar: {
         //工具按钮排序
         buttons: {
-          search: { order: 1 } // 查询按钮排到前面
+          search: { order: 0 } // 查询按钮排到前面
         }
       },
       form: {
@@ -42,33 +42,33 @@ export default function ({ expose }) {
           search: {
             //控制查询字段顺序
             show: true,
-            //字段默认order为100，比100大的放最后面
-            order: 101
+            //字段默认order为1，比1大的放最后面
+            order: 2
           },
           type: "text",
           column: {
             //控制列字段顺序
-            //字段默认order为100，比100大的放最后面
-            order: 101
+            //字段默认order为1，比1大的放最后面
+            order: 2
           },
           form: {
             //控制表单字段顺序
-            //字段默认order为100，比100大的放最后面
-            order: 101
+            //字段默认order为1，比1大的放最后面
+            order: 2
           }
         },
         col3: {
           title: "col.3,我排第一个",
           search: {
             show: true,
-            order: 0
+            order: -1
           },
           type: "text",
           column: {
-            order: 0
+            order: -1
           },
           form: {
-            order: 0
+            order: -1
           }
         },
         col4: {
