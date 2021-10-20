@@ -1,18 +1,12 @@
 <template xmlns:w="http://www.w3.org/1999/xhtml">
   <el-container class="fs-framework">
-    <el-aside v-model:collapsed="asideCollapsed" :trigger="null" collapsible>
+    <el-aside :width="asideCollapsed ? '64px' : '300px'" :trigger="null" collapsible>
       <div class="header-logo">
         <img src="/images/logo/rect-black.svg" />
         <span v-if="!asideCollapsed" class="title">FsAdmin</span>
       </div>
       <div class="aside-menu">
-        <fs-menu
-          mode="vertical"
-          :scroll="true"
-          :menus="asideMenus"
-          :expand-selected="!asideCollapsed"
-          menu-trigger="click"
-        />
+        <fs-menu mode="vertical" :scroll="true" :menus="asideMenus" :collapse="asideCollapsed" menu-trigger="click" />
       </div>
     </el-aside>
 
@@ -30,6 +24,7 @@
           mode="horizontal"
           :expand-selected="false"
           :selectable="false"
+          :scroll="false"
           :menus="frameworkMenus"
         />
         <div class="header-right header-buttons">
@@ -43,10 +38,10 @@
           <!--            Button-->
           <!--          </button>-->
           <fs-menu
-            class="header-menu"
             mode="horizontal"
             :expand-selected="false"
             :selectable="false"
+            :scroll="false"
             :menus="headerMenus"
           />
           <fs-locale class="btn" />
@@ -144,6 +139,7 @@ export default {
   .fs-framework-content {
     flex: 1;
     border-left: 1px solid #e5e7eb;
+    overflow-x: hidden;
   }
   .fs-framework-footer {
     border-left: 1px solid #e5e7eb;
@@ -160,12 +156,12 @@ export default {
       padding: 0 10px;
     }
 
-    & > .btn {
-      &:hover {
-        // background-color: #fff;
-        color: @primary-color;
-      }
-    }
+    //& > .btn {
+    //  &:hover {
+    //    // background-color: #fff;
+    //    color: @primary-color;
+    //  }
+    //}
   }
   .header-right {
     justify-content: flex-end;
@@ -214,13 +210,20 @@ export default {
     align-items: center;
     .el-menu--horizontal {
       border: 0;
+      .el-sub-menu__title * {
+        vertical-align: auto;
+        box-sizing: content-box;
+      }
       .el-sub-menu__title {
         display: flex;
         align-items: center;
       }
       .el-sub-menu__icon-arrow {
         margin-left: 5px;
-        margin-top: 2px;
+        margin-top: 0;
+        position: initial;
+        padding: 0;
+        line-height: inherit;
       }
     }
   }

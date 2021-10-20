@@ -4,4 +4,28 @@
   &.fs-menu-better-scroll{
     overflow-y: hidden;
   }
+
+  .el-menu--collapse{
+    >.el-menu-item .fs-iconify,>.el-sub-menu>.el-sub-menu__title .fs-iconify{
+      height: auto;
+      width: auto;
+      overflow: hidden;
+      visibility: visible;
+      display: inline-block;
+      margin:0;
+    }
+    >.el-menu-item ,>.el-sub-menu>.el-sub-menu__title{
+      text-align: center;
+    }
+  }
+
+
+  .el-sub-menu.is-active{
+    >.el-sub-menu__title{
+     >.menu-item-title{
+       color:@primary-color
+     }
+    }
+  }
+
 }

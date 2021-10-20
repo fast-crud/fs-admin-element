@@ -97,10 +97,10 @@ export default defineComponent({
         const title = () => {
           if (sub?.meta?.icon) {
             return (
-              <span class={"menu-item-title"}>
+              <div class={"menu-item-title"}>
                 <FsIconify icon={sub.meta.icon} />
                 <span>{sub.title}</span>
-              </span>
+              </div>
             );
           }
           return sub.title;

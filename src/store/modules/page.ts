@@ -308,9 +308,9 @@ export const usePageStore = defineStore({
       }
       // 持久化
       await this.opened2db();
+      // @ts-ignore
       // 设置当前的页面
       this.current = pageAim;
-      // @ts-ignore
       if (router.currentRoute.fullPath !== pageAim) await router.push(pageAim);
     },
     /**

@@ -1,9 +1,9 @@
 <template>
-  <el-dropdown class="fs-locale-picker">
+  <el-dropdown class="fs-locale-picker" @command="changeLocale">
     <fs-iconify icon="ion-globe-outline" @click.prevent></fs-iconify>
-    <template #overlay>
-      <el-menu @click="changeLocale">
-        <el-menu-item v-for="item in languages" :key="item.key" :command="item.key">
+    <template #dropdown>
+      <el-dropdown-menu>
+        <el-dropdown-item v-for="item in languages" :key="item.key" :command="item.key">
           <div class="language-item">
             <span v-if="item.key === current" class="icon-radio">
               <span class="iconify" data-icon="ion:radio-button-on" data-inline="false"></span>
@@ -13,8 +13,8 @@
             </span>
             {{ item.label }}
           </div>
-        </el-menu-item>
-      </el-menu>
+        </el-dropdown-item>
+      </el-dropdown-menu>
     </template>
   </el-dropdown>
 </template>
@@ -43,7 +43,7 @@ export default {
 
     const routerReload = inject("fn:router.reload");
     const changeLocale = (change) => {
-      i18n.global.locale.value = change.key;
+      i18n.global.locale.value = change;
       routerReload();
     };
     return {

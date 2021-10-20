@@ -3,11 +3,11 @@
     <div class="fs-multiple-page-control-content">
       <div class="fs-multiple-page-control-content-inner">
         <el-tabs
+          :model-value="page.getCurrent"
           class="fs-multiple-page-control fs-multiple-page-sort"
-          model-value="page.getCurrent"
           type="card"
           hide-add
-          @tabClick="handleClick"
+          @update:modelValue="handleClick"
           @edit="handleTabEdit"
           @contextmenu="handleContextmenu"
         >
@@ -29,7 +29,7 @@
     </div>
 
     <div class="fs-multiple-page-control-btn">
-      <el-dropdown size="large" split-button trigger="click" @command="handleControlItemClick">
+      <el-dropdown size="large" split-button trigger="click" @click="closeAll" @command="dropdownItemClick">
         <fs-icon icon="ion:close-circle" />
         <template #dropdown>
           <el-dropdown-menu>
@@ -149,6 +149,9 @@ export default {
     contextmenuClick(command) {
       this.handleControlItemClick(command, this.tagName);
     },
+    dropdownItemClick(command) {
+      this.handleControlItemClick(command);
+    },
     /**
      * @description 接收点击关闭控制上选项的事件
      * @param {String} command 事件类型
@@ -156,8 +159,9 @@ export default {
      */
     handleControlItemClick(command, tagName = null) {
       //if (tagName) this.contextmenuFlag = false;
+      debugger;
       const params = { pageSelect: tagName };
-      switch (command.key) {
+      switch (command) {
         case "left":
           this.closeLeft(params);
           break;
@@ -227,6 +231,26 @@ export default {
 }
 //antdv
 .fs-multiple-page-control-group {
+  .el-tabs__nav-prev,
+  .el-tabs__nav-next {
+    width: 20px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px #e5e7eb solid;
+    border-bottom: 0;
+  }
+
+  .el-tabs__nav-prev {
+    border-right: 0;
+  }
+
+  .el-tabs__nav-next {
+    border-left: 0;
+    border-right: 0;
+  }
+
   .ant-tabs-bar {
     margin: 0;
     border-bottom: 1px solid #f0f0f0;
@@ -277,6 +301,11 @@ export default {
       height: 100%;
       color: #666;
       border-bottom: 1px solid #f0f0f0;
+    }
+
+    .el-dropdown .el-button-group .el-button {
+      border-bottom: 1px solid #f0f0f0;
+      border-radius: 0;
     }
   }
 
