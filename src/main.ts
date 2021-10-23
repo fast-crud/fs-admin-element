@@ -10,12 +10,11 @@ import "dayjs/locale/zh-cn";
 
 import "virtual:windi.css";
 import "./style/common.less";
-import "@iconify/iconify";
-import "@purge-icons/generated";
 import "./mock";
 import i18n from "./i18n";
 import store from "./store";
 import components from "./components";
+import "./plugin/iconify";
 import FastCrud from "./plugin/fast-crud";
 import permission from "./plugin/permission";
 

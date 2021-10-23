@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-admin-element",
-  "version": "0.19.0",
+  "version": "0.20.0",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -18,9 +18,9 @@
   "license": "MIT",
   "dependencies": {
     "@ant-design/icons-vue": "^6.0.1",
-    "@fast-crud/fast-crud": "^0.19.0",
-    "@fast-crud/fast-extends": "^0.19.0",
-    "@fast-crud/ui-element": "^0.19.0",
+    "@fast-crud/fast-crud": "^0.20.0",
+    "@fast-crud/fast-extends": "^0.20.0",
+    "@fast-crud/ui-element": "^0.20.0",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^1.1.376",
     "@purge-icons/generated": "^0.7.0",
@@ -83,7 +83,6 @@
     "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.53.2",
-    "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-visualizer": "^5.5.2",
     "stylelint": "^13.11.0",
     "stylelint-config-prettier": "^8.0.2",
