@@ -12,8 +12,6 @@
 import { defineComponent, ref, onMounted } from "vue";
 import createCrudOptions from "./crud";
 import { useExpose, useCrud } from "@fast-crud/fast-crud";
-import { message, Modal } from "ant-design-vue";
-import { BatchDelete } from "./api";
 export default defineComponent({
   name: "FeatureTree",
   setup() {

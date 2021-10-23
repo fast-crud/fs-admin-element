@@ -7,7 +7,7 @@ import { LocalStorage } from "/src/utils/util.storage";
 import * as UserApi from "/src/api/modules/api.user";
 // @ts-ignore
 import { LoginReq, UserInfoRes } from "/@/api/modules/api.user";
-import { Modal } from "ant-design-vue";
+import { ElMessageBox } from "element-plus";
 import { useI18n } from "vue-i18n";
 
 import { mitter } from "/src/utils/util.mitt";
@@ -86,16 +86,10 @@ export const useUserStore = defineStore({
     /**
      * @description: Confirm before logging out
      */
-    confirmLoginOut() {
+    async confirmLoginOut() {
       const { t } = useI18n();
-      Modal.config({
-        iconType: "warning",
-        title: t("app.login.logoutTip"),
-        content: t("app.login.logoutMessage"),
-        onOk: async () => {
-          await this.logout(true);
-        }
-      });
+      await ElMessageBox.confirm(t("app.login.logoutMessage"), t("app.login.logoutTip"));
+      await this.logout(true);
     }
   }
 });

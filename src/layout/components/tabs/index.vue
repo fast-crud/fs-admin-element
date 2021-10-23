@@ -303,9 +303,17 @@ export default {
       border-bottom: 1px solid #f0f0f0;
     }
 
+    .el-button-group {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+
     .el-dropdown .el-button-group .el-button {
-      border-bottom: 1px solid #f0f0f0;
+      border-bottom: 0px solid #f0f0f0;
       border-radius: 0;
+      height: 40px;
     }
   }
 

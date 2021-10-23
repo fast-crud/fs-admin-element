@@ -10,7 +10,7 @@
 import { defineComponent, ref, onMounted } from "vue";
 import createCrudOptions from "./crud";
 import { useExpose, useCrud } from "@fast-crud/fast-crud";
-import { message, Modal } from "ant-design-vue";
+import { ElMessage, ElMessageBox } from "element-plus";
 import { BatchDelete } from "./api";
 export default defineComponent({
   name: "FeatureExpand",

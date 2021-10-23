@@ -8,12 +8,16 @@ export const headerResource = [
     name: "demo",
     children: [
       {
-        title: "Element版",
-        path: "http://fast-crud.docmirror.cn/element/"
+        title: "Antdv版",
+        path: "http://fast-crud.docmirror.cn/antdv/"
       },
       {
         title: "VbenAdmin",
         path: "http://fast-crud.docmirror.cn/vben/"
+      },
+      {
+        title: "cool-admin-vue",
+        path: "http://fast-crud.docmirror.cn/cool/"
       }
     ]
   },

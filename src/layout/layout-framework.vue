@@ -1,4 +1,4 @@
-<template xmlns:w="http://www.w3.org/1999/xhtml">
+<template>
   <el-container class="fs-framework">
     <el-aside :width="asideCollapsed ? '64px' : '300px'" :trigger="null" collapsible>
       <div class="header-logo">
@@ -14,8 +14,8 @@
       <el-header class="header">
         <div class="header-buttons">
           <div class="menu-fold" @click="asideCollapsedToggle">
-            <MenuUnfoldOutlined v-if="asideCollapsed" />
-            <MenuFoldOutlined v-else />
+            <fs-icon v-if="asideCollapsed" icon="ant-design:menu-fold-outlined" />
+            <fs-icon v-else icon="ant-design:menu-unfold-outlined" />
           </div>
         </div>
 
@@ -37,15 +37,9 @@
           <!--          >-->
           <!--            Button-->
           <!--          </button>-->
-          <fs-menu
-            mode="horizontal"
-            :expand-selected="false"
-            :selectable="false"
-            :scroll="false"
-            :menus="headerMenus"
-          />
+          <fs-menu mode="horizontal" :scroll="false" :menus="headerMenus" :ellipsis="false" />
           <fs-locale class="btn" />
-          <fs-theme-set class="btn" />
+          <!--          <fs-theme-set class="btn" />-->
           <fs-user-info class="btn" />
         </div>
       </el-header>
@@ -78,12 +72,11 @@ import FsUserInfo from "./components/user-info/index.vue";
 import FsTabs from "./components/tabs/index.vue";
 import { useResourceStore } from "../store/modules/resource";
 import { usePageStore } from "/@/store/modules/page";
-import { MenuFoldOutlined, MenuUnfoldOutlined } from "@ant-design/icons-vue";
 import FsThemeSet from "/@/layout/components/theme/index.vue";
 export default {
   name: "LayoutFramework",
   // eslint-disable-next-line vue/no-unused-components
-  components: { FsThemeSet, MenuFoldOutlined, MenuUnfoldOutlined, FsMenu, FsLocale, FsSourceLink, FsUserInfo, FsTabs },
+  components: { FsThemeSet, FsMenu, FsLocale, FsSourceLink, FsUserInfo, FsTabs },
   setup() {
     const resourceStore = useResourceStore();
     const frameworkMenus = computed(() => {
