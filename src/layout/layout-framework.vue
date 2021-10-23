@@ -14,8 +14,8 @@
       <el-header class="header">
         <div class="header-buttons">
           <div class="menu-fold" @click="asideCollapsedToggle">
-            <fs-icon v-if="asideCollapsed" icon="ant-design:menu-fold-outlined" />
-            <fs-icon v-else icon="ant-design:menu-unfold-outlined" />
+            <fs-icon v-if="asideCollapsed" icon="ant-design:menu-unfold-outlined" />
+            <fs-icon v-else icon="ant-design:menu-fold-outlined" />
           </div>
         </div>
 
@@ -144,7 +144,14 @@ export default {
   .header-buttons {
     display: flex;
     align-items: center;
+    height: 100%;
+    & > *:hover {
+      color: @primary-color;
+    }
     & > * {
+      display: flex;
+      align-items: center;
+      height: 100%;
       cursor: pointer;
       padding: 0 10px;
     }
@@ -160,6 +167,7 @@ export default {
     justify-content: flex-end;
     align-items: center;
     display: flex;
+    margin-right: 10px;
   }
   .header-menu {
     flex: 1;
@@ -204,12 +212,22 @@ export default {
     .el-menu--horizontal {
       border: 0;
       .el-sub-menu__title * {
-        vertical-align: auto;
+        vertical-align: baseline;
         box-sizing: content-box;
+        line-height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
       .el-sub-menu__title {
         display: flex;
         align-items: center;
+        box-sizing: border-box;
+        line-height: inherit;
+        .menu-item-title {
+          display: flex;
+          align-items: center;
+        }
       }
       .el-sub-menu__icon-arrow {
         margin-left: 5px;
