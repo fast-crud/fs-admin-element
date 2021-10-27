@@ -1,21 +1,26 @@
 <template>
   <fs-page>
-    <el-row :gutter="10">
-      <el-col :span="12">
-        <el-card title="直接显示表单">
-          <fs-form ref="formRef" v-bind="formOptions" />
-          <div style="margin-top: 10px">
-            <el-button @click="formSubmit">提交表单</el-button>
-          </div>
-        </el-card>
-      </el-col>
-      <el-col :span="12">
-        <el-card title="打开表单对话框">
-          <el-button @click="openFormWrapper">打开表单对话框</el-button>
-          <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
-        </el-card>
-      </el-col>
-    </el-row>
+    <template #header>
+      <div class="title">表单独立使用</div>
+    </template>
+    <div class="m-5">
+      <el-row :gutter="10">
+        <el-col :span="12">
+          <el-card title="直接显示表单">
+            <fs-form ref="formRef" v-bind="formOptions" />
+            <div style="margin-top: 10px">
+              <el-button @click="formSubmit">提交表单</el-button>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col :span="12">
+          <el-card title="打开表单对话框">
+            <el-button @click="openFormWrapper">打开表单对话框</el-button>
+            <fs-form-wrapper ref="formWrapperRef" v-bind="formWrapperOptions" />
+          </el-card>
+        </el-col>
+      </el-row>
+    </div>
   </fs-page>
 </template>
 
@@ -27,19 +32,22 @@ function useFormDirect() {
   const formRef = ref();
   const formOptions = ref({
     col: {
-      span: 12
+      span: 24
     },
     labelAlign: "right",
-    labelCol: {
-      span: 8
-    },
-    wrapperCol: {
-      span: 14
-    },
+    labelWidth: "150px",
     display: "flex",
     columns: {
       customField: {
         title: "新表单字段",
+        component: {
+          name: "el-input",
+          allowClear: true
+        },
+        rules: [{ required: true, message: "此项必填" }]
+      },
+      customField2: {
+        title: "字段2",
         component: {
           name: "el-input",
           allowClear: true
@@ -53,13 +61,21 @@ function useFormDirect() {
           allowClear: true
         },
         rules: [{ required: true, message: "此项必填" }]
+      },
+      groupField2: {
+        title: "测试",
+        component: {
+          name: "el-input",
+          allowClear: true
+        },
+        rules: [{ required: true, message: "此项必填" }]
       }
     },
     group: {
       groups: {
         testGroupName: {
           header: "分组测试",
-          columns: ["groupField"]
+          columns: ["groupField", "groupField2"]
         }
       }
     },
@@ -83,7 +99,7 @@ function useFormWrapper() {
   const formWrapperRef = ref();
   const formWrapperOptions = ref({
     labelPosition: "right",
-    labelWidth: "120px",
+    labelWidth: "140px",
     col: {
       span: 12
     },
@@ -104,6 +120,14 @@ function useFormWrapper() {
         },
         rules: [{ required: true, message: "此项必填" }]
       },
+      customField2: {
+        title: "字段2",
+        component: {
+          name: "el-input",
+          allowClear: true
+        },
+        rules: [{ required: true, message: "此项必填" }]
+      },
       groupField: {
         title: "分组字段",
         component: {
@@ -111,13 +135,20 @@ function useFormWrapper() {
           allowClear: true
         },
         rules: [{ required: true, message: "此项必填" }]
+      },
+      groupField2: {
+        title: "测试",
+        component: {
+          name: "el-input",
+          allowClear: true
+        }
       }
     },
     group: {
       groups: {
         testGroupName: {
           header: "分组测试",
-          columns: ["groupField"]
+          columns: ["groupField", "groupField2"]
         }
       }
     },
