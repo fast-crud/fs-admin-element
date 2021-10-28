@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { dict, compute } from "@fast-crud/fast-crud";
+import { ElMessage } from "element-plus";
 export default function ({ expose }) {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -29,18 +30,25 @@ export default function ({ expose }) {
             // 根据row的值判断按钮是否显示
             show: compute(({ row }) => {
               return row.radio !== "0";
-            })
+            }),
+            dropdown: true //---------》给想要折叠的按钮配置dropdown为true，就会放入dropdown中《---------------
           },
           orderExample: {
             text: "我排前面",
             title: "按钮排序示例",
-            order: 0 //数字越小，越靠前,查看、编辑、删除按钮的排序号分别为1，2，3
+            order: 0, //数字越小，越靠前,默认排序号为1
+            click(opts) {
+              console.log("自定义操作列按钮点击", opts);
+              ElMessage.success("自定义操作列按钮点击");
+            }
           }
         },
         dropdown: {
-          // 操作列折叠
-          atLeast: 2, // 至少几个以上的按钮才会被折叠,注意show=false的按钮也会计算在内（行编辑按钮默认是隐藏的也会占一个位置）
+          // 操作列折叠，dropdown参数配置
+          // 至少几个以上的按钮才会被折叠
+          // atLeast: 2, //TODO 注意 [atLeast]参数即将废弃，请给button配置dropdown即可放入折叠
           more: {
+            //更多按钮配置
             text: "更多",
             icon: null
           }
