@@ -8,28 +8,27 @@ function useSearchRemote() {
 
   const state = {
     data: ref([]),
-    fetching: ref(false)
+    loading: ref(false)
   };
-  const fetchUser = _.debounce((value) => {
+
+  const fetchUser = _.debounce(async (value) => {
     console.log("fetching user", value);
     lastFetchId += 1;
     const fetchId = lastFetchId;
     state.data.value = [];
-    state.fetching.value = true;
-    fetch("https://randomuser.me/api/?results=5")
-      .then((response) => response.json())
-      .then((body) => {
-        if (fetchId !== lastFetchId) {
-          // for fetch callback order
-          return;
-        }
-        const data = body.results.map((user) => ({
-          text: `${user.name.first} ${user.name.last}`,
-          value: user.login.username
-        }));
-        state.data.value = data;
-        state.fetching.value = false;
-      });
+    state.loading.value = true;
+    const res = await fetch("https://randomuser.me/api/?results=5");
+    const body = await res.json();
+    if (fetchId !== lastFetchId) {
+      // for fetch callback order
+      return;
+    }
+    const data = body.results.map((user) => ({
+      text: `${user.name.first} ${user.name.last}`,
+      value: user.login.username
+    }));
+    state.data.value = data;
+    state.loading.value = false;
   }, 800);
 
   return {
@@ -54,6 +53,7 @@ export default function ({ expose }) {
   };
 
   const { fetchUser, searchState } = useSearchRemote();
+
   return {
     crudOptions: {
       request: {
@@ -141,28 +141,25 @@ export default function ({ expose }) {
         },
         search: {
           title: "远程搜索",
+          type: "dict-select",
           search: { show: true, component: { style: { width: "240px" } } },
           form: {
             component: {
-              name: "el-select",
-              filterOption: false,
-              //labelInValue: true,
-              mode: "multiple",
-              showSearch: true,
-              allowClear: true,
-              placeholder: "输入远程搜索，数据仅供演示",
+              name: "fs-dict-select",
+              multiple: true,
+              filterable: true,
+              remote: true,
+              "reserve-keyword": true,
+              placeholder: "输入远程搜索",
               options: searchState.data,
-              onSearch(value) {
-                fetchUser(value);
-              },
-              children: {
-                notFoundContent() {
-                  if (searchState.fetching.value) {
-                    return <el-spin size="small" />;
-                  }
-                  return "暂无记录";
+              remoteMethod: (query) => {
+                if (query !== "") {
+                  fetchUser();
+                } else {
+                  searchState.data.value = [];
                 }
-              }
+              },
+              loading: searchState.loading
             }
           }
         },
@@ -253,7 +250,7 @@ export default function ({ expose }) {
           form: {
             title: "多选本地",
             component: {
-              mode: "multiple"
+              multiple: true
             }
           },
           dict: dict({
@@ -277,15 +274,14 @@ export default function ({ expose }) {
         statusSimple: {
           title: "普通选择",
           form: {
+            helper: "直接使用el-select组件",
             component: {
               name: "el-select",
-              options: [
-                { value: "sz", label: "深圳", color: "success" },
-                { value: "gz", label: "广州", color: null },
-                { value: "bj", label: "北京" },
-                { value: "wh", label: "武汉" },
-                { value: "sh", label: "上海" }
-              ]
+              slots: {
+                default() {
+                  return <el-option value={"1"} label={"test"} />;
+                }
+              }
             }
           }
         }
