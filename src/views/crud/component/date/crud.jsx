@@ -114,10 +114,8 @@ export default function ({ expose }) {
               }
             },
             component: {
-              "picker-options": {
-                disabledDate(time) {
-                  return time.getTime() < Date.now();
-                }
+              disabledDate(time) {
+                return time.getTime() < Date.now();
               }
             }
           }

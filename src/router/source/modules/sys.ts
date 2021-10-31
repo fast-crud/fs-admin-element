@@ -8,7 +8,7 @@ export const sysResources = [
     redirect: "/sys/authority",
     component: LayoutPass,
     meta: {
-      icon: "ion-settings-outline",
+      icon: "ion:settings-outline",
       permission: "sys"
     },
     children: [
@@ -18,7 +18,7 @@ export const sysResources = [
         path: "/sys/authority",
         redirect: "/sys/authority/permission",
         meta: {
-          icon: "ion-ribbon-outline",
+          icon: "ion:ribbon-outline",
           //需要校验权限
           permission: "sys:auth"
         },
@@ -27,7 +27,7 @@ export const sysResources = [
             title: "权限资源管理",
             name: "permission",
             meta: {
-              icon: "ion-list-outline",
+              icon: "ion:list-outline",
               //需要校验权限
               permission: "sys:auth:per:view"
             },
@@ -38,7 +38,7 @@ export const sysResources = [
             title: "角色管理",
             name: "role",
             meta: {
-              icon: "ion-people-outline",
+              icon: "ion:people-outline",
               permission: "sys:auth:role:view"
             },
             path: "/sys/authority/role",
@@ -50,7 +50,7 @@ export const sysResources = [
         title: "用户管理",
         name: "user",
         meta: {
-          icon: "ion-person-outline",
+          icon: "ion:person-outline",
           permission: "sys:auth:user:view"
         },
         path: "/sys/authority/user",

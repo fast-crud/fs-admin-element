@@ -1,5 +1,5 @@
 import { useRoute, useRouter } from "vue-router";
-import { ref, watch, onMounted, onUnmounted, resolveComponent, nextTick, defineComponent } from "vue";
+import { ref, watch, onMounted, onUnmounted, resolveDynamicComponent, nextTick, defineComponent } from "vue";
 import getEachDeep from "deepdash-es/getEachDeep";
 import _ from "lodash-es";
 import BScroll from "better-scroll";
@@ -86,7 +86,7 @@ export default defineComponent({
       open(item);
     }
 
-    const FsIconify = resolveComponent("FsIconify");
+    const FsIcon = resolveDynamicComponent("FsIcon");
 
     const buildMenus = (children) => {
       const slots = [];
@@ -98,7 +98,7 @@ export default defineComponent({
           if (sub?.meta?.icon) {
             return (
               <div class={"menu-item-title"}>
-                <FsIconify icon={sub.meta.icon} />
+                <FsIcon icon={sub.meta.icon} />
                 <span>{sub.title}</span>
               </div>
             );

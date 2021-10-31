@@ -14,7 +14,7 @@ export const crudResources = [
         path: "/crud/basis",
         redirect: "/crud/basis/i18n",
         meta: {
-          icon: "ion-disc-outline"
+          icon: "ion:disc-outline"
         },
         children: [
           {
@@ -54,7 +54,7 @@ export const crudResources = [
         path: "/crud/dict",
         redirect: "/crud/dict/single",
         meta: {
-          icon: "ion-book-outline"
+          icon: "ion:book-outline"
         },
         children: [
           {
@@ -83,7 +83,7 @@ export const crudResources = [
         path: "/crud/component",
         redirect: "/crud/component/text",
         meta: {
-          icon: "ion-cube-outline"
+          icon: "ion:cube-outline"
         },
         children: [
           {
@@ -196,7 +196,7 @@ export const crudResources = [
         path: "/crud/form",
         redirect: "/crud/form/layout",
         meta: {
-          icon: "ion-document-text-outline"
+          icon: "ion:document-text-outline"
         },
         children: [
           {
@@ -271,7 +271,7 @@ export const crudResources = [
         title: "表格特性",
         path: "/crud/feature",
         meta: {
-          icon: "ion-beer-outline"
+          icon: "ion:beer-outline"
         },
         redirect: "/crud/feature/dropdown",
         children: [
@@ -367,7 +367,7 @@ export const crudResources = [
         path: "/crud/slots",
         redirect: "/crud/slots/layout",
         meta: {
-          icon: "ion-extension-puzzle-outline"
+          icon: "ion:extension-puzzle-outline"
         },
         children: [
           {
@@ -408,7 +408,7 @@ export const crudResources = [
         path: "/crud/advanced",
         redirect: "/crud/advanced/linkage",
         meta: {
-          icon: "ion-flame-outline"
+          icon: "ion:flame-outline"
         },
         children: [
           {
