@@ -40,6 +40,39 @@ export default function ({ crudRef }) {
           title: "状态",
           search: { show: true },
           type: "dict-checkbox",
+          form: {
+            value: [] //element-plus要设置默认值
+          },
+          dict: dict({
+            url: "/mock/dicts/OpenStatusEnum?single"
+          })
+        },
+        buttonType: {
+          title: "按钮样式",
+          search: { show: true },
+          type: "dict-checkbox",
+          form: {
+            component: {
+              optionName: "el-checkbox-button"
+            },
+            value: [] //element-plus要设置默认值
+          },
+          dict: dict({
+            url: "/mock/dicts/OpenStatusEnum?single"
+          })
+        },
+        border: {
+          title: "带边框",
+          search: { show: true },
+          type: "dict-checkbox",
+          form: {
+            component: {
+              optionProps: {
+                border: true
+              }
+            },
+            value: [] //element-plus要设置默认值
+          },
           dict: dict({
             url: "/mock/dicts/OpenStatusEnum?single"
           })

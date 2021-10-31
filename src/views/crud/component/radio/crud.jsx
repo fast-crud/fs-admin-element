@@ -52,19 +52,23 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              radioName: "el-radio-button"
+              optionName: "el-radio-button"
             }
           }
         },
-        bool: {
-          title: "布尔类型",
+        border: {
+          title: "边框",
           search: { show: true },
           type: "dict-radio",
+          form: {
+            component: {
+              optionProps: {
+                border: true
+              }
+            }
+          },
           dict: dict({
-            data: [
-              { value: true, label: "TRUE" },
-              { value: false, label: "FALSE" }
-            ]
+            url: "/mock/dicts/OpenStatusEnum?single"
           })
         }
       }
