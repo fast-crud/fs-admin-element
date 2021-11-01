@@ -358,6 +358,12 @@ export const crudResources = [
             name: "FeatureColumnSort",
             path: "/crud/feature/column-sort",
             component: "/crud/feature/column-sort/index.vue"
+          },
+          {
+            title: "ValueBuilder",
+            name: "FeatureValueBuilder",
+            path: "/crud/feature/value-builder",
+            component: "/crud/feature/value-builder/index.vue"
           }
         ]
       },
