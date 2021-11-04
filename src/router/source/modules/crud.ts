@@ -354,6 +354,12 @@ export const crudResources = [
             component: "/crud/feature/search/index.vue"
           },
           {
+            title: "查询框多行模式",
+            name: "FeatureSearchMulti",
+            path: "/crud/feature/search-multi",
+            component: "/crud/feature/search-multi/index.vue"
+          },
+          {
             title: "字段排序",
             name: "FeatureColumnSort",
             path: "/crud/feature/column-sort",
@@ -440,6 +446,12 @@ export const crudResources = [
             name: "AdvancedNest",
             path: "/crud/advanced/nest",
             component: "/crud/advanced/nest/index.vue"
+          },
+          {
+            title: "修改布局",
+            name: "AdvancedLayout",
+            path: "/crud/advanced/layout",
+            component: "/crud/advanced/layout/index.vue"
           },
           {
             title: "自定义布局",
