@@ -2,6 +2,7 @@ export default function ({ expose }) {
   return {
     crudOptions: {
       form: {
+        labelWidth: "120px",
         helper: {
           // position: "label" // helper的展示位置全局配置
           // tooltip:{}

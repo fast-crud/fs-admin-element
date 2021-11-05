@@ -19,7 +19,7 @@
             <fs-form-wrapper ref="formWrapperRef" />
           </el-card>
 
-          <el-card title="打开表单对话框【复用crudBinding.addForm】">
+          <el-card class="mt-10" title="打开表单对话框【复用crudBinding.addForm】">
             <el-button @click="openFormWrapper2">打开表单对话框</el-button>
             <fs-form-wrapper ref="formWrapperRef2" />
           </el-card>
@@ -32,66 +32,52 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { ElMessage } from "element-plus";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-function useFormDirect() {
-  const formRef = ref();
-  const formOptions = ref({
-    col: {
-      span: 24
-    },
-    labelAlign: "right",
-    labelWidth: "150px",
-    display: "flex",
+
+function createFormOptions() {
+  // 自定义表单配置
+  const { buildFormOptions } = useColumns();
+  //使用crudOptions结构来构建自定义表单配置
+  return buildFormOptions({
     columns: {
       customField: {
         title: "新表单字段",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      customField2: {
-        title: "字段2",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
+        type: "text",
+        form: {
+          rules: [{ required: true, message: "此项必填" }]
+        }
       },
       groupField: {
         title: "分组字段",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      groupField2: {
-        title: "测试",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      }
-    },
-    group: {
-      groups: {
-        testGroupName: {
-          header: "分组测试",
-          columns: ["groupField", "groupField2"]
+        type: "text",
+        form: {
+          rules: [{ required: true, message: "此项必填" }]
         }
       }
     },
-    doSubmit({ form }) {
-      console.log("form submit:", form);
-      ElMessage.info("自定义表单提交:" + JSON.stringify(form));
-      ElMessage.success("保存成功");
+    form: {
+      labelWidth: "120px",
+      group: {
+        groups: {
+          testGroupName: {
+            header: "分组测试",
+            columns: ["groupField"]
+          }
+        }
+      },
+      doSubmit({ form }) {
+        console.log("form submit:", form);
+        ElMessage.info("自定义表单提交:" + JSON.stringify(form));
+        ElMessage.success("保存成功");
+      }
     }
   });
-
+}
+function useFormDirect() {
+  const formRef = ref();
+  const formOptions = ref();
+  formOptions.value = createFormOptions();
   function formSubmit() {
     formRef.value.submit();
   }
@@ -103,68 +89,8 @@ function useFormDirect() {
 }
 function useFormWrapper() {
   const formWrapperRef = ref();
-  const formWrapperOptions = ref({
-    labelPosition: "right",
-    labelWidth: "140px",
-    col: {
-      span: 12
-    },
-    wrapper: {
-      is: "el-dialog",
-      width: "960px",
-      destroyOnClose: true,
-      footer: null,
-      title: "表单独立使用"
-    },
-    display: "flex",
-    columns: {
-      customField: {
-        title: "新表单字段",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      customField2: {
-        title: "字段2",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      groupField: {
-        title: "分组字段",
-        component: {
-          name: "el-input",
-          allowClear: true
-        },
-        rules: [{ required: true, message: "此项必填" }]
-      },
-      groupField2: {
-        title: "测试",
-        component: {
-          name: "el-input",
-          allowClear: true
-        }
-      }
-    },
-    group: {
-      groups: {
-        testGroupName: {
-          header: "分组测试",
-          columns: ["groupField", "groupField2"]
-        }
-      }
-    },
-    doSubmit({ form }) {
-      console.log("form submit:", form);
-      ElMessage.info("自定义表单提交:" + JSON.stringify(form));
-      ElMessage.warn("抛出异常可以阻止表单关闭");
-      throw new Error("抛出异常可以阻止表单关闭");
-    }
-  });
+  const formWrapperOptions = ref();
+  formWrapperOptions.value = createFormOptions();
   function openFormWrapper() {
     formWrapperRef.value.open(formWrapperOptions.value);
   }
@@ -202,8 +128,8 @@ function useCrudBindingForm() {
     doSubmit({ form }) {
       //覆盖提交方法
       console.log("form submit:", form);
-      message.info("自定义表单提交:" + JSON.stringify(form));
-      message.warn("抛出异常可以阻止表单关闭");
+      ElMessage.info("自定义表单提交:" + JSON.stringify(form));
+      ElMessage.warning("抛出异常可以阻止表单关闭");
       throw new Error("抛出异常可以阻止表单关闭");
     }
   });
