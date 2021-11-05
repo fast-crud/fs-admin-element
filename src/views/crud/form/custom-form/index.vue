@@ -11,7 +11,7 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import _ from "lodash-es";
 import { ElMessage } from "element-plus";
@@ -37,26 +37,22 @@ export default defineComponent({
       expose.doRefresh();
     });
 
-    const openCustomForm = () => {
-      const baseFormOptions = _.omit(crudBinding.value.form, ["columns"]);
-      const formOptions = _.merge(_.cloneDeep(baseFormOptions), {
-        wrapper: { title: "自定义表单" },
-        columns: {
-          customField: {
-            title: "新表单字段",
-            component: {
-              name: "el-input",
-              allowClear: true
-            }
-          },
-          groupField: {
-            title: "分组字段",
-            component: {
-              name: "el-input",
-              allowClear: true
-            }
-          }
+    // 自定义表单配置
+
+    const { buildFormOptions } = useColumns();
+    const customOptions = {
+      columns: {
+        customField: {
+          title: "新表单字段",
+          type: "text"
         },
+        groupField: {
+          title: "分组字段",
+          type: "text"
+        }
+      },
+      form: {
+        wrapper: { title: "自定义表单" },
         group: {
           groups: {
             testGroupName: {
@@ -68,10 +64,16 @@ export default defineComponent({
         doSubmit({ form }) {
           console.log("form submit:", form);
           ElMessage.info("自定义表单提交:" + JSON.stringify(form));
-          ElMessage.warn("抛出异常可以阻止表单关闭");
+          ElMessage.warning("抛出异常可以阻止表单关闭");
           throw new Error("抛出异常可以阻止表单关闭");
         }
-      });
+      }
+    };
+    //使用crudOptions结构来构建自定义表单配置
+    const formOptions = buildFormOptions(customOptions);
+
+    //打开自定义表单
+    const openCustomForm = () => {
       expose.getFormWrapperRef().open(formOptions);
     };
 
