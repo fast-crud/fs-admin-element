@@ -41,7 +41,7 @@
     "object-assign": "^4.1.1",
     "pinia": "2.0.0-alpha.13",
     "qiniu-js": "^3.3.1",
-    "vue": "^3.2.20",
+    "vue": "^3.2.21",
     "vue-cropperjs": "^5.0.0",
     "vue-i18n": "^9.1.7",
     "vue-router": "^4.0.1",
