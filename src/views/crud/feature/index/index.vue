@@ -1,8 +1,5 @@
 <template>
   <fs-page>
-    <el-form ref="form" label-width="30px">
-      <el-form-item label="Activity name"> 1111 </el-form-item>
-    </el-form>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
   </fs-page>
 </template>

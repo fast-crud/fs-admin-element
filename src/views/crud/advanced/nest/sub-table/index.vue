@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>当前选中值：{{ modelValue }}</div>
+    <div>年级id:{{ gradeId }}，当前选中值：{{ modelValue }}</div>
     <div style="height: 400px">
       <fs-crud ref="crudRef" v-bind="crudBinding" />
     </div>
@@ -14,7 +14,8 @@ import { useExpose, useCrud } from "@fast-crud/fast-crud";
 export default defineComponent({
   name: "SubTable",
   props: {
-    modelValue: {}
+    modelValue: {},
+    gradeId: {}
   },
   emits: ["update:modelValue"],
   setup(props, ctx) {
