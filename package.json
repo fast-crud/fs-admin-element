@@ -1,7 +1,7 @@
 {
   "name": "@fast-crud/fs-admin-element",
   "version": "0.21.0",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "vite",
     "dev:pm": "vite --mode pm",
