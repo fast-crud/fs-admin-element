@@ -126,7 +126,6 @@ export default defineComponent({
     }
 
     function customNodeClass(data) {
-      debugger;
       if (data.class) {
         return data.class;
       }
@@ -185,7 +184,12 @@ export default defineComponent({
     }
 
     .node-suffix {
+      width: 150px;
       visibility: hidden;
+      i {
+        width: 20px;
+        height: 20px;
+      }
       > * {
         margin-left: 3px;
       }
