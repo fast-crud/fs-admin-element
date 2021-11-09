@@ -5,11 +5,11 @@
     class="fs-permission-tree"
     :class="{ 'is-editable': editable }"
     :data="computedTree"
-    :filter-node-method="filterNodeMethod"
+    :props="{ class: customNodeClass }"
     @check="onChecked"
   >
     <template #default="{ data }">
-      <div :class="data.class + ' node-title-pane'">
+      <div :class="'node-title-pane'">
         <div class="node-title">{{ data.title }}</div>
         <div v-if="editable === true" class="node-suffix">
           <fs-icon v-if="actions.add !== false" :icon="$fsui.icons.add" @click.stop="add(data)" />
@@ -50,18 +50,6 @@ export default defineComponent({
   emits: ["add", "edit", "remove"],
   setup(props, ctx) {
     const treeRef = ref();
-    const handleExpand = async () => {
-      await nextTick();
-      const twig = treeRef.value.$el.querySelector(".is-twig-node");
-      twig.parentNode.parentNode.isTwig = true;
-    };
-    const filterNodeMethod = (value, data, node) => {
-      console.log("value,data,node", value, data, node);
-      return true;
-    };
-    onMounted(() => {
-      treeRef.value.filter();
-    });
     const computedTree = computed(() => {
       if (props.tree == null) {
         return null;
@@ -136,16 +124,23 @@ export default defineComponent({
         halfChecked
       };
     }
+
+    function customNodeClass(data) {
+      debugger;
+      if (data.class) {
+        return data.class;
+      }
+      return null;
+    }
     return {
       computedTree,
-      handleExpand,
-      filterNodeMethod,
       add,
       edit,
       remove,
       treeRef,
       onChecked,
-      getChecked
+      getChecked,
+      customNodeClass
     };
   }
 });
@@ -153,17 +148,23 @@ export default defineComponent({
 
 <style lang="less">
 .fs-permission-tree {
-  .is-twig ul {
+  .el-tree-node.is-expanded.is-twig-node > .el-tree-node__children {
     display: flex;
     flex-wrap: wrap;
-    .is-leaf {
-      border-bottom: 1px solid #ddd;
-      padding: 5px;
-      &::before {
-        display: none;
-      }
+  }
+
+  .is-twig-node > .el-tree-node__children > div {
+    width: 25%;
+  }
+
+  .is-leaf-node {
+    border-bottom: 1px solid #ddd;
+    padding: 5px;
+    &::before {
+      display: none;
     }
   }
+
   .node-title-pane {
     display: flex;
     .node-title {

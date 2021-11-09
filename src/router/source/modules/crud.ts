@@ -253,11 +253,29 @@ export const crudResources = [
             path: "/crud/form/helper",
             component: "/crud/form/helper/index.vue"
           },
+          // {
+          //   title: "页面内部弹出表单",
+          //   name: "FormInner",
+          //   path: "/crud/form/inner",
+          //   component: "/crud/form/inner/index.vue"
+          // },
           {
-            title: "页面内部弹出表单",
-            name: "FormInner",
-            path: "/crud/form/inner",
-            component: "/crud/form/inner/index.vue"
+            title: "新页面编辑",
+            name: "FormNewPage",
+            path: "/crud/form/new-page",
+            component: "/crud/form/new-page/index.vue",
+            meta: {
+              cache: false
+            }
+          },
+          {
+            title: "新页面编辑表单",
+            name: "FormNewPageEdit",
+            path: "/crud/form/new-page/edit",
+            component: "/crud/form/new-page/edit.vue",
+            meta: {
+              isMenu: false
+            }
           },
           {
             title: "独立使用表单",

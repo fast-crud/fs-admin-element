@@ -8,12 +8,12 @@
 
 <script>
 import { defineComponent, ref, onMounted } from "vue";
-import { useCrud } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
-import { useExpose } from "@fast-crud/fast-crud";
+import _ from "lodash-es";
 export default defineComponent({
-  name: "FeatureSearchMulti",
-  setup() {
+  name: "FormNewPage",
+  setup(props, ctx) {
     // crud组件的ref
     const crudRef = ref();
     // crud 配置的ref
