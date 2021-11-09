@@ -118,7 +118,14 @@ export default defineComponent({
               open(sub.path);
             }
           }
-          slots.push(<el-sub-menu index={sub.index} v-slots={subSlots} onTitleClick={onTitleClick} />);
+          slots.push(
+            <el-sub-menu
+              index={sub.index}
+              v-slots={subSlots}
+              popper-class={"fs-menu-popper"}
+              onTitleClick={onTitleClick}
+            />
+          );
         } else {
           slots.push(
             <el-menu-item index={sub.path} title={sub.title}>

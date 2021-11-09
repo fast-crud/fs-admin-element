@@ -7,7 +7,7 @@
     "dev:pm": "vite --mode pm",
     "dev:force": "vite --force",
     "debug": "vite --mode debug",
-    "debug:pm": "vite --mode debugpm",
+    "debug:pm": "vite --force --mode debugpm",
     "debug:force": "vite --force --mode debug",
     "build": "vite build",
     "serve": "vite preview",

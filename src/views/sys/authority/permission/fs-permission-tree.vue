@@ -126,7 +126,6 @@ export default defineComponent({
     }
 
     function customNodeClass(data) {
-      debugger;
       if (data.class) {
         return data.class;
       }
@@ -153,22 +152,24 @@ export default defineComponent({
     flex-wrap: wrap;
   }
 
-  .is-twig-node > .el-tree-node__children > div {
-    width: 25%;
+  .is-twig-node > .el-tree-node__children > :not(:first-child) .el-tree-node__content {
+    padding-left: 0 !important;
   }
 
-  .is-leaf-node {
-    border-bottom: 1px solid #ddd;
+  .el-tree-node__content {
+    box-sizing: content-box;
     padding: 5px;
-    &::before {
-      display: none;
-    }
+  }
+  .is-leaf-node {
+    //&::before {
+    //  display: none;
+    //}
   }
 
   .node-title-pane {
     display: flex;
     .node-title {
-      width: 80px;
+      width: 100px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -185,9 +186,10 @@ export default defineComponent({
     }
 
     .node-suffix {
+      margin-right: 5px;
       visibility: hidden;
       > * {
-        margin-left: 3px;
+        margin-left: 5px;
       }
     }
   }
