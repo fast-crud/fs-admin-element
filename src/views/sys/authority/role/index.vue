@@ -4,23 +4,29 @@
       <div class="title">角色管理</div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
-    <el-modal v-model:visible="authzDialogVisible" width="860px" title="分配权限" @ok="updatePermission">
+    <el-dialog v-model="authzDialogVisible" width="860px" title="分配权限">
       <fs-permission-tree
         ref="permissionTreeRef"
-        v-model:checkedKeys="checkedKeys"
         :tree="permissionTreeData"
         :default-expand-all="true"
         :editable="false"
-        show-checkbox="true"
-        :replace-fields="{ key: 'id', label: 'title' }"
+        node-key="id"
+        show-checkbox
+        :props="{ label: 'title' }"
       >
       </fs-permission-tree>
-    </el-modal>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button @click="authzDialogVisible = false">取消</el-button>
+          <el-button type="primary" @click="updatePermission">确定</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </fs-page>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, nextTick } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 import * as permissionApi from "../permission/api";
@@ -60,14 +66,17 @@ function useAuthz() {
     checkedKeys.value = [];
     currentRoleId.value = roleId;
     // this.treeData = ret.data
-    await updateChecked(roleId);
     authzDialogVisible.value = true;
+    nextTick(() => {
+      updateChecked(roleId);
+    });
   }
   async function updateChecked(roleId) {
     let checkedIds = await api.getPermissionIds(roleId);
     // 找出所有的叶子节点
     checkedIds = getAllCheckedLeafNodeId(permissionTreeData.value, checkedIds, []);
-    checkedKeys.value = checkedIds;
+    debugger;
+    permissionTreeRef.value.setCheckedKeys(checkedIds);
   }
   async function updatePermission() {
     const roleId = currentRoleId.value;

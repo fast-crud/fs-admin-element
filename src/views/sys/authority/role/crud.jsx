@@ -26,10 +26,9 @@ export default function ({ expose, authz }) {
         width: 300,
         buttons: {
           authz: {
-            type: "link",
             text: "授权",
             async click(context) {
-              await authz.authzOpen(context.record.id);
+              await authz.authzOpen(context.row.id);
             }
           }
         }

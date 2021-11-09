@@ -133,7 +133,7 @@ export default function ({ expose }) {
             label: "name"
           }), // 数据字典
           form: {
-            component: { mode: "multiple" }
+            component: { multiple: true }
           },
           column: {
             width: 250,
