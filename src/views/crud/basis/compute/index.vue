@@ -12,7 +12,9 @@
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
         <el-tooltip content="我能控制表格显隐">
-          <span class="ml-1">表格显隐:<el-switch v-model="showTableRef"></el-switch></span>
+          <div class="ml-5" style="display: flex; width: 200px">
+            表格显隐:<el-switch v-model="showTableRef"></el-switch>
+          </div>
         </el-tooltip>
         <el-alert class="ml-1" type="info" title="点击下方右边的编辑按钮查看示例效果-----------> ↓↓↓↓↓" />
       </template>
