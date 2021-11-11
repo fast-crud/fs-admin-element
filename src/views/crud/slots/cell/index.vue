@@ -20,6 +20,7 @@
 <script>
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import dayjs from "dayjs";
 import createCrudOptions from "./crud";
 export default defineComponent({
   name: "SlotsCell",
@@ -44,7 +45,7 @@ export default defineComponent({
     });
 
     function dateFormat(time, formatter = "YYYY-MM-DD") {
-      return time.format(formatter);
+      return dayjs(time).format(formatter);
     }
 
     return {

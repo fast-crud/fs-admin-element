@@ -5,7 +5,7 @@
     class="fs-permission-tree"
     :class="{ 'is-editable': editable }"
     :data="computedTree"
-    :props="{ class: customNodeClass }"
+    :props="computedProps"
     @check="onChecked"
   >
     <template #default="{ data }">
@@ -45,7 +45,8 @@ export default defineComponent({
     },
     actions: {
       default: {}
-    }
+    },
+    props: {}
   },
   emits: ["add", "edit", "remove"],
   setup(props, ctx) {
@@ -55,6 +56,7 @@ export default defineComponent({
         return null;
       }
       const clone = _.cloneDeep(props.tree);
+      debugger;
       eachDeep(clone, (value, key, pNode, context) => {
         if (value == null) {
           return;
@@ -109,28 +111,27 @@ export default defineComponent({
       console.log("chedcked", a, b, c);
     }
     function getChecked() {
-      const nodes = treeRef.value.tree.domTreeNodes;
-      const checked = [];
-      const halfChecked = [];
-      _.forEach(nodes, (item, id) => {
-        if (item.checked) {
-          checked.push(id);
-        } else if (item.halfChecked) {
-          halfChecked.push(id);
-        }
-      });
+      const checked = treeRef.value.getCheckedKeys();
+      const halfChecked = treeRef.value.getHalfCheckedKeys();
       return {
         checked,
         halfChecked
       };
     }
 
+    function setCheckedKeys(ids) {
+      treeRef.value.setCheckedKeys(ids);
+    }
     function customNodeClass(data) {
       if (data.class) {
         return data.class;
       }
       return null;
     }
+
+    const computedProps = computed(() => {
+      return _.merge({ class: customNodeClass }, props.props);
+    });
     return {
       computedTree,
       add,
@@ -139,7 +140,8 @@ export default defineComponent({
       treeRef,
       onChecked,
       getChecked,
-      customNodeClass
+      computedProps,
+      setCheckedKeys
     };
   }
 });
@@ -152,22 +154,24 @@ export default defineComponent({
     flex-wrap: wrap;
   }
 
-  .is-twig-node > .el-tree-node__children > div {
-    width: 25%;
+  .is-twig-node > .el-tree-node__children > :not(:first-child) .el-tree-node__content {
+    padding-left: 0 !important;
   }
 
-  .is-leaf-node {
-    border-bottom: 1px solid #ddd;
+  .el-tree-node__content {
+    box-sizing: content-box;
     padding: 5px;
-    &::before {
-      display: none;
-    }
+  }
+  .is-leaf-node {
+    //&::before {
+    //  display: none;
+    //}
   }
 
   .node-title-pane {
     display: flex;
     .node-title {
-      width: 80px;
+      width: 100px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -184,14 +188,14 @@ export default defineComponent({
     }
 
     .node-suffix {
-      width: 150px;
+      margin-right: 5px;
       visibility: hidden;
       i {
         width: 20px;
         height: 20px;
       }
       > * {
-        margin-left: 3px;
+        margin-left: 5px;
       }
     }
   }

@@ -4,7 +4,19 @@
   &.fs-menu-better-scroll{
     overflow-y: hidden;
   }
+  .el-menu{
+    .menu-item-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
+      .fs-iconify {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
   .el-menu--collapse{
     >.el-menu-item .fs-iconify,>.el-sub-menu>.el-sub-menu__title .fs-iconify{
       height: auto;
@@ -28,4 +40,22 @@
     }
   }
 
+}
+
+.fs-menu-popper{
+    .menu-item-title{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .fs-iconify {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+  .el-sub-menu__title:hover{
+    color:@primary-color !important;
+  }
 }

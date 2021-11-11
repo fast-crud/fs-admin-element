@@ -10,7 +10,7 @@
     >
       <!--      <div class="login-title">登录</div>-->
       <el-tabs :active-key="formState.loginType" :tab-bar-style="{ textAlign: 'center', borderBottom: 'unset' }">
-        <el-tab-pane key="password" tab="用户名密码登录">
+        <el-tab-pane key="password" label="用户名密码登录">
           <el-alert v-if="isLoginError" type="error" show-icon style="margin-bottom: 24px" message="用户名或密码错误" />
 
           <!--      <div class="login-title">登录</div>-->
@@ -49,7 +49,7 @@
             </el-row>
           </el-form-item>
         </el-tab-pane>
-        <el-tab-pane key="smsCode" tab="短信验证码登录" :disabled="true" title="暂不支持">
+        <el-tab-pane key="smsCode" label="短信验证码登录" :disabled="true" title="暂不支持">
           <el-form-item required has-feedback name="mobile">
             <el-input v-model="formState.mobile" placeholder="请输入手机号" size="large" autocomplete="off">
               <template #prefix>

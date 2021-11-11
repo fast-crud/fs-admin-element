@@ -20,11 +20,12 @@
         </div>
 
         <fs-menu
-          class="header-menu"
+          class="fs-header-menu"
           mode="horizontal"
           :expand-selected="false"
           :selectable="false"
           :scroll="false"
+          :ellipsis="true"
           :menus="frameworkMenus"
         />
         <div class="header-right header-buttons">
@@ -169,7 +170,7 @@ export default {
     display: flex;
     margin-right: 10px;
   }
-  .header-menu {
+  .fs-header-menu {
     flex: 1;
   }
   .aside-menu {

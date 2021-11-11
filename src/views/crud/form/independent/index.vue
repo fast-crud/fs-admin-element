@@ -6,7 +6,7 @@
     <div class="m-5">
       <el-row :gutter="10">
         <el-col :span="12">
-          <el-card title="直接显示表单">
+          <el-card header="直接显示表单">
             <fs-form ref="formRef" v-bind="formOptions" />
             <div style="margin-top: 10px">
               <el-button @click="formSubmit">提交表单</el-button>
@@ -14,12 +14,12 @@
           </el-card>
         </el-col>
         <el-col :span="12">
-          <el-card title="打开表单对话框">
+          <el-card header="打开表单对话框">
             <el-button @click="openFormWrapper">打开表单对话框</el-button>
             <fs-form-wrapper ref="formWrapperRef" />
           </el-card>
 
-          <el-card class="mt-10" title="打开表单对话框【复用crudBinding.addForm】">
+          <el-card class="mt-10" header="打开表单对话框【复用crudBinding.addForm】">
             <el-button @click="openFormWrapper2">打开表单对话框</el-button>
             <fs-form-wrapper ref="formWrapperRef2" />
           </el-card>
