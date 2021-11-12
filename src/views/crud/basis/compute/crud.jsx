@@ -117,6 +117,7 @@ export default function ({ expose }) {
           type: "text",
           form: {
             component: {
+              // 这里组件是否显示是通过计算获得的
               show: compute(({ form }) => {
                 return form.compute;
               })
@@ -134,6 +135,7 @@ export default function ({ expose }) {
             component: {
               name: "el-select",
               placeholder: "异步计算远程获取options",
+              // 这里el-select组件的options是通过计算获得的
               options: asyncCompute({
                 async asyncFn(watchValue, context) {
                   const url = "/mock/dicts/OpenStatusEnum?remote";
@@ -152,6 +154,7 @@ export default function ({ expose }) {
             component: {
               name: "el-select",
               placeholder: "异步计算远程获取options",
+              // 这里el-select组件的options是通过计算获得的
               options: asyncCompute({
                 watch({ form }) {
                   return form.compute;
