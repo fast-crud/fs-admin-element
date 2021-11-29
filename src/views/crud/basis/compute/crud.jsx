@@ -133,7 +133,7 @@ export default function ({ expose }) {
           type: "text",
           form: {
             component: {
-              name: "el-select",
+              name: "fs-dict-select",
               placeholder: "异步计算远程获取options",
               // 这里el-select组件的options是通过计算获得的
               options: asyncCompute({
@@ -152,7 +152,7 @@ export default function ({ expose }) {
           type: "text",
           form: {
             component: {
-              name: "el-select",
+              name: "fs-dict-select",
               placeholder: "异步计算远程获取options",
               // 这里el-select组件的options是通过计算获得的
               options: asyncCompute({
