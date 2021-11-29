@@ -75,7 +75,6 @@ function useAuthz() {
     let checkedIds = await api.getPermissionIds(roleId);
     // 找出所有的叶子节点
     checkedIds = getAllCheckedLeafNodeId(permissionTreeData.value, checkedIds, []);
-    debugger;
     permissionTreeRef.value.setCheckedKeys(checkedIds);
   }
   async function updatePermission() {

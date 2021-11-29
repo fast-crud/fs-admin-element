@@ -159,7 +159,6 @@ export default {
      */
     handleControlItemClick(command, tagName = null) {
       //if (tagName) this.contextmenuFlag = false;
-      debugger;
       const params = { pageSelect: tagName };
       switch (command) {
         case "left":

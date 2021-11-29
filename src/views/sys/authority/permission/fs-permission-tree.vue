@@ -56,7 +56,6 @@ export default defineComponent({
         return null;
       }
       const clone = _.cloneDeep(props.tree);
-      debugger;
       eachDeep(clone, (value, key, pNode, context) => {
         if (value == null) {
           return;
