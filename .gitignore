@@ -7,3 +7,4 @@ dist-ssr
 yarn.lock
 .idea
 /.idea/
+yarn-error.log
