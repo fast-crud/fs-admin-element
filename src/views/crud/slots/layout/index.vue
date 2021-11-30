@@ -37,6 +37,11 @@
       <template #toolbar-right>
         <el-button type="danger">toolbar-right插槽</el-button>
       </template>
+
+      <el-alert
+        type="warning"
+        title="默认插槽，会占据table的上部位置，影响table的高度滚动条，可以将table隐藏掉，来显示自定义的table"
+      />
     </fs-crud>
   </fs-page>
 </template>
