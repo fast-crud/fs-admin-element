@@ -10,6 +10,7 @@
             <fs-form ref="formRef" v-bind="formOptions" />
             <div style="margin-top: 10px">
               <el-button @click="formSubmit">提交表单</el-button>
+              <el-button @click="formReset">重置表单</el-button>
             </div>
           </el-card>
         </el-col>
@@ -81,10 +82,14 @@ function useFormDirect() {
   function formSubmit() {
     formRef.value.submit();
   }
+  function formReset() {
+    formRef.value.reset();
+  }
   return {
     formOptions,
     formRef,
-    formSubmit
+    formSubmit,
+    formReset
   };
 }
 function useFormWrapper() {
