@@ -96,6 +96,22 @@ export default function ({ crudRef }) {
             }
           }
         },
+        strictly: {
+          title: "只选父级",
+          type: "dict-cascader",
+          dict: dict({
+            isTree: true,
+            url: "/mock/dicts/cascaderData"
+          }),
+          form: {
+            component: {
+              filterable: true,
+              // props下配置属性跟配置在component下是一样的效果，而el-cascade下也有一个叫props的属性，所以需要配置两层
+              props: { props: { checkStrictly: true } }
+            },
+            helper: "只选父节点"
+          }
+        },
         multiple: {
           title: "多选",
           type: "dict-cascader",
