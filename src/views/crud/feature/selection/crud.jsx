@@ -32,6 +32,7 @@ export default function ({ expose }) {
         delRequest
       },
       table: {
+        rowKey: "id", //设置你的主键id， 默认rowKey=id
         onSelectionChange
       },
       columns: {
