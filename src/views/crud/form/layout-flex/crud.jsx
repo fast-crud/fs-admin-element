@@ -44,7 +44,7 @@ export default function ({ expose }) {
           search: { show: true },
           type: ["textarea", "colspan"],
           form: {
-            // flex模式控制跨列, 需要配置如下三条，通过colspan可以简化
+            // flex模式控制跨列,需要手动配置如下，通过colspan可以简化
             // col: { span: 24 },
           }
         }

@@ -43,8 +43,5 @@ export default defineComponent({
 </script>
 <style lang="less">
 .page-layout {
-  .ant-form-item-label {
-    width: 110px !important;
-  }
 }
 </style>
