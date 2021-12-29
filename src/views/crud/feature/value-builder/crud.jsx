@@ -42,6 +42,8 @@ export default function ({ expose }) {
               multiple: true
             },
             valueBuilder({ form }) {
+              //通过valueBuilder 可以修改从后台获取到的数据，适配组件所需要的value值
+              //http://fast-crud.docmirror.cn/api/crud-options/columns.html#valuebuilder与valueresolve
               if (form.roles) {
                 form.roles = form.roles.map((item) => item.id);
               }
