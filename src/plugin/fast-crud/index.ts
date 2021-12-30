@@ -156,7 +156,7 @@ function install(app, options: any = {}) {
         console.log("success handle:", ret);
         return ret;
       },
-      domain: "http://d2p.file.docmirror.cn"
+      domain: "http://d2p.file.handsfree.work"
     },
     form: {
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
