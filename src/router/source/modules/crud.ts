@@ -360,6 +360,12 @@ export const crudResources = [
             component: "/crud/feature/fixed/index.vue"
           },
           {
+            title: "不固定高度",
+            name: "FeatureHeight",
+            path: "/crud/feature/height",
+            component: "/crud/feature/height/index.vue"
+          },
+          {
             title: "可编辑",
             name: "FeatureEditable",
             path: "/crud/feature/editable",
