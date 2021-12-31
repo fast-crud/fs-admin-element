@@ -137,7 +137,7 @@ export default function ({ expose }) {
               multiple: false,
               defaultExpandAll: true,
               dict: { cache: false },
-              replaceFields: {
+              fieldNames: {
                 value: "id",
                 label: "title"
               }

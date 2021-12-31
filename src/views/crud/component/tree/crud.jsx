@@ -71,7 +71,7 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              replaceFields: { title: "name", key: "code", value: "code" }
+              fieldNames: { label: "name", key: "code", value: "code" }
             }
           }
         }
