@@ -1,7 +1,7 @@
 <template>
   <fs-page>
     <template #header>
-      <div class="title">动态计算-更多测试</div>
+      <div class="title">动态计算-更多示例</div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
