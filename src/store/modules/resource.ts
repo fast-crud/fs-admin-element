@@ -99,7 +99,7 @@ export const useResourceStore = defineStore({
       }
       const matchedPath = matched[1].path;
       const _side = findFromTree(menuHeader, (menu) => menu.path === matchedPath);
-      if (_side.length > 0) {
+      if (_side?.length > 0) {
         if (this.currentAsidePath === _side[0]) {
           return;
         }

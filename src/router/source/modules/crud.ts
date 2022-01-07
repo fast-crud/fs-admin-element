@@ -253,12 +253,21 @@ export const crudResources = [
             path: "/crud/form/helper",
             component: "/crud/form/helper/index.vue"
           },
-          // {
-          //   title: "页面内部弹出表单",
-          //   name: "FormInner",
-          //   path: "/crud/form/inner",
-          //   component: "/crud/form/inner/index.vue"
-          // },
+          {
+            title: "页面内部弹出表单",
+            name: "FormInner",
+            path: "/crud/form/inner",
+            component: "/crud/form/inner/index.vue"
+          },
+          {
+            title: "地区字典管理",
+            name: "FormInnerArea",
+            path: "/crud/form/inner/area",
+            component: "/crud/form/inner/area/index.vue",
+            meta: {
+              isMenu: false
+            }
+          },
           {
             title: "新页面编辑",
             name: "FormNewPage",

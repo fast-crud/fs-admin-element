@@ -242,6 +242,17 @@ export default {
             data: null
           };
         }
+      },
+      {
+        path: "/mock/" + name + "/all",
+        method: "post",
+        handle(req) {
+          return {
+            code: 0,
+            msg: "success",
+            data: list
+          };
+        }
       }
     ];
   }

@@ -17,9 +17,6 @@ const list = [
     age: 18,
     password: "",
     url: "https://baidu.com"
-  },
-  {
-    status: "2"
   }
 ];
 options.list = list;
