@@ -186,21 +186,16 @@ export default {
     flex: 1;
   }
 }
-//antdv
 .fs-framework {
   &.el-container {
     flex-direction: row;
-  }
-
-  .ant-layout-sider-children {
-    display: flex;
-    flex-direction: column;
   }
 
   .el-aside {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    position: relative;
   }
   .el-header {
     flex: 0;
@@ -240,6 +235,7 @@ export default {
     }
   }
   .el-main {
+    padding: 0;
     background: #fff;
     height: 100%;
     position: relative;

@@ -28,7 +28,7 @@ export default ({ command, mode }) => {
     ];
     devServerFs = {
       // 这里配置dev启动时读取的项目根目录
-      allow: ["../../"]
+      // allow: ["../../"]
     };
     console.log("devAlias", devAlias);
   }
