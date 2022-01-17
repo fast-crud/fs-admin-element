@@ -34,20 +34,20 @@
               </template>
             </el-input>
           </el-form-item>
-          <el-form-item has-feedback name="imgCode">
-            <el-row :gutter="16">
-              <el-col class="gutter-row" :span="16">
-                <el-input v-model="formState.imgCode" placeholder="请输入图片验证码" size="large" autocomplete="off">
-                  <template #prefix>
-                    <span class="iconify" data-icon="ion:image-outline" data-inline="false"></span>
-                  </template>
-                </el-input>
-              </el-col>
-              <el-col class="gutter-row" :span="8">
-                <img class="image-code" :src="imageCodeUrl" @click="resetImageCode" />
-              </el-col>
-            </el-row>
-          </el-form-item>
+          <!--          <el-form-item has-feedback name="imgCode">-->
+          <!--            <el-row :gutter="16">-->
+          <!--              <el-col class="gutter-row" :span="16">-->
+          <!--                <el-input v-model="formState.imgCode" placeholder="请输入图片验证码" size="large" autocomplete="off">-->
+          <!--                  <template #prefix>-->
+          <!--                    <span class="iconify" data-icon="ion:image-outline" data-inline="false"></span>-->
+          <!--                  </template>-->
+          <!--                </el-input>-->
+          <!--              </el-col>-->
+          <!--              <el-col class="gutter-row" :span="8">-->
+          <!--                <img class="image-code" :src="imageCodeUrl" @click="resetImageCode" />-->
+          <!--              </el-col>-->
+          <!--            </el-row>-->
+          <!--          </el-form-item>-->
         </el-tab-pane>
         <el-tab-pane key="smsCode" label="短信验证码登录" :disabled="true" title="暂不支持">
           <el-form-item required has-feedback name="mobile">
@@ -57,20 +57,20 @@
               </template>
             </el-input>
           </el-form-item>
-          <el-form-item has-feedback name="imgCode">
-            <el-row :gutter="16">
-              <el-col class="gutter-row" :span="16">
-                <el-input v-model="formState.imgCode" placeholder="请输入图片验证码" size="large" autocomplete="off">
-                  <template #prefix>
-                    <span class="iconify" data-icon="ion:image-outline" data-inline="false"></span>
-                  </template>
-                </el-input>
-              </el-col>
-              <el-col class="gutter-row" :span="8">
-                <img class="image-code" :src="imageCodeUrl" @click="resetImageCode" />
-              </el-col>
-            </el-row>
-          </el-form-item>
+          <!--          <el-form-item has-feedback name="imgCode">-->
+          <!--            <el-row :gutter="16">-->
+          <!--              <el-col class="gutter-row" :span="16">-->
+          <!--                <el-input v-model="formState.imgCode" placeholder="请输入图片验证码" size="large" autocomplete="off">-->
+          <!--                  <template #prefix>-->
+          <!--                    <span class="iconify" data-icon="ion:image-outline" data-inline="false"></span>-->
+          <!--                  </template>-->
+          <!--                </el-input>-->
+          <!--              </el-col>-->
+          <!--              <el-col class="gutter-row" :span="8">-->
+          <!--                <img class="image-code" :src="imageCodeUrl" @click="resetImageCode" />-->
+          <!--              </el-col>-->
+          <!--            </el-row>-->
+          <!--          </el-form-item>-->
 
           <el-form-item name="smsCode">
             <el-row :gutter="16">
@@ -185,7 +185,7 @@ export default defineComponent({
 
     const imageCodeUrl = ref();
     function resetImageCode() {
-      let url = "/images/code.jpg";
+      let url = "/basic/code";
       imageCodeUrl.value = url + "?t=" + new Date().getTime();
     }
     resetImageCode();
