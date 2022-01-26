@@ -80,7 +80,7 @@ export default function ({ expose }) {
           title: "详情",
           type: ["editor-wang", "colspan"],
           form: {
-            itemProps: { labelWidth: "0px" }
+             labelWidth: "0px"
           }
         },
         product: {
