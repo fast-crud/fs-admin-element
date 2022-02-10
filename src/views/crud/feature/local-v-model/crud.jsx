@@ -8,14 +8,11 @@ export default function ({ expose }) {
         isMergeWhenUpdate:true,
         isAppendWhenAdd:true
       },
-      actionbar: { buttons: { add: { show: true }, addRow: { show: false } } },
-      editable: {
-        enabled: false,
-        mode: "row",
-        activeTrigger: false
-      },
       search: {
         show: false
+      },
+      toolbar:{
+        show:false,
       },
       pagination:{
         show:false
