@@ -415,6 +415,12 @@ export const crudResources = [
             name: "FeatureColumnsSet",
             path: "/crud/feature/columns-set",
             component: "/crud/feature/columns-set/index.vue"
+          },
+          {
+            title: "本地编辑",
+            name: "FeatureLocal",
+            path: "/crud/feature/local",
+            component: "/crud/feature/local/index.vue"
           }
         ]
       },
