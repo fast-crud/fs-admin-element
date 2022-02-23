@@ -20,7 +20,7 @@ import permission from "./plugin/permission";
 
 // @ts-ignore
 const app = createApp(App);
-app.use(ElementPlus, { size: "normal", zIndex: 3000, locale: zhCn });
+app.use(ElementPlus, { size: "default", zIndex: 3000, locale: zhCn });
 app.use(router);
 app.use(i18n);
 app.use(store);
