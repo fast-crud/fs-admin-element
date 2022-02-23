@@ -67,6 +67,7 @@ export default function ({ expose }) {
           custom: {
             text: "自定义",
             order: 4,
+            size: "small",
             show: true,
             click(context) {
               console.log("click", context);

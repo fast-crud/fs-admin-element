@@ -31,12 +31,14 @@ function install(app, options: any = {}) {
         },
         rowHandle: {
           buttons: {
-            view: { text: null, icon: "ion:eye-outline" },
-            edit: { text: null, icon: "ion:create-outline" },
-            remove: { type: "danger", text: null, icon: "ion:trash-outline" }
+            view: { text: null, icon: "ion:eye-outline", size: "small" },
+            edit: { text: null, icon: "ion:create-outline", size: "small" },
+            remove: { type: "danger", text: null, icon: "ion:trash-outline", size: "small" }
           },
           dropdown: {
-            more: {}
+            more: {
+              size: "small"
+            }
           }
         },
         request: {

@@ -36,6 +36,7 @@ export default function ({ expose }) {
           orderExample: {
             text: "我排前面",
             title: "按钮排序示例",
+            size: "small",
             order: 0, //数字越小，越靠前,默认排序号为1
             click(opts) {
               console.log("自定义操作列按钮点击", opts);
