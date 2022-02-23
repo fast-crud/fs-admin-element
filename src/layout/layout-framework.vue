@@ -145,7 +145,7 @@ export default {
   .header-buttons {
     display: flex;
     align-items: center;
-    height: 100%;
+    //height: 100%;
     & > *:hover {
       color: @primary-color;
     }

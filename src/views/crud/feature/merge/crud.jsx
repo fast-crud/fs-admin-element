@@ -35,11 +35,63 @@ export default function ({ expose }) {
         delRequest
       },
       table: {
-        slots: {
-          summary() {
-            return <div>总结栏</div>;
+        //合并单元格
+        spanMethod: ({ row, column, rowIndex, columnIndex }) => {
+          if (columnIndex === 2) {
+            //第三列纵向合并
+            if (rowIndex % 2 === 0) {
+              return {
+                rowspan: 2,
+                colspan: 1
+              };
+            } else {
+              return {
+                rowspan: 0,
+                colspan: 0
+              };
+            }
+          } else if (rowIndex % 2 === 0) {
+            // 第四列 第五列横向合并
+            if (columnIndex === 3) {
+              return {
+                rowspan: 1,
+                colspan: 2
+              };
+            } else if (columnIndex === 4) {
+              return {
+                rowspan: 0,
+                colspan: 0
+              };
+            }
           }
-        }
+        },
+        //表尾合计行
+        summaryMethod: (param) => {
+          const { columns, data } = param;
+          const sums = [];
+          columns.forEach((column, index) => {
+            if (index === 0) {
+              sums[index] = "Total Cost";
+              return;
+            }
+            const values = data.map((item) => Number(item[column.property]));
+            if (!values.every((value) => isNaN(value))) {
+              sums[index] = `$ ${values.reduce((prev, curr) => {
+                const value = Number(curr);
+                if (!isNaN(value)) {
+                  return prev + curr;
+                } else {
+                  return prev;
+                }
+              }, 0)}`;
+            } else {
+              sums[index] = "N/A";
+            }
+          });
+
+          return sums;
+        },
+        showSummary: true
       },
       columns: {
         id: {
@@ -55,74 +107,31 @@ export default function ({ expose }) {
           })
         },
         cellMerge: {
-          title: "上下合并",
-          column: {
-            customRender: ({ text, index }, cellRender) => {
-              const obj = {
-                props: {}
-              };
-              if (index === 2) {
-                obj.children = text + "(我合并了)";
-                obj.props.rowSpan = 2;
-              } else if (index === 3) {
-                obj.props.rowSpan = 0;
-              } else {
-                obj.children = cellRender();
-              }
-              return obj;
-            }
-          }
+          title: "上下合并"
         },
         colMerge1: {
           title: "左右合并",
           column: {
-            align: "center",
-            customRender({ text, index, record, dataIndex }, cellRender) {
-              if (index !== 4) {
-                return {
-                  children: cellRender()
-                };
-              }
-              return {
-                children: text + "(我合并了)",
-                props: {
-                  colSpan: 2
-                }
-              };
-            }
+            align: "left"
           }
         },
         colMerge2: {
-          title: "左右合并",
-          column: {
-            customRender({ text, index, record, dataIndex }, cellRender) {
-              if (index !== 4) {
-                return {
-                  children: cellRender()
-                };
-              }
-              return {
-                props: {
-                  colSpan: 0
-                }
-              };
-            }
-          }
-        },
-        header1: {
-          title: "表头合并(我合并了)",
-          type: "text",
-          column: {
-            colSpan: 2
-          }
-        },
-        header2: {
-          title: "表头合并",
-          type: "text",
-          column: {
-            colSpan: 0
-          }
+          title: "左右合并"
         }
+        // header1: {
+        //   title: "表头合并(我合并了)",
+        //   type: "text",
+        //   column: {
+        //     colSpan: 2
+        //   }
+        // },
+        // header2: {
+        //   title: "表头合并",
+        //   type: "text",
+        //   column: {
+        //     colSpan: 0
+        //   }
+        // }
       }
     }
   };
