@@ -95,15 +95,16 @@ export default defineComponent({
       }
       for (let sub of children) {
         const title = () => {
+          const elements = [];
           if (sub?.meta?.icon) {
-            return (
-              <div class={"menu-item-title"}>
+            elements.push(
+              <div class={"el-icon"}>
                 <FsIcon icon={sub.meta.icon} />
-                <span>{sub.title}</span>
               </div>
             );
           }
-          return sub.title;
+          elements.push(<span>{sub.title}</span>);
+          return elements;
         };
         if (sub.children && sub.children.length > 0) {
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
