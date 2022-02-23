@@ -13,6 +13,22 @@
         创建时间：{{ dateFormat(scope.row.createDate) }}<br />
         修改时间：{{ dateFormat(scope.row.updateDate) }}
       </template>
+
+      <template #cell-rowHandle-left="scope">
+        <el-button class="row-handle-btn" type="danger" size="small" :title="scope.row.id"
+          >rowHandle-left插槽</el-button
+        >
+      </template>
+      <template #cell-rowHandle-middle="scope">
+        <el-button class="row-handle-btn" type="danger" size="small" :title="scope.row.id"
+          >rowHandle-middle插槽</el-button
+        >
+      </template>
+      <template #cell-rowHandle-right="scope">
+        <el-button class="row-handle-btn" type="danger" size="small" :title="scope.row.id"
+          >rowHandle-right插槽</el-button
+        >
+      </template>
     </fs-crud>
   </fs-page>
 </template>

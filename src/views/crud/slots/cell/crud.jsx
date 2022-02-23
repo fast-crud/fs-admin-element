@@ -28,6 +28,13 @@ export default function ({ expose }) {
         editRequest,
         delRequest
       },
+      rowHandle: {
+        width: 550,
+        buttons: {
+          edit: { dropdown: true },
+          remove: { dropdown: true }
+        }
+      },
       columns: {
         id: {
           title: "ID",
@@ -43,7 +50,7 @@ export default function ({ expose }) {
         like: {
           title: "like",
           type: "number",
-          search: { show: true }
+          search: { show: false }
         },
         createDate: {
           title: "时间",
