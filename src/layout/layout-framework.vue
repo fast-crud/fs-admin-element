@@ -6,7 +6,7 @@
         <span v-if="!asideCollapsed" class="title">FsAdmin</span>
       </div>
       <div class="aside-menu">
-        <fs-menu mode="vertical" :scroll="true" :menus="asideMenus" :collapse="asideCollapsed" menu-trigger="click" />
+        <fs-menu mode="vertical" :scroll="false" :menus="asideMenus" :collapse="asideCollapsed" menu-trigger="click" />
       </div>
     </el-aside>
 

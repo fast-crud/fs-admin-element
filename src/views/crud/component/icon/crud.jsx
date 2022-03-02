@@ -56,6 +56,18 @@ export default function ({ expose }) {
               }
             }
           }
+        },
+        svg: {
+          title: "svg",
+          search: { show: true },
+          type: "text",
+          column: {
+            component: {
+              name: "fs-icon",
+              vModel: "icon",
+              style: "font-size:18px"
+            }
+          }
         }
       }
     }

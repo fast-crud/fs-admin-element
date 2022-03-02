@@ -14,9 +14,7 @@ import "./mock";
 import i18n from "./i18n";
 import store from "./store";
 import components from "./components";
-import "./plugin/iconify";
-import FastCrud from "./plugin/fast-crud";
-import permission from "./plugin/permission";
+import plugin from "./plugin";
 
 // @ts-ignore
 const app = createApp(App);
@@ -25,6 +23,5 @@ app.use(router);
 app.use(i18n);
 app.use(store);
 app.use(components);
-app.use(FastCrud, { i18n });
-app.use(permission);
+app.use(plugin,{i18n});
 app.mount("#app");

@@ -5,13 +5,16 @@ const options = {
 };
 const list = [
   {
-    icon: "ri:24-hours-fill"
+    icon: "ri:24-hours-fill",
+    svg:"svg:icon-compass"
   },
   {
-    icon: "ion:add-circle-outline"
+    icon: "ion:add-circle-outline",
+    svg:"svg:icon-left-circle"
   },
   {
-    icon: "ion:american-football-sharp"
+    icon: "ion:american-football-sharp",
+    svg:"svg:icon-Dollar"
   }
 ];
 options.list = list;
