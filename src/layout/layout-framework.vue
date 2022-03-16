@@ -172,6 +172,7 @@ export default {
   }
   .fs-header-menu {
     flex: 1;
+    overflow: hidden;
   }
   .aside-menu {
     flex: 1;
