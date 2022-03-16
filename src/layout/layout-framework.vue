@@ -169,6 +169,14 @@ export default {
     align-items: center;
     display: flex;
     margin-right: 10px;
+    line-height: 60px;
+    .fs-menu-wrapper {
+      .el-menu-item {
+        & > * {
+          line-height: 58px;
+        }
+      }
+    }
   }
   .fs-header-menu {
     flex: 1;
@@ -211,7 +219,7 @@ export default {
       .el-sub-menu__title * {
         vertical-align: baseline;
         box-sizing: content-box;
-        line-height: 60px;
+        line-height: 58px;
         display: flex;
         justify-content: center;
         align-items: center;
