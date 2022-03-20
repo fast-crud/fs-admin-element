@@ -5,7 +5,7 @@
         <el-alert
           class="ml-1"
           type="warning"
-          title="分发时复制，当columns[x].dict分发到addForm、editForm、viewForm、search、table.columns时将会clone一份"
+          title="如果你想要表格里同一个字段的dict和form表单同一个字段的dict不一样，就需要分发时复制；----点击switch看效果----↓↓↓↓↓↓"
         />
       </template>
     </fs-crud>
