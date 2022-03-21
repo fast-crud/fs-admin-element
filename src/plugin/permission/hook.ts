@@ -36,7 +36,7 @@ export function registerRouterHook() {
       console.log("permission is enabled");
       await permissionStore.loadFromRemote();
       console.log("PM load success");
-      next({ path: to.path, replace: true });
+      next({ ...to, replace: true });
     } catch (e) {
       console.error("加载动态路由失败", e);
       next();
