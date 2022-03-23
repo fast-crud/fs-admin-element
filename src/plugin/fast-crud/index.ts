@@ -26,18 +26,18 @@ function install(app, options: any = {}) {
     commonOptions(context: any = {}) {
       const opts = {
         table: {
-          size: "small",
+          size: "default",
           pagination: false
         },
         rowHandle: {
           buttons: {
-            view: { text: null, icon: "ion:eye-outline", size: "small" },
-            edit: { text: null, icon: "ion:create-outline", size: "small" },
-            remove: { type: "danger", text: null, icon: "ion:trash-outline", size: "small" }
+            view: { text: null, icon: "ion:eye-outline", size: "default" },
+            edit: { text: null, icon: "ion:create-outline", size: "default" },
+            remove: { type: "danger", text: null, icon: "ion:trash-outline", size: "default" }
           },
           dropdown: {
             more: {
-              size: "small"
+              size: "default"
             }
           }
         },
