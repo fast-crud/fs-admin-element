@@ -55,12 +55,13 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              "tree-checkable": true
+              multiple: true,
+              "show-checkbox": true
             }
           }
         },
         fieldReplace: {
-          title: "数据value配置",
+          title: "自定义label",
           search: { show: false },
           type: "dict-tree",
           dict: dict({
@@ -71,7 +72,22 @@ export default function ({ expose }) {
           }),
           form: {
             component: {
-              fieldNames: { label: "name", key: "code", value: "code" }
+              select: {
+                valueKey: "code"
+              },
+              tree: {
+                valueKey: "code"
+              },
+              props: {
+                props: {
+                  // 为什么这里要写两层props
+                  // 因为props属性名与fs的动态渲染的props命名冲突，所以要多写一层
+                  label: "name",
+                  key: "code",
+                  value: "code",
+                  valueKey: "code"
+                }
+              }
             }
           }
         }

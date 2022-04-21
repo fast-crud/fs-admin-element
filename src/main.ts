@@ -23,5 +23,5 @@ app.use(router);
 app.use(i18n);
 app.use(store);
 app.use(components);
-app.use(plugin,{i18n});
+app.use(plugin, { i18n });
 app.mount("#app");
