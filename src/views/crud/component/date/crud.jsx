@@ -1,6 +1,6 @@
 import * as api from "./api";
 import { utils } from "@fast-crud/fast-crud";
-import * as dayjs from "dayjs";
+import dayjs from "dayjs";
 console.log("utils", utils);
 export default function ({ expose }) {
   const pageRequest = async (query) => {
