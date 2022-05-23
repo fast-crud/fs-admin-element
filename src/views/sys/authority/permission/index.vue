@@ -45,7 +45,7 @@ export default defineComponent({
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     // 初始化crud配置
     // 此处传入permission进行通用按钮权限设置，会通过commonOptions去设置actionbar和rowHandle的按钮的show属性
-    // 更多关于按钮权限的源代码设置，请参考 ./src/plugin/fast-crud/index.ts （75-77行）
+    // 更多关于按钮权限的源代码设置，请参考 ./src/plugin/fast-crud/index.js （75-77行）
     const { resetCrudOptions } = useCrud({ expose, crudOptions, permission: "sys:auth:per" });
     // 你可以调用此方法，重新初始化crud配置
     // resetCrudOptions(options)
