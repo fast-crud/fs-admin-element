@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-admin-element",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -19,9 +19,9 @@
   "author": "Greper",
   "license": "MIT",
   "dependencies": {
-    "@fast-crud/fast-crud": "^1.1.2",
-    "@fast-crud/fast-extends": "^1.1.2",
-    "@fast-crud/ui-element": "^1.1.2",
+    "@fast-crud/fast-crud": "^1.2.0",
+    "@fast-crud/fast-extends": "^1.2.0",
+    "@fast-crud/ui-element": "^1.2.0",
     "@iconify/iconify": "^2.0.1",
     "@iconify/json": "^2.1.30",
     "@purge-icons/generated": "^0.8.1",
