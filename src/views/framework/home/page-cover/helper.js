@@ -1,5 +1,5 @@
 export default {
-  crud: `  columns: [
+  crud: `  columns: {
     date:{
       title: '姓名', //字段名称
       type: 'text', //字段类型，添加、修改、查询将自动生成相应表单组件
@@ -26,6 +26,6 @@ export default {
       type: 'dict-select', //选择框，默认单选
       dict: dict({ url: '/dicts/OpenStatusEnum' })//远程数据字典
     },
-  ]
+  }
   `
 };
