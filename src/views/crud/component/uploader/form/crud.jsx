@@ -118,6 +118,16 @@ export default function ({ expose }) {
             helper: "大小不能超过1k"
           }
         },
+        accept: {
+          title: "限制类型",
+          type: "file-uploader",
+          form: {
+            component: {
+              accept: "*.jpg,*.png"
+            },
+            helper: "只能上传jpg或者png"
+          }
+        },
         validation: {
           title: "校验",
           type: "file-uploader",
