@@ -43,7 +43,7 @@ export default function ({ expose }) {
               children: {
                 //使用el-input的suffix插槽
                 suffix() {
-                  return <SearchOutlined />;
+                  return <Search/>;
                 }
               }
             }
