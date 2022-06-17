@@ -72,10 +72,8 @@ export default function ({ expose }) {
           title: "密码",
           type: "password",
           column: {
-            component: {
-              render() {
-                return <span>******</span>;
-              }
+            cellRender() {
+              return <span>******</span>;
             }
           },
           form: {
