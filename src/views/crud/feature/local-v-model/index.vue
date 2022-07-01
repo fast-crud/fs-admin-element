@@ -11,7 +11,7 @@
           <el-input v-model="form.name"></el-input>
         </el-form-item>
         <el-form-item label="表格">
-          <div style="min-height: 300px">
+          <div style="min-height: 300px;width: 100%">
             <FeatureLocalModelValueInput v-model="form.data"/>
           </div>
         </el-form-item>
