@@ -41,8 +41,9 @@ export default function ({ expose }) {
               addonAfter: "后置",
               suffix: "suffix",
               children: {
-                addonBefore() {
-                  return <SearchOutlined />;
+                //使用el-input的suffix插槽
+                suffix() {
+                  return <Search/>;
                 }
               }
             }
