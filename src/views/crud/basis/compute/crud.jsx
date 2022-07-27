@@ -58,6 +58,7 @@ export default function ({ expose }) {
       },
       rowHandle: {
         fixed: "right",
+        align: "center",
         buttons: {
           edit: {
             show: compute(({ row }) => {
