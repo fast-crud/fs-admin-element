@@ -107,6 +107,8 @@ export default function ({ expose }) {
           type: "text",
           column: {
             show: columnComponentShowComputed,
+            columnSetDisabled: true, //这里采用自定义控制显隐，那么列设置里面就要禁用
+            //columnSetShow: false, //直接不在列设置里面显示也行
             component: {
               name: "el-switch"
             }
