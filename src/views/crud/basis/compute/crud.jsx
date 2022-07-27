@@ -78,7 +78,8 @@ export default function ({ expose }) {
           key: "id",
           type: "number",
           column: {
-            width: 50
+            width: 50,
+            align: "center"
           },
           form: {
             show: false
