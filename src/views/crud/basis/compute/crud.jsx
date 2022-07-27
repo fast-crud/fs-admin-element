@@ -26,10 +26,17 @@ export default function ({ expose }) {
   const showTableComputed = computed(() => {
     return showTableRef.value;
   });
+
+  const columnComponentShowRef = ref(true);
+  const columnComponentShowComputed = computed(() => {
+    return columnComponentShowRef.value;
+  });
+
   return {
     output: {
       showRef,
-      showTableRef
+      showTableRef,
+      columnComponentShowRef
     },
     crudOptions: {
       request: {
@@ -99,7 +106,7 @@ export default function ({ expose }) {
           search: { show: false },
           type: "text",
           column: {
-            show: false,
+            show: columnComponentShowComputed,
             component: {
               name: "el-switch"
             }

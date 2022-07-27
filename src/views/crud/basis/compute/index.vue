@@ -16,6 +16,10 @@
             表格显隐:<el-switch v-model="showTableRef"></el-switch>
           </div>
         </el-tooltip>
+
+        <div class="ml-5" style="display: flex; width: 200px">
+          列显隐:<el-switch v-model="columnComponentShowRef"></el-switch>
+        </div>
         <el-alert class="ml-1" type="info" title="点击下方右边的编辑按钮查看示例效果-----------> ↓↓↓↓↓" />
       </template>
       <template #form_refSwitch>
