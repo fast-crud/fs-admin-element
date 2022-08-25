@@ -38,6 +38,9 @@ export default function ({ expose }) {
           title: "多行输入",
           type: "text",
           search: { show: true },
+          form: {
+            rules: [{ required: true, message: "请输入" }]
+          },
           column: {
             component: { name: "fs-values-format" }
           }

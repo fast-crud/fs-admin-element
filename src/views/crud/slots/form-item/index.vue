@@ -14,11 +14,12 @@
           class="mb-5"
         >
           <template #append>
-            <el-button
+            <fs-button
               :disabled="scope.mode === 'view'"
-              icon="el-icon-delete"
+              icon="ion:trash-outline"
               @click="removeTopic(index, scope.form, scope.key)"
-            />
+            >
+            </fs-button>
           </template>
         </el-input>
         <el-button :disabled="scope.mode === 'view'" @click="addTopic(scope.form, scope.key)">添加主题</el-button>
