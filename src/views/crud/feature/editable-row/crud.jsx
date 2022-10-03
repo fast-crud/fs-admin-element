@@ -42,6 +42,18 @@ export default function ({ expose }) {
           },
           column: { width: 80, align: "center" }
         },
+        disable: {
+          title: "禁止编辑",
+          type: "text",
+          column: {
+            editable: {
+              disabled: true //也可以配置为方法，根据条件禁用或启用编辑
+              // disabled: ({ column, index, row }) => {
+              //   return index % 2 === 0;
+              // }
+            }
+          }
+        },
         radio: {
           title: "状态",
           search: { show: true },
