@@ -211,6 +211,7 @@ export default {
   .fs-multiple-page-control-content {
     flex: 1;
     overflow-x: auto;
+    overflow-y: hidden;
   }
   .fs-multiple-page-control-btn {
     flex-shrink: 0;
