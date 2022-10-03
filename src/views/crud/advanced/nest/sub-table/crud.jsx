@@ -16,7 +16,9 @@ export default function ({ expose, props, ctx }) {
       table: {
         highlightCurrentRow: true,
         onCurrentChange: (currentRow) => {
-          ctx.emit("update:modelValue", currentRow.id);
+          if(currentRow != null){
+            ctx.emit("update:modelValue", currentRow?.id);
+          }
         }
       },
       request: {

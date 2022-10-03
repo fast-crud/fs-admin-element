@@ -15,11 +15,6 @@ export default function ({ expose, asideTableRef }) {
   };
   const currentRow = ref();
 
-  const onCurrentRowChange = (id) => {
-    currentRow.value = id;
-    asideTableRef.value.setSearchFormData({ form: { gradeId: id } });
-    asideTableRef.value.doRefresh();
-  };
   return {
     crudOptions: {
       table: {
@@ -27,8 +22,10 @@ export default function ({ expose, asideTableRef }) {
         // 监听 el-table的单行选中事件
         onCurrentChange(currentRow) {
           console.log("选中行", currentRow);
-          asideTableRef.value.setSearchFormData({ form: { gradeId: currentRow.id } });
-          asideTableRef.value.doRefresh();
+          if(asideTableRef.value){
+            asideTableRef.value.setSearchFormData({ form: { gradeId: currentRow.id } });
+            asideTableRef.value.doRefresh();
+          }
         }
       },
       pagination: {},
