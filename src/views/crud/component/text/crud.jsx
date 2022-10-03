@@ -43,7 +43,7 @@ export default function ({ expose }) {
               children: {
                 //使用el-input的suffix插槽
                 suffix() {
-                  return <Search/>;
+                  return <el-icon> <Search/> </el-icon>
                 }
               }
             }
@@ -75,7 +75,7 @@ export default function ({ expose }) {
               render(context) {
                 console.log("context scope", context);
                 return (
-                  <el-input-group compact>
+                  <div>
                     <el-input
                       placeholder={"render1 input"}
                       style="width: 50%"
@@ -86,7 +86,7 @@ export default function ({ expose }) {
                       style="width: 50%"
                       v-model={[context.form.render2, "value"]}
                     />
-                  </el-input-group>
+                  </div>
                 );
               }
             }
