@@ -18,6 +18,12 @@ export const crudResources = [
         },
         children: [
           {
+            title: "HelloWorld",
+            name: "FsCrudFirst",
+            path: "/crud/basis/first",
+            component: "/crud/basis/first/index.vue"
+          },
+          {
             title: "动态计算",
             name: "BasisCompute",
             path: "/crud/basis/compute",
@@ -503,7 +509,8 @@ export const crudResources = [
             name: "AdvancedNest",
             path: "/crud/advanced/nest",
             component: "/crud/advanced/nest/index.vue"
-          },{
+          },
+          {
             title: "对话框中显示crud",
             name: "AdvancedInDialog",
             path: "/crud/advanced/in-dialog",
