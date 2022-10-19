@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { computed, ref } from "vue";
+import { computed, onErrorCaptured, ref } from "vue";
 import FsMenu from "./components/menu/index.jsx";
 import FsLocale from "./components/locale/index.vue";
 import FsSourceLink from "./components/source-link/index.vue";
@@ -99,6 +99,12 @@ export default {
     function asideCollapsedToggle() {
       asideCollapsed.value = !asideCollapsed.value;
     }
+    onErrorCaptured((e) => {
+      console.log("ErrorCaptured:", e);
+      notification.error({ message: e.message });
+      //阻止错误向上传递
+      return false;
+    });
     return {
       frameworkMenus,
       headerMenus,
