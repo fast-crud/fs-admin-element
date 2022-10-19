@@ -50,7 +50,9 @@
           <template #default="{ Component, route }">
             <transition name="fade-transverse">
               <keep-alive :include="keepAlive">
-                <component :is="Component" :key="route.fullPath" />
+                <Suspense>
+                  <component :is="Component" :key="route.fullPath" />
+                </Suspense>
               </keep-alive>
             </transition>
           </template>
