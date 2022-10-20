@@ -43,7 +43,12 @@ export default function ({ expose }) {
               children: {
                 //使用el-input的suffix插槽
                 suffix() {
-                  return <el-icon> <Search/> </el-icon>
+                  return (
+                    <el-icon>
+                      {" "}
+                      <Search />{" "}
+                    </el-icon>
+                  );
                 }
               }
             }
@@ -64,7 +69,7 @@ export default function ({ expose }) {
             component: { showWordLimit: true, maxlength: 200 }
           },
           column: {
-            ellipsis: true
+            showOverflowTooltip: true
           }
         },
         render: {
