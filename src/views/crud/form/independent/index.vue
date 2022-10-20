@@ -79,6 +79,7 @@ function useFormDirect() {
   const formRef = ref();
   const formOptions = ref();
   formOptions.value = createFormOptions();
+  formOptions.value.initialForm = { customField: "初始值" };
   function formSubmit() {
     formRef.value.submit();
   }
@@ -96,6 +97,7 @@ function useFormWrapper() {
   const formWrapperRef = ref();
   const formWrapperOptions = ref();
   formWrapperOptions.value = createFormOptions();
+  formWrapperOptions.value.initialForm = { customField: "初始值" };
   function openFormWrapper() {
     formWrapperRef.value.open(formWrapperOptions.value);
   }
@@ -136,7 +138,8 @@ function useCrudBindingForm() {
       ElMessage.info("自定义表单提交:" + JSON.stringify(form));
       ElMessage.warning("抛出异常可以阻止表单关闭");
       throw new Error("抛出异常可以阻止表单关闭");
-    }
+    },
+    initialForm: { name: "初始值" }
   });
   function openFormWrapper2() {
     formWrapperRef2.value.open(formWrapperOptions2.value);
