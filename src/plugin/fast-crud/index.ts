@@ -2,7 +2,7 @@ import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
 import { FastCrud } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
-import { FsExtendsUploader, FsExtendsEditor } from "@fast-crud/fast-extends";
+import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson, FsExtendsCopyable } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
 
@@ -88,6 +88,8 @@ function install(app, options: any = {}) {
     wangEditor: {},
     quillEditor: {}
   });
+  app.use(FsExtendsCopyable);
+  app.use(FsExtendsJson);
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
     defaultType: "cos",

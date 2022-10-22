@@ -62,6 +62,10 @@ export default function ({ expose }) {
             show: false
           }
         },
+        copy: {
+          title: "剪贴板",
+          type: "copyable"
+        },
         intro: {
           title: "简介",
           type: "textarea",

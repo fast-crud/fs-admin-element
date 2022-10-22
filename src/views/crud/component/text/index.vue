@@ -1,5 +1,6 @@
 <template>
   <fs-page>
+    <fs-copyable model-value="1111"></fs-copyable>
     <fs-crud ref="crudRef" v-bind="crudBinding" />
   </fs-page>
 </template>

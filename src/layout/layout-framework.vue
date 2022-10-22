@@ -76,6 +76,7 @@ import FsTabs from "./components/tabs/index.vue";
 import { useResourceStore } from "../store/modules/resource";
 import { usePageStore } from "/@/store/modules/page";
 import FsThemeSet from "/@/layout/components/theme/index.vue";
+import { ElNotification } from "element-plus";
 export default {
   name: "LayoutFramework",
   // eslint-disable-next-line vue/no-unused-components
@@ -101,7 +102,7 @@ export default {
     }
     onErrorCaptured((e) => {
       console.log("ErrorCaptured:", e);
-      notification.error({ message: e.message });
+      ElNotification.error({ message: e.message });
       //阻止错误向上传递
       return false;
     });

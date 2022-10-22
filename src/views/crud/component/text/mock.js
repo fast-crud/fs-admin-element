@@ -14,7 +14,8 @@ const list = [
     city: "sz",
     address: "123123",
     zip: "518000",
-    intro: "王小虎是element-plus的table示例出现的名字"
+    intro: "王小虎是element-plus的table示例出现的名字",
+    copy: "测试文本"
   },
   {
     name: "张三",
