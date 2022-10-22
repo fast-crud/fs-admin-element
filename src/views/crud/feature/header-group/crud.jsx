@@ -62,7 +62,13 @@ export default function ({ expose }) {
                 province: {
                   title: "省",
                   search: { show: true },
-                  type: "text"
+                  type: "dict-select",
+                  dict: dict({
+                    data: [
+                      { value: "广东省", label: "广东省" },
+                      { value: "浙江省", label: "浙江省" }
+                    ]
+                  })
                 },
                 city: {
                   title: "市",
