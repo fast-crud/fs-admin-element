@@ -297,6 +297,12 @@ export const crudResources = [
             name: "FormIndependent",
             path: "/crud/form/independent",
             component: "/crud/form/independent/index.vue"
+          },
+          {
+            title: "表单嵌套数据",
+            name: "FormNest",
+            path: "/crud/form/nest",
+            component: "/crud/form/nest/index.vue"
           }
         ]
       },
