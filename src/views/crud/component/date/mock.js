@@ -7,6 +7,7 @@ const options = {
 const list = [
   {
     timestamp: 123123123123,
+    humanize: new Date().getTime() - 11111111,
     datetime: "2019-09-01 11:11:11",
     date: "2019-09-02 11:11:11",
     format: "2019-09-21 11:11:11",
@@ -18,6 +19,7 @@ const list = [
   },
   {
     // timestamp: 444444555,
+    humanize: new Date().getTime() - 22222222,
     datetime: "2017-09-20 11:11:11",
     date: "2019-09-20 11:11:11",
     // time: 12313123334,

@@ -60,6 +60,17 @@ export default function ({ expose }) {
             }
           }
         },
+        humanize: {
+          type: ["datetime", "time-humanize"],
+          title: "人性化时间",
+          column: {
+            component: {
+              options: {
+                largest: 2
+              }
+            }
+          }
+        },
         datetime: {
           title: "日期时间",
           type: "datetime",

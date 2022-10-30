@@ -2,7 +2,13 @@ import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
 import { FastCrud } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
-import { FsExtendsUploader, FsExtendsEditor, FsExtendsJson, FsExtendsCopyable } from "@fast-crud/fast-extends";
+import {
+  FsExtendsUploader,
+  FsExtendsEditor,
+  FsExtendsJson,
+  FsExtendsCopyable,
+  FsExtendsTime
+} from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
 
@@ -82,14 +88,6 @@ function install(app, options: any = {}) {
   });
 
   // fast-extends里面的扩展组件均为异步组件，只有在使用时才会被加载，并不会影响首页加载速度
-  //安装editor
-  app.use(FsExtendsEditor, {
-    //编辑器的公共配置
-    wangEditor: {},
-    quillEditor: {}
-  });
-  app.use(FsExtendsCopyable);
-  app.use(FsExtendsJson);
   //安装uploader 公共参数
   app.use(FsExtendsUploader, {
     defaultType: "cos",
@@ -185,6 +183,15 @@ function install(app, options: any = {}) {
       }
     }
   });
+  //安装editor
+  app.use(FsExtendsEditor, {
+    //编辑器的公共配置
+    wangEditor: {},
+    quillEditor: {}
+  });
+  app.use(FsExtendsCopyable);
+  app.use(FsExtendsJson);
+  app.use(FsExtendsTime);
 }
 
 export default {
