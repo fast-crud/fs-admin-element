@@ -36,9 +36,11 @@ export default function ({ expose }) {
         show: true,
         buttons: {
           add: {
+            order: 2,
             show: true
           },
           test: {
+            order: 0,
             text: "自定义按钮",
             show: true,
             click() {
