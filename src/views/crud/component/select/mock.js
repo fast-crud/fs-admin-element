@@ -5,7 +5,7 @@ const options = {
 };
 const list = [
   {
-    statusLocal: "sz",
+    statusLocal: "hz",
     customDictUrl: "0",
     statusValue: 1,
     multiple: ["sz", "bj", "gz", "sh", "hz", "xz"],
@@ -17,13 +17,14 @@ const list = [
     checkbox_btn: "1"
   },
   {
-    statusLocal: "sz",
+    statusLocal: "bj",
     customDictUrl: "1",
     statusValue: 2,
     statusRemote: "1",
     status_custom_2: "2",
     select_local: "gz",
     multiple: ["sh", "sz"],
+    customDictGetData: "1",
     checkbox: "0"
   },
   {

@@ -23,8 +23,7 @@ export default function ({ expose }) {
         delRequest
       },
       form: {
-        labelCol: { span: 6 },
-        wrapperCol: { span: 16 },
+        labelWidth: "120px",
         helper: {
           // position: "label" // helper的展示位置全局配置
           // tooltip:{}
@@ -35,7 +34,7 @@ export default function ({ expose }) {
           title: "最简单",
           type: "text",
           form: {
-            helper: "最简单的helper"
+            helper: "最简单的helper\n换行测试"
           }
         },
         age: {
@@ -59,7 +58,7 @@ export default function ({ expose }) {
               tooltip: {
                 placement: "top-start"
               },
-              text: "在label通过tooltip方式显示的helper"
+              text: "在label通过tooltip方式显示的helper\n换行测试"
               // render() {
               //   return <div style={"color:red"}>在label通过tooltip方式显示的helper</div>;
               // }

@@ -54,8 +54,29 @@ export default function ({ expose }) {
 
   const { fetchUser, searchState } = useSearchRemote();
 
+  let cityDicts = dict({
+    value: "id",
+    label: "text",
+    data: [
+      { id: "sz", text: "深圳", color: "success" },
+      { id: "gz", text: "广州", color: null },
+      { id: "bj", text: "北京" },
+      { id: "wh", text: "武汉" },
+      { id: "sh", text: "上海" }
+    ]
+  });
   return {
     crudOptions: {
+      actionbar: {
+        buttons: {
+          test: {
+            text: "动态增加选项",
+            click() {
+              cityDicts.data.push({ id: "hz", text: "杭州" });
+            }
+          }
+        }
+      },
       request: {
         pageRequest,
         addRequest,
@@ -93,17 +114,7 @@ export default function ({ expose }) {
         statusLocal: {
           title: "单选本地",
           type: "dict-select",
-          dict: dict({
-            value: "id",
-            label: "text",
-            data: [
-              { id: "sz", text: "深圳", color: "success" },
-              { id: "gz", text: "广州", color: null },
-              { id: "bj", text: "北京" },
-              { id: "wh", text: "武汉" },
-              { id: "sh", text: "上海" }
-            ]
-          })
+          dict: cityDicts
         },
         statusRemote: {
           title: "单选远程",

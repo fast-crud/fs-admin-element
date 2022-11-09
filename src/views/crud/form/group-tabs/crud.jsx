@@ -32,7 +32,10 @@ export default function ({ expose }) {
         code: {
           title: "商品代码",
           search: { show: true },
-          type: "text"
+          type: "text",
+          form: {
+            rules: [{ required: true, message: "此项必填" }]
+          }
         },
         images: {
           title: "图片",
@@ -57,7 +60,7 @@ export default function ({ expose }) {
           title: "详情",
           type: "editor-ueditor",
           form: {
-             labelWidth: "0px"
+            labelWidth: "0px"
           }
         }
       },
@@ -68,9 +71,9 @@ export default function ({ expose }) {
           groups: {
             base: {
               slots: {
-                label: () => {
+                label: (scope) => {
                   return (
-                    <span style={"color:green"}>
+                    <span style={{ color: scope.hasError ? "red" : "green" }}>
                       <fs-icon icon={"ion:checkmark-circle"} />
                       商品基础
                     </span>

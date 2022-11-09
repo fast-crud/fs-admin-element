@@ -28,17 +28,29 @@ export default function ({ expose }) {
         display: "grid"
       },
       columns: {
+        avatar: {
+          title: "头像上传",
+          type: "avatar-uploader",
+          form: {
+            order: 0,
+            col: {
+              style: { gridRow: "span 3" }
+            },
+            helper: "通过grid布局，可以实现比flex更加规整的排列"
+          }
+        },
         name: {
           title: "姓名",
           type: "text",
           search: { show: true }
         },
         order: {
-          title: "字段排序",
-          type: "text",
-          form: {
-            order: 0
-          }
+          title: "占位演示",
+          type: "text"
+        },
+        place: {
+          title: "占位演示",
+          type: "text"
         },
         intro: {
           title: "跨列",
