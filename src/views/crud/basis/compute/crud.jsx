@@ -125,7 +125,7 @@ export default function ({ expose }) {
         shower: {
           title: "根据compute显示",
           search: { show: false },
-          type: "text",
+          type: "button",
           form: {
             component: {
               // 这里组件是否显示是通过计算获得的
@@ -135,7 +135,13 @@ export default function ({ expose }) {
             }
           },
           column: {
-            width: 250
+            width: 250,
+            component: {
+              // 这里组件是否显示是通过计算获得的
+              show: compute(({ row }) => {
+                return row.compute;
+              })
+            }
           }
         },
         remote: {

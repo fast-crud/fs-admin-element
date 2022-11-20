@@ -16,6 +16,7 @@ const list = [
   {
     compute: false,
     status: "2",
+    shower: "---> 点右边编辑查看示例效果",
     remote: "0",
     remote2: "2",
     editable: false
