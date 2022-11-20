@@ -46,6 +46,18 @@ export const crudResources = [
             name: "BasisValueChange",
             path: "/crud/basis/value-change",
             component: "/crud/basis/value-change/index.vue"
+          },
+          {
+            title: "Card布局",
+            name: "BasisLayoutCard",
+            path: "/crud/basis/layout-card",
+            component: "/crud/basis/layout-card/index.vue"
+          },
+          {
+            title: "自定义布局",
+            name: "BasisLayoutCustom",
+            path: "/crud/basis/layout-custom",
+            component: "/crud/basis/layout-custom/index.vue"
           }
           // {
           //   title: "debug",
@@ -527,18 +539,6 @@ export const crudResources = [
             name: "AdvancedInDialog",
             path: "/crud/advanced/in-dialog",
             component: "/crud/advanced/in-dialog/index.vue"
-          },
-          {
-            title: "修改布局",
-            name: "AdvancedLayout",
-            path: "/crud/advanced/layout",
-            component: "/crud/advanced/layout/index.vue"
-          },
-          {
-            title: "自定义布局",
-            name: "AdvancedCustomLayout",
-            path: "/crud/advanced/custom-layout",
-            component: "/crud/advanced/custom-layout/index.vue"
           }
         ]
       }
