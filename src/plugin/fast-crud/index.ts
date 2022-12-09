@@ -177,7 +177,7 @@ function install(app, options: any = {}) {
           },
           data,
           onUploadProgress: (p) => {
-            onProgress({ percent: (p.loaded / p.total) * 100 });
+            onProgress({ percent: Math.round((p.loaded / p.total) * 100) });
           }
         });
       },
