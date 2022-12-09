@@ -111,7 +111,7 @@ export default function ({ expose }) {
             width: 300,
             show: false
           },
-          type: ["editor-wang", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+          type: ["editor-wang5", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
             // 动态显隐字段
             // show: compute(({ form }) => {
