@@ -79,6 +79,17 @@ export default function ({ expose }) {
               }
             },
             helper: "最大可上传1个文件"
+          },
+          column: {
+            component: {
+              buildPreviewUrl({ url, index }) {
+                if (index === 0) {
+                  return "https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png";
+                } else {
+                  return url + "?preview=600x600";
+                }
+              }
+            }
           }
         },
         cropper: {
