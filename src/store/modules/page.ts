@@ -49,6 +49,7 @@ export const usePageStore = defineStore({
   }),
   getters: {
     getOpened() {
+      // @ts-ignore
       return this.opened;
     },
     getCurrent(): string {
@@ -311,6 +312,7 @@ export const usePageStore = defineStore({
       // @ts-ignore
       // 设置当前的页面
       this.current = pageAim;
+      // @ts-ignore
       if (router.currentRoute.fullPath !== pageAim) await router.push(pageAim);
     },
     /**
