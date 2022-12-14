@@ -1,6 +1,6 @@
 import mockUtil from "/src/mock/base";
 const options = {
-  name: "FeatureColumnsSet",
+  name: "RowHandleDropdown",
   idGenerator: 0
 };
 const list = [

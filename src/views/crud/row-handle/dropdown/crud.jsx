@@ -25,6 +25,7 @@ export default function ({ expose }) {
         delRequest
       },
       rowHandle: {
+        width: 300,
         buttons: {
           remove: {
             // 根据row的值判断按钮是否显示

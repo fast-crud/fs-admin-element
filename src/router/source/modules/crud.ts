@@ -97,6 +97,29 @@ export const crudResources = [
         ]
       },
       {
+        title: "操作列",
+        name: "RowHandle",
+        path: "/crud/row-handle",
+        redirect: "/crud/row-handle/tooltip",
+        meta: {
+          icon: "ion:build-outline"
+        },
+        children: [
+          {
+            title: "Tooltip",
+            name: "RowHandleTooltip",
+            path: "/crud/row-handle/tooltip",
+            component: "/crud/row-handle/tooltip/index.vue"
+          },
+          {
+            title: "按钮折叠",
+            name: "RowHandleDropdown",
+            path: "/crud/row-handle/dropdown",
+            component: "/crud/row-handle/dropdown/index.vue"
+          }
+        ]
+      },
+      {
         title: "组件示例",
         name: "component",
         path: "/crud/component",
@@ -434,12 +457,6 @@ export const crudResources = [
             name: "FeatureValueBuilder",
             path: "/crud/feature/value-builder",
             component: "/crud/feature/value-builder/index.vue"
-          },
-          {
-            title: "列设置(简化模式)",
-            name: "FeatureColumnsSet",
-            path: "/crud/feature/columns-set",
-            component: "/crud/feature/columns-set/index.vue"
           },
           {
             title: "本地编辑",
