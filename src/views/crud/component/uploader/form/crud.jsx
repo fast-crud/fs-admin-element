@@ -103,6 +103,34 @@ export default function ({ expose }) {
             }
           }
         },
+        keyValueType: {
+          title: "valueType为key",
+          type: "file-uploader",
+          form: {
+            component: {
+              uploader: {
+                type: "form"
+              },
+              valueType: "key",
+              async buildUrl(value) {
+                return new Promise((resolve) => {
+                  const url = "http://www.docmirror.cn:7070/api/upload/form/download?key=" + value;
+                  resolve(url);
+                });
+              }
+            }
+          },
+          column: {
+            component: {
+              async buildUrl(value) {
+                return new Promise((resolve) => {
+                  const url = "http://www.docmirror.cn:7070/api/upload/form/download?key=" + value;
+                  resolve(url);
+                });
+              }
+            }
+          }
+        },
         limit: {
           title: "限制数量",
           type: "file-uploader",
