@@ -85,6 +85,7 @@ export default function ({ expose }) {
             component: {
               name: "el-switch",
               on: {
+                // 注意：必须要on前缀
                 onChange({ $event }) {
                   remoteDict.url = $event
                     ? "/mock/dicts/moreOpenStatusEnum?remote"

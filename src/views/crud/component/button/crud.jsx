@@ -52,6 +52,7 @@ export default function ({ expose }) {
                 return value != null;
               }),
               on: {
+                // 注意：必须要on前缀
                 onClick({ row }) {
                   ElMessage.success("按钮点击:" + row.button);
                 }
@@ -74,6 +75,7 @@ export default function ({ expose }) {
           column: {
             component: {
               on: {
+                // 注意：必须要on前缀
                 onClick({ row }) {
                   if (row.url) {
                     window.open(row.url);
@@ -97,6 +99,7 @@ export default function ({ expose }) {
               type: "text", // 按钮展示为链接样式
               on: {
                 //注册点击事件
+                // 注意：必须要on前缀
                 onClick({ row }) {
                   if (row.url) {
                     window.open(row.url);
