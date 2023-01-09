@@ -260,6 +260,12 @@ export const crudResources = [
             component: "/crud/form/layout/index.vue"
           },
           {
+            title: "表单单列模式",
+            name: "FormSingleColumn",
+            path: "/crud/form/single-column",
+            component: "/crud/form/single-column/index.vue"
+          },
+          {
             title: "表单校验",
             name: "FormValidation",
             path: "/crud/form/validation",
