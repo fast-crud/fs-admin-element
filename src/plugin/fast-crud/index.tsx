@@ -1,6 +1,6 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import { FastCrud } from "@fast-crud/fast-crud";
+import { ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import {
   FsExtendsUploader,
@@ -11,7 +11,7 @@ import {
 } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
-
+import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
 
 function install(app, options: any = {}) {
@@ -199,6 +199,25 @@ function install(app, options: any = {}) {
   app.use(FsExtendsCopyable);
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
+
+  // 自定义字段合并插件
+  const { registerMergeColumnPlugin } = useColumns();
+  registerMergeColumnPlugin({
+    name: "readonly-plugin",
+    order: 1,
+    handle: (columnProps: ColumnCompositionProps) => {
+      // 你可以在此处做你自己的处理
+      // 比如你可以定义一个readonly的公共属性，处理该字段只读，不能编辑
+      if (columnProps.readonly) {
+        // 合并column配置
+        _.merge(columnProps, {
+          form: { show: false },
+          viewForm: { show: true}
+        });
+      }
+      return columnProps;
+    }
+  });
 }
 
 export default {

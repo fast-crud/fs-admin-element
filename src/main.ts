@@ -8,7 +8,7 @@ import zhCn from "element-plus/es/locale/lang/zh-cn";
 import "element-plus/dist/index.css";
 import "dayjs/locale/zh-cn";
 
-import "virtual:windi.css";
+// import "virtual:windi.css";
 import "./style/common.less";
 import "./mock";
 import i18n from "./i18n";
