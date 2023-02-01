@@ -58,6 +58,7 @@ export default ({ command, mode }) => {
     //   exclude: ["@fast-crud/fast-crud-extends"],
     // },
     esbuild: {
+      drop: command === "build" ? ["debugger"] : [],
       jsxFactory: "h",
       jsxFragment: "Fragment"
     },
