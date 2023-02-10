@@ -3,19 +3,19 @@ import { uiContext } from "@fast-crud/fast-crud";
 export default function ({ expose }) {
   return {
     crudOptions: {
-      mode:{
-        name:'local',
-        isMergeWhenUpdate:true,
-        isAppendWhenAdd:true
+      mode: {
+        name: "local",
+        isMergeWhenUpdate: true,
+        isAppendWhenAdd: true
       },
       search: {
         show: false
       },
-      toolbar:{
-        show:false,
+      toolbar: {
+        show: false
       },
-      pagination:{
-        show:false
+      pagination: {
+        show: false
       },
       columns: {
         name: {
