@@ -282,6 +282,27 @@ export default function ({ expose }) {
             }
           }
         },
+        tags: {
+          title: "可输入",
+          type: "dict-select",
+          form: {
+            component: {
+              multiple: true,
+              allowCreate: true,
+              filterable: true
+            }
+          },
+          dict: dict({
+            data: [
+              { value: "sz", label: "深圳", color: "success" },
+              { value: "gz", label: "广州" },
+              { value: "wh", label: "武汉" },
+              { value: "sh", label: "上海" },
+              { value: "hz", label: "杭州" },
+              { value: "bj", label: "北京", color: "danger" }
+            ]
+          })
+        },
         statusSimple: {
           title: "普通选择",
           form: {
