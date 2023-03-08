@@ -28,6 +28,10 @@ export default function ({ crudExpose }) {
         editRequest,
         delRequest
       },
+      tabs: {
+        show: true,
+        name: "city"
+      },
       columns: {
         id: {
           title: "ID",

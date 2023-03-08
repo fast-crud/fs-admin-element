@@ -1,19 +1,17 @@
 import mockUtil from "/src/mock/base";
-const options = {
-  name: "DictCloneable",
+const options: any = {
+  name: "FeatureTabs",
   idGenerator: 0
 };
 const list = [
   {
-    status: "1",
-    remote: "2"
+    radio: "1"
   },
   {
-    status: "2",
-    remote: "3"
+    radio: "2"
   },
   {
-    status: "0"
+    radio: "3"
   }
 ];
 options.list = list;

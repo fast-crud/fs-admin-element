@@ -152,7 +152,11 @@ export default {
     font-size: 14px;
     background: #f6f6f6;
     display: flex;
+    height: auto;
     justify-content: space-between;
+    > div {
+      padding: 5px;
+    }
   }
   .header-buttons {
     display: flex;

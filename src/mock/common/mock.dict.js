@@ -20,6 +20,12 @@ const textStatus = [
   { id: "0", text: "关闭", color: "danger" }
 ];
 
+const textStatus2 = [
+  { id: "1", text: "打开", color: "success" },
+  { id: "2", text: "停止", color: "warning" },
+  { id: "3", text: "关闭", color: "danger" }
+];
+
 export function GetTreeChildrenByParentId(parentId) {
   return TreeNodesLazyLoader.getChildren(parentId);
 }
@@ -48,6 +54,17 @@ export default [
         code: 0,
         msg: "success",
         data: textStatus
+      };
+    }
+  },
+  {
+    path: "/mock/dicts/_OpenStatusEnum3",
+    method: "get",
+    handle() {
+      return {
+        code: 0,
+        msg: "success",
+        data: textStatus2
       };
     }
   },

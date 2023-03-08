@@ -9,6 +9,8 @@
     <div class="layout-top">
       <!-- ↓↓↓↓↓  关键插槽：动作条  ↓↓↓↓ -->
       <slot name="actionbar"></slot>
+
+      <slot name="tabs"></slot>
       <!-- ↓↓↓↓↓  上翻页条  ↓↓↓↓ -->
       <slot name="pagination"></slot>
     </div>
@@ -62,13 +64,26 @@ export default defineComponent({
     flex: 1; //重要，自适应撑开高度，表格固定表头必须
     overflow-y: auto;
   }
+  .layout-footer {
+    padding: 5px 10px 5px 10px;
+  }
   .fs-crud-actionbar {
     display: flex;
     align-items: center;
   }
+  .fs-crud-footer {
+    padding: 0 10px 0 10px;
+  }
   .fs-crud-pagination {
-    text-align: right;
-    padding: 5px 10px 5px 10px;
+    .fs-pagination {
+      .el-pagination {
+        justify-content: end;
+      }
+    }
+  }
+
+  .fs-tabs-filter {
+    margin-left: 10px;
   }
 }
 </style>

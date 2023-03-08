@@ -478,6 +478,12 @@ export const crudResources = [
             component: "/crud/feature/search-multi/index.vue"
           },
           {
+            title: "Tabs快捷查询",
+            name: "FeatureTabs",
+            path: "/crud/feature/tabs",
+            component: "/crud/feature/tabs/index.vue"
+          },
+          {
             title: "字段排序",
             name: "FeatureColumnSort",
             path: "/crud/feature/column-sort",

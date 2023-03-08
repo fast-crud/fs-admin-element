@@ -7,7 +7,7 @@ import * as path from "path";
 // import WindiCSS from "vite-plugin-windicss";
 import { generateModifyVars } from "./build/modify-vars";
 // import { configThemePlugin } from "./build/theme-plugin";
-
+import DefineOptions from "unplugin-vue-define-options/vite";
 // https://vitejs.dev/config/
 // 增加环境变量 _
 process.env.VITE_APP_VERSION = require("./package.json").version;
@@ -36,6 +36,7 @@ export default ({ command, mode }) => {
   return {
     base: "/element/",
     plugins: [
+      DefineOptions(),
       vueJsx(),
       vue(),
       // 压缩build后的代码

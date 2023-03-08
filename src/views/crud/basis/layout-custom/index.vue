@@ -1,17 +1,12 @@
 <template>
   <fs-page class="page-layout-custom">
     <template #header>
-      <div class="title">自定义布局</div>
+      <div class="title">
+        自定义布局
+        <span class="sub">通过配置container.is可以自定义布局，甚至可以支持上下两个翻页条</span>
+      </div>
     </template>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <el-alert
-          class="ml-5"
-          type="info"
-          title="通过配置container.is可以自定义布局，甚至可以支持上下两个翻页条 -------->"
-        />
-      </template>
-    </fs-crud>
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
