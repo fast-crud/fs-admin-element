@@ -70,6 +70,12 @@ export const crudResources = [
             name: "BasisColumnMergePlugin",
             path: "/crud/basis/column-merge-plugin",
             component: "/crud/basis/column-merge-plugin/index.vue"
+          },
+          {
+            title: "ResetCrudOptions",
+            name: "BasisReset",
+            path: "/crud/basis/reset",
+            component: "/crud/basis/reset/index.vue"
           }
         ]
       },
