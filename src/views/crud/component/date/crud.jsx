@@ -29,6 +29,11 @@ export default function ({ expose }) {
         scroll: { x: 1700 }
       },
       rowHandle: { fixed: "right" },
+      form: {
+        wrapper: {
+          width: "70%"
+        }
+      },
       columns: {
         id: {
           title: "ID",
@@ -48,16 +53,6 @@ export default function ({ expose }) {
             show: true,
             width: 185,
             component: {}
-          },
-          valueBuilder({ value, row, key }) {
-            if (value != null) {
-              row[key] = dayjs(value);
-            }
-          },
-          valueResolve({ value, row, key }) {
-            if (value != null) {
-              row[key] = value.valueOf();
-            }
           }
         },
         humanize: {
@@ -73,26 +68,23 @@ export default function ({ expose }) {
         },
         datetime: {
           title: "日期时间",
-          type: "datetime",
-          valueBuilder({ value, row, key }) {
-            if (value != null) {
-              row[key] = dayjs(value);
-            }
-          }
+          type: "datetime"
         },
         format: {
           title: "格式化",
           type: "datetime",
           form: {
             component: {
-              format: "YYYY年MM月DD日 HH:mm"
-              //valueFormat: "YYYY年MM月DD日 HH:mm"
+              //显示格式化
+              format: "YYYY年MM月DD日 HH:mm",
+              //输入值格式
+              valueFormat: "YYYY-MM-DD HH:mm:ss"
             }
           },
           column: {
             width: 180,
             component: {
-              // 行展示组件使用的dayjs，
+              // 显示格式化，行展示组件使用的dayjs，
               format: "YYYY年MM月DD日 HH:mm"
             }
           }
@@ -108,22 +100,12 @@ export default function ({ expose }) {
                 }
               }
             }
-          },
-          valueBuilder({ value, row, key }) {
-            if (value != null) {
-              row[key] = dayjs(value);
-            }
           }
         },
         disabledDate: {
           title: "禁用日期",
           type: "date",
           form: {
-            valueBuilder({ value, row, key }) {
-              if (value) {
-                row[key] = dayjs(value);
-              }
-            },
             component: {
               disabledDate(time) {
                 return time.getTime() < Date.now();
@@ -133,17 +115,35 @@ export default function ({ expose }) {
         },
         time: {
           title: "仅时间",
-          type: "time",
+          type: "time"
+        },
+        month: {
+          title: "月份",
+          type: "month"
+        },
+        week: {
+          title: "星期",
+          type: "week",
           form: {
-            valueBuilder({ value, row, key }) {
-              if (value) {
-                row[key] = dayjs(value);
-              }
-            },
-            valueResolve({ value }) {
-              console.log("resolve:", value);
+            component: {
+              format: "YYYY-w[周]",
+              valueFormat: "YYYY-MM-DD HH:mm:ss" //输入值的格式
             }
           }
+        },
+        //element 不支持季度选择
+        // quarter: {
+        //   title: "季度",
+        //   type: "quarter",
+        //   form: {
+        //     component: {
+        //       valueFormat: "YYYY-MM-DD HH:mm:ss" //输入值的格式
+        //     }
+        //   }
+        // },
+        year: {
+          title: "年份",
+          type: "year"
         },
         daterange: {
           title: "日期范围",
@@ -151,7 +151,7 @@ export default function ({ expose }) {
           search: { show: true, width: 300 },
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.daterangeStart, row.daterangeEnd)) {
-              row[key] = [dayjs(row.daterangeStart), dayjs(row.daterangeEnd)];
+              row[key] = [row.daterangeStart, row.daterangeEnd];
             }
           }
         },
@@ -160,7 +160,7 @@ export default function ({ expose }) {
           type: "datetimerange",
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.datetimerangeStart, row.datetimerangeEnd)) {
-              row[key] = [dayjs(row.datetimerangeStart), dayjs(row.datetimerangeEnd)];
+              row[key] = [row.datetimerangeStart, row.datetimerangeEnd];
             }
           },
           valueResolve({ form, key }) {
