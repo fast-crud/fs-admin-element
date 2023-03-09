@@ -1,5 +1,11 @@
 <template>
   <fs-page>
+    <template #header>
+      <div class="title">
+        Tabs快捷查询
+        <span class="sub">表格顶部显示tabs,点击tabs快捷查询</span>
+      </div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
