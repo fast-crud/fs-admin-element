@@ -22,6 +22,6 @@ app.use(ElementPlus, { size: "default", zIndex: 3000, locale: zhCn });
 app.use(router);
 app.use(i18n);
 app.use(store);
-app.use(components);
 app.use(plugin, { i18n });
+app.use(components);
 app.mount("#app");

@@ -1,12 +1,15 @@
 <template>
   <fs-page>
     <template #header>
-      <div class="title">表单独立使用</div>
+      <div class="title">独立使用表单</div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/use.html#useformwrapper">文档</a>
+      </div>
     </template>
     <div class="m-5">
-      <el-row :gutter="10">
+      <el-row :gutter="20">
         <el-col :span="12">
-          <el-card header="直接显示表单">
+          <el-card class="mt-10" header="直接显示表单">
             <fs-form ref="formRef" v-bind="formOptions" />
             <div style="margin-top: 10px">
               <el-button @click="formSubmit">提交表单</el-button>
@@ -15,11 +18,16 @@
           </el-card>
         </el-col>
         <el-col :span="12">
-          <el-card header="打开表单对话框">
+          <el-card class="mt-10" header="直接打开对话框, 无需写 fs-form-wrapper 标签">
+            <div style="margin-top: 10px">
+              <el-button @click="openFormWrapperNoTag">打开对话框</el-button>
+            </div>
+          </el-card>
+
+          <el-card class="mt-10" header="打开表单对话框">
             <el-button @click="openFormWrapper">打开表单对话框</el-button>
             <fs-form-wrapper ref="formWrapperRef" />
           </el-card>
-
           <el-card class="mt-10" header="打开表单对话框【复用crudBinding.addForm】">
             <el-button @click="openFormWrapper2">打开表单对话框</el-button>
             <fs-form-wrapper ref="formWrapperRef2" />
@@ -33,7 +41,7 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { ElMessage } from "element-plus";
-import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";
+import { useCrud, useExpose, useColumns, useFormWrapper } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
 
 function createFormOptions() {
@@ -58,11 +66,14 @@ function createFormOptions() {
       }
     },
     form: {
+      wrapper: {
+        title: "对话框"
+      },
       labelWidth: "120px",
       group: {
         groups: {
           testGroupName: {
-            header: "分组测试",
+            title: "分组测试",
             columns: ["groupField"]
           }
         }
@@ -93,7 +104,7 @@ function useFormDirect() {
     formReset
   };
 }
-function useFormWrapper() {
+function useFormWrapperUsingTag() {
   const formWrapperRef = ref();
   const formWrapperOptions = ref();
   formWrapperOptions.value = createFormOptions();
@@ -151,13 +162,31 @@ function useCrudBindingForm() {
   };
 }
 
+/**
+ * 无需写 fs-form-wrapper标签，直接打开对话框
+ * 此方式可以层叠打开多个对话框
+ */
+function useFormProvider() {
+  const { openDialog } = useFormWrapper();
+
+  async function openFormWrapperNoTag() {
+    const opts = createFormOptions();
+    const wrapperRef = await openDialog(opts);
+    console.log("对话框已打开", wrapperRef);
+  }
+  return {
+    openFormWrapperNoTag
+  };
+}
+
 export default defineComponent({
   name: "FormIndependent",
   setup() {
     return {
       ...useFormDirect(),
-      ...useFormWrapper(),
-      ...useCrudBindingForm()
+      ...useFormWrapperUsingTag(),
+      ...useCrudBindingForm(),
+      ...useFormProvider()
     };
   }
 });
