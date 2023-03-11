@@ -13,7 +13,7 @@ import {
   UserPageRes
 } from "@fast-crud/fast-crud";
 import { ElMessage } from "element-plus";
-import { useFormWrapper } from "@fast-crud/fast-crud/src";
+import { useFormWrapper } from "@fast-crud/fast-crud";
 
 function useCustomFormWrapperDemo(crudExpose: CrudExpose) {
   let index = 0;
