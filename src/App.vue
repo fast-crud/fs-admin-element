@@ -1,8 +1,6 @@
 <template>
   <el-config-provider :locale="locale">
-    <fs-form-provider>
-      <router-view v-if="routerEnabled" />
-    </fs-form-provider>
+    <router-view v-if="routerEnabled" />
   </el-config-provider>
 </template>
 

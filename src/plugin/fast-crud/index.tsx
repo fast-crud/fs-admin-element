@@ -13,6 +13,7 @@ import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
 import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
+import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 
 function install(app, options: any = {}) {
   app.use(UiElement);
@@ -160,6 +161,32 @@ function install(app, options: any = {}) {
       },
       domain: "http://d2p.file.handsfree.work"
     },
+    s3: {
+      //同时也支持minio
+      bucket: "fast-crud",
+      sdkOpts: {
+        s3ForcePathStyle: true,
+        signatureVersion: "v4",
+        region: "us-east-1",
+        forcePathStyle: true,
+        //minio与s3完全适配
+        endpoint: "https://play.min.io",
+        credentials: {
+          //不建议在客户端使用secretAccessKey来上传
+          accessKeyId: "Q3AM3UQ867SPQQA43P2F", //访问登录名
+          secretAccessKey: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG" //访问密码
+        }
+      },
+      //预签名配置，向后端获取上传的预签名连接
+      async getSignedUrl(bucket: string, key: string, options: any) {
+        return await GetSignedUrl(bucket, key, "put");
+      },
+      successHandle(ret: any) {
+        // 上传完成后可以在此处处理结果，修改url什么的
+        console.log("success handle:", ret);
+        return ret;
+      }
+    },
     form: {
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
       name: "file",
@@ -212,7 +239,7 @@ function install(app, options: any = {}) {
         // 合并column配置
         _.merge(columnProps, {
           form: { show: false },
-          viewForm: { show: true}
+          viewForm: { show: true }
         });
       }
       return columnProps;
