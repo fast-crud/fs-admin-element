@@ -27,8 +27,8 @@ export default {
   name: "FsLocale",
   setup() {
     const languages = computed(() => {
-      const map = i18n.global.messages?.value || {};
-      const list = [];
+      const map: any = i18n.global.messages?.value || {};
+      const list: any = [];
       _.forEach(map, (item, key) => {
         list.push({
           key,
@@ -41,8 +41,8 @@ export default {
       return i18n.global.locale.value;
     });
 
-    const routerReload = inject("fn:router.reload");
-    const changeLocale = (change) => {
+    const routerReload: any = inject("fn:router.reload");
+    const changeLocale = (change: any) => {
       i18n.global.locale.value = change;
       routerReload();
     };

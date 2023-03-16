@@ -1,5 +1,5 @@
 <template>
-  <pre class="fs-highlight hljs" v-html="highlightHTML"></pre>
+  <pre class="fs-highlight hljs" v-html="highlightHTMLRef"></pre>
 </template>
 
 <script lang="ts">
@@ -7,9 +7,11 @@
 // https://highlightjs.org/usage/
 // http://highlightjs.readthedocs.io/en/latest/api.html#configure-options
 import highlight from "highlight.js";
+import { ref, watch } from "vue";
+import { defineComponent, Ref } from "vue";
 import "../highlight-styles/github-gist.css";
 import htmlFormat from "./libs/htmlFormat";
-export default {
+export default defineComponent({
   name: "FsHighlight",
   props: {
     code: {
@@ -28,24 +30,25 @@ export default {
       default: ""
     }
   },
-  data() {
-    return {
-      highlightHTML: ""
-    };
-  },
-  watch: {
-    code() {
-      this.highlight();
-    }
-  },
-  mounted() {
-    this.highlight();
-  },
-  methods: {
-    highlight() {
-      const code = this.formatHtml ? htmlFormat(this.code) : this.code;
-      this.highlightHTML = highlight.highlightAuto(code, [
-        this.lang,
+  setup(props: any, ctx: any) {
+    const highlightHTMLRef: Ref = ref("");
+
+    watch(
+      () => {
+        return props.code;
+      },
+      () => {
+        doHighlight();
+      },
+      {
+        immediate: true
+      }
+    );
+
+    function doHighlight() {
+      const code = props.formatHtml ? htmlFormat(props.code) : props.code;
+      highlightHTMLRef.value = (highlight as any).highlightAuto(code, [
+        props.lang,
         "html",
         "javascript",
         "json",
@@ -54,8 +57,12 @@ export default {
         "less"
       ]).value;
     }
+    return {
+      highlightHTMLRef,
+      doHighlight
+    };
   }
-};
+});
 </script>
 
 <style lang="less">
