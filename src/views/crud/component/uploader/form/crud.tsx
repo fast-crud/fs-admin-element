@@ -172,10 +172,11 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           type: "file-uploader",
           form: {
             rules: [
-              { required: true, message: "此项必传" },
+              { required: true, message: "此项必传", trigger: "input" },
               {
                 validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
-                message: "还有文件正在上传，请稍候"
+                message: "还有文件正在上传，请稍候",
+                trigger: "input"
               }
             ],
             component: {

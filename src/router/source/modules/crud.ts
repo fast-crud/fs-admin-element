@@ -394,12 +394,6 @@ export const crudResources = [
         redirect: "/crud/feature/dropdown",
         children: [
           {
-            title: "操作列按钮折叠",
-            name: "FeatureDropdown",
-            path: "/crud/feature/dropdown",
-            component: "/crud/feature/dropdown/index.vue"
-          },
-          {
             title: "部件显隐",
             name: "FeatureHide",
             path: "/crud/feature/hide",
