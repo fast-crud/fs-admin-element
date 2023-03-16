@@ -2,7 +2,7 @@
   <pre class="fs-highlight hljs" v-html="highlightHTML"></pre>
 </template>
 
-<script>
+<script lang="ts">
 // 相关文档
 // https://highlightjs.org/usage/
 // http://highlightjs.readthedocs.io/en/latest/api.html#configure-options

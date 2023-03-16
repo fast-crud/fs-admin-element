@@ -33,7 +33,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import dayjs from "dayjs";

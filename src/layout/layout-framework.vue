@@ -65,7 +65,7 @@
   </el-container>
 </template>
 
-<script>
+<script lang="ts">
 import { computed, onErrorCaptured, ref } from "vue";
 import FsMenu from "./components/menu/index.jsx";
 import FsLocale from "./components/locale/index.vue";

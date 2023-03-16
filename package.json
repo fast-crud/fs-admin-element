@@ -14,7 +14,8 @@
     "preview": "vite preview",
     "pretty-quick": "pretty-quick",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
-    "upgrade": "yarn upgrade-interactive --latest"
+    "upgrade": "yarn upgrade-interactive --latest",
+    "tsc": "vue-tsc --noEmit --skipLibCheck"
   },
   "author": "Greper",
   "license": "MIT",

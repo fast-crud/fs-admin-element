@@ -19,7 +19,7 @@
   </el-dropdown>
 </template>
 
-<script>
+<script lang="ts">
 import i18n from "../../../i18n";
 import { computed, inject } from "vue";
 import _ from "lodash-es";
