@@ -1,4 +1,5 @@
 import { requestForMock } from "/src/api/service";
+
 const request = requestForMock;
 const apiPrefix = "/mock/FormInner";
 export function GetList(query) {

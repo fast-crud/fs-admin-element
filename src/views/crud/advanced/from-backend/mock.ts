@@ -1,6 +1,6 @@
 import mockUtil from "/src/mock/base";
 import { crudOptions } from "./crud-backend";
-const options = {
+const options: any = {
   name: "AdvancedFromBackend",
   idGenerator: 0
 };

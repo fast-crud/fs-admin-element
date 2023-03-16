@@ -1,6 +1,7 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -49,7 +50,6 @@ export default function ({ expose }) {
           search: { show: false },
           type: "dict-tree",
           dict: dict({
-            cloneable: false,
             isTree: true,
             url: "/mock/dicts/cascaderData?single"
           }),

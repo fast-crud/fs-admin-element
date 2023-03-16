@@ -1,5 +1,8 @@
 import * as api from "./api";
-export default function ({ crudExpose }) {
+
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };

@@ -1,6 +1,8 @@
 import * as api from "./api";
 import { useRouter } from "vue-router";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const router = useRouter();
 
   const { getFormRef, getFormData } = expose;
@@ -80,7 +82,7 @@ export default function ({ expose }) {
           title: "详情",
           type: ["editor-wang", "colspan"],
           form: {
-             labelWidth: "0px"
+            labelWidth: "0px"
           }
         },
         product: {

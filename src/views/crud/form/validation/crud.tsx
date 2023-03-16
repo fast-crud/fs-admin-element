@@ -1,13 +1,14 @@
 import * as api from "./api";
-import { dict, useExpose } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const { getFormRef, getFormData } = expose;
   const validatePass1 = async (rule, value) => {
     if (value === "") {
       throw new Error("请输入密码");
     }
     if (getFormData().password2 !== "") {
-      let formRef = getFormRef().getFormRef();
+      const formRef = getFormRef().getFormRef();
       const validateFields = formRef.validateFields || formRef.validateField;
       validateFields(["password2"]);
     }

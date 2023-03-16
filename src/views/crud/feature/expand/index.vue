@@ -7,11 +7,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import createCrudOptions from "./crud";
-import { useExpose, useCrud } from "@fast-crud/fast-crud";
-import { ElMessage, ElMessageBox } from "element-plus";
+import { useCrud, useExpose } from "@fast-crud/fast-crud";
+import { ElDialog, ElMessage } from "element-plus";
 import { BatchDelete } from "./api";
+
 export default defineComponent({
   name: "FeatureExpand",
   setup() {
@@ -22,7 +23,7 @@ export default defineComponent({
     // 暴露的方法
     const { expose } = useExpose({ crudRef, crudBinding });
     // 你的crud配置
-    const { crudOptions, selectedRowKeys } = createCrudOptions({ expose });
+    const { crudOptions } = createCrudOptions({ expose });
     // 初始化crud配置
     // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
     const { resetCrudOptions } = useCrud({ expose, crudOptions });
@@ -34,27 +35,9 @@ export default defineComponent({
       expose.doRefresh();
     });
 
-    const handleBatchDelete = () => {
-      if (selectedRowKeys.value?.length > 0) {
-        Modal.confirm({
-          title: "确认",
-          content: `确定要批量删除这${selectedRowKeys.value.length}条记录吗`,
-          async onOk() {
-            await BatchDelete(selectedRowKeys.value);
-            ElMessage.info("删除成功");
-            expose.doRefresh();
-            selectedRowKeys.value = [];
-          }
-        });
-      } else {
-        ElMessage.error("请先勾选记录");
-      }
-    };
-
     return {
       crudBinding,
-      crudRef,
-      handleBatchDelete
+      crudRef
     };
   }
 });

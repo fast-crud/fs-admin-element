@@ -41,7 +41,7 @@ export default defineComponent({
     });
 
     function showDemo() {
-      message("演示按钮");
+      ElMessage.info("演示按钮");
     }
     return {
       crudBinding,

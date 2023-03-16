@@ -1,6 +1,7 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -36,8 +37,8 @@ export default function ({ expose }) {
             columnSetDisabled: true, //禁止在列设置中选择
             formatter: (context) => {
               //计算序号,你可以自定义计算规则，此处为翻页累加
-              let index = context.index ?? 1;
-              let pagination = expose.crudBinding.value.pagination;
+              const index = context.index ?? 1;
+              const pagination = expose.crudBinding.value.pagination;
               return ((pagination.currentPage ?? 1) - 1) * pagination.pageSize + index + 1;
             }
           }

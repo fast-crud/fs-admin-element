@@ -1,6 +1,7 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const editRequest = async ({ form, row }) => {
     form.id = row.id;
     return await api.UpdateObj(form);

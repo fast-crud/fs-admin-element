@@ -1,6 +1,6 @@
 import mockUtil from "/src/mock/base";
 
-const options = {
+const options: any = {
   name: "FormValidation",
   idGenerator: 0
 };

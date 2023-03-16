@@ -1,8 +1,8 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
 import { requestForMock } from "../../../../api/service";
 
-export default function ({ expose }) {
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -78,7 +78,7 @@ export default function ({ expose }) {
             },
             valueChange({ form, value, getComponentRef }) {
               console.log("form", value);
-              let componentRef = getComponentRef("remote");
+              const componentRef = getComponentRef("remote");
               if (componentRef == null) {
                 return componentRef;
               }

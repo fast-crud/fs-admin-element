@@ -1,9 +1,9 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
 
-export default function ({ expose }) {
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
-    const list = await api.GetTree(query);
+    const list = await api.GetTree();
 
     return {
       current: 1,
@@ -33,7 +33,7 @@ export default function ({ expose }) {
     await afterChange();
     return ret;
   };
-  let permissionTreeDict = dict({
+  const permissionTreeDict = dict({
     url: "/sys/authority/permission/tree",
     isTree: true,
     value: "id",

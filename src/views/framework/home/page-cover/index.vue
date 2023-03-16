@@ -1,6 +1,6 @@
 <template>
   <div class="d2-page-cover">
-    <div class="d2-page-cover__title" @click="$open('https://github.com/fast-crud/fast-crud')">
+    <div class="d2-page-cover__title">
       <div class="title-line">
         <img width="50" src="./image/logo.svg" />
         FsAdmin v{{ version }}

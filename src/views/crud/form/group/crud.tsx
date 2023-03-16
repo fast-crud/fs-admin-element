@@ -1,5 +1,8 @@
 import * as api from "./api";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+import { resolveComponent } from "vue";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -81,10 +84,11 @@ export default function ({ expose }) {
               slots: {
                 //自定义header
                 title: () => {
+                  const checkOutlined = resolveComponent("CheckOutlined");
                   return (
                     <span style={"color:green"}>
                       商品基础
-                      <CheckOutlined style={"margin-left:10px;"} />
+                      <checkOutlined style={"margin-left:10px;"} />
                     </span>
                   );
                 }

@@ -1,16 +1,30 @@
 import * as api from "./api";
 import { ref, shallowRef } from "vue";
-import { compute } from "@fast-crud/fast-crud";
+import {
+  AddReq,
+  compute,
+  CreateCrudOptionsProps,
+  CreateCrudOptionsRet,
+  DelReq,
+  EditReq,
+  UserPageQuery,
+  UserPageRes
+} from "@fast-crud/fast-crud";
 import SubTable from "./sub-table/index.vue";
-export default function ({ expose, asideTableRef }) {
-  const editRequest = async ({ form, row }) => {
+
+export default function ({ crudExpose, asideTableRef }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+  const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
+    return await api.GetList(query);
+  };
+  const editRequest = async ({ form, row }: EditReq) => {
     form.id = row.id;
     return await api.UpdateObj(form);
   };
-  const delRequest = async ({ row }) => {
+  const delRequest = async ({ row }: DelReq) => {
     return await api.DelObj(row.id);
   };
-  const addRequest = async ({ form }) => {
+
+  const addRequest = async ({ form }: AddReq) => {
     return await api.AddObj(form);
   };
   const currentRow = ref();
@@ -22,7 +36,7 @@ export default function ({ expose, asideTableRef }) {
         // 监听 el-table的单行选中事件
         onCurrentChange(currentRow) {
           console.log("选中行", currentRow);
-          if(asideTableRef.value){
+          if (asideTableRef.value) {
             asideTableRef.value.setSearchFormData({ form: { gradeId: currentRow.id } });
             asideTableRef.value.doRefresh();
           }

@@ -40,7 +40,7 @@ export const useResourceStore = defineStore({
     getFrameworkMenus() {
       return this.frameworkMenus;
     }
-  },
+  } as any,
   actions: {
     clear() {
       this.inited = false;

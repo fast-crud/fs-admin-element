@@ -5,7 +5,7 @@
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <el-button v-permission="'sys:auth:per:add'" style="margin-left: 20px" @click="addHandle({})">
-        <fs-icon :icon="$fsui.icons.add"></fs-icon>
+        <fs-icon :icon="ui.icons.add"></fs-icon>
         添加</el-button
       >
       <fs-permission-tree
@@ -58,7 +58,7 @@ export default defineComponent({
     //用户业务代码
 
     async function addHandle(item) {
-      await expose.openAdd({ initialForm: { parentId: item?.id ?? -1 } });
+      await expose.openAdd({ row: { parentId: item?.id ?? -1 } });
     }
     async function editHandle(item) {
       await expose.openEdit({ row: item });
@@ -74,13 +74,15 @@ export default defineComponent({
       remove: hasPermissions("sys:auth:per:remove")
     });
 
+    const { ui } = useUi();
     return {
       crudBinding,
       crudRef,
       addHandle,
       editHandle,
       removeHandle,
-      permission
+      permission,
+      ui
     };
   }
 });

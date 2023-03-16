@@ -22,9 +22,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive } from "vue";
-import { ElMessage } from "element-plus";
+import {defineComponent, reactive} from "vue";
+import {ElMessage} from "element-plus";
 import FeatureLocalModelValueInput from "./local.vue";
+
 export default defineComponent({
   name: "FeatureLocalVModel",
   components: { FeatureLocalModelValueInput },

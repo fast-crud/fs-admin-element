@@ -1,6 +1,7 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -16,7 +17,6 @@ export default function ({ expose }) {
     return await api.AddObj(form);
   };
   const statusDict = dict({
-    cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
     data: [
       { value: "1", label: "开启", color: "success" },
       { value: "2", label: "停止", color: null },
@@ -25,7 +25,6 @@ export default function ({ expose }) {
   });
 
   const remoteDict = dict({
-    cloneable: false, // 关闭cloneable，任何情况下，都使用同一个dict
     url: "/mock/dicts/OpenStatusEnum",
     immediate: false
   });

@@ -1,13 +1,14 @@
 import * as api from "./api";
 import _ from "lodash-es";
 import { dict } from "@fast-crud/fast-crud";
+
 export default function ({ expose, localDataRef }) {
   const pageRequest = async ({ page, query }) => {
     //总数据
     let data = localDataRef.value;
     //获取请求参数
     const limit = page.limit;
-    let offset = page.offset;
+    const offset = page.offset;
     data = data.filter((item) => {
       // 根据你的业务，编写你的本地查询逻辑
       // text改成你的查询字段

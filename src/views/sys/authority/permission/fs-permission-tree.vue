@@ -12,11 +12,11 @@
       <div :class="'node-title-pane'">
         <div class="node-title">{{ data.title }}</div>
         <div v-if="editable === true" class="node-suffix">
-          <fs-icon v-if="actions.add !== false" :icon="$fsui.icons.add" @click.stop="add(data)" />
-          <fs-icon v-if="actions.edit !== false && data.id !== -1" :icon="$fsui.icons.edit" @click.stop="edit(data)" />
+          <fs-icon v-if="actions.add !== false" :icon="ui.icons.add" @click.stop="add(data)" />
+          <fs-icon v-if="actions.edit !== false && data.id !== -1" :icon="ui.icons.edit" @click.stop="edit(data)" />
           <fs-icon
             v-if="actions.remove !== false && data.id !== -1"
-            :icon="$fsui.icons.remove"
+            :icon="ui.icons.remove"
             @click.stop="remove(data)"
           />
         </div>
@@ -27,8 +27,7 @@
 
 <script lang="ts">
 import _ from "lodash-es";
-import getEachDeep from "deepdash-es/getEachDeep";
-const eachDeep = getEachDeep(_);
+import { useUi, utils } from "@fast-crud/fast-crud";
 import { defineComponent, ref, computed, nextTick, onMounted } from "vue";
 export default defineComponent({
   name: "FsPermissionTree",
@@ -47,16 +46,17 @@ export default defineComponent({
       default: {}
     },
     props: {}
-  },
+  } as any,
   emits: ["add", "edit", "remove"],
-  setup(props, ctx) {
+  setup(props: any, ctx) {
     const treeRef = ref();
+    const { ui } = useUi();
     const computedTree = computed(() => {
       if (props.tree == null) {
         return null;
       }
       const clone = _.cloneDeep(props.tree);
-      eachDeep(clone, (value, key, pNode, context) => {
+      utils.deepdash.forEachDeep(clone, (value, key, pNode, context) => {
         if (value == null) {
           return;
         }
@@ -140,7 +140,8 @@ export default defineComponent({
       onChecked,
       getChecked,
       computedProps,
-      setCheckedKeys
+      setCheckedKeys,
+      ui
     };
   }
 });

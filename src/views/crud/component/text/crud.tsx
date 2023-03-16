@@ -1,5 +1,8 @@
 import * as api from "./api";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+import { resolveComponent } from "vue";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -43,10 +46,11 @@ export default function ({ expose }) {
               children: {
                 //使用el-input的suffix插槽
                 suffix() {
+                  const searchIcon = resolveComponent("Search");
                   return (
                     <el-icon>
                       {" "}
-                      <Search />{" "}
+                      <searchIcon />{" "}
                     </el-icon>
                   );
                 }

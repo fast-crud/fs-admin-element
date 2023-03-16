@@ -1,6 +1,7 @@
 import * as api from "./api";
-import { dict } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -17,7 +18,6 @@ export default function ({ expose }) {
   };
 
   const remoteDict = dict({
-    cloneable: true,
     url: "/mock/dicts/OpenStatusEnum"
   });
 
@@ -62,7 +62,7 @@ export default function ({ expose }) {
             valueChange({ row, getComponentRef }) {
               // 这里不能使用remoteDict,因为在分发时已经clone到column配置中了
               // 这里dict修改不会影响form里面的字典数据，但会影响所有列里面的字典
-              let componentRef = getComponentRef("remote");
+              const componentRef = getComponentRef("remote");
               if (componentRef == null) {
                 return;
               }

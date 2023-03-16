@@ -9,7 +9,7 @@ import {
   UserPageQuery,
   UserPageRes
 } from "@fast-crud/fast-crud";
-import { ref } from "vue";
+
 export default function ({ crudExpose, customValue }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);

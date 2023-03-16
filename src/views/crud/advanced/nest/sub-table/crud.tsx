@@ -1,13 +1,27 @@
 import * as api from "./api";
-export default function ({ expose, props, ctx }) {
-  const editRequest = async ({ form, row }) => {
+import {
+  AddReq,
+  CreateCrudOptionsProps,
+  CreateCrudOptionsRet,
+  DelReq,
+  EditReq,
+  UserPageQuery,
+  UserPageRes
+} from "@fast-crud/fast-crud";
+
+export default function ({ crudExpose, ctx }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+  const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
+    return await api.GetList(query);
+  };
+  const editRequest = async ({ form, row }: EditReq) => {
     form.id = row.id;
     return await api.UpdateObj(form);
   };
-  const delRequest = async ({ row }) => {
+  const delRequest = async ({ row }: DelReq) => {
     return await api.DelObj(row.id);
   };
-  const addRequest = async ({ form }) => {
+
+  const addRequest = async ({ form }: AddReq) => {
     return await api.AddObj(form);
   };
 
@@ -16,7 +30,7 @@ export default function ({ expose, props, ctx }) {
       table: {
         highlightCurrentRow: true,
         onCurrentChange: (currentRow) => {
-          if(currentRow != null){
+          if (currentRow != null) {
             ctx.emit("update:modelValue", currentRow?.id);
           }
         }

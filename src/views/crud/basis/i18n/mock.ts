@@ -1,5 +1,5 @@
 import mockUtil from "/src/mock/base";
-const options = {
+const options: any = {
   name: "BasisI18n",
   idGenerator: 0
 };

@@ -1,8 +1,9 @@
 import * as api from "./api";
-import { dict, uiContext, useExpose } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict, uiContext } from "@fast-crud/fast-crud";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
-export default function ({ expose }) {
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const ui = uiContext.get();
   const pageRequest = async (query) => {
     return await api.GetList(query);

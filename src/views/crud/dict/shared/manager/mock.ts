@@ -1,5 +1,5 @@
 import mockUtil from "/src/mock/base";
-const options = {
+const options: any = {
   name: "DictSharedManager",
   idGenerator: 0,
   copyTimes: 1

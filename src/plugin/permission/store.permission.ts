@@ -50,7 +50,7 @@ export const usePermissionStore = defineStore({
     isInited() {
       return this.inited;
     }
-  },
+  } as any,
   actions: {
     init({ permissions }) {
       this.permissions = permissions;

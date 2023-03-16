@@ -1,4 +1,6 @@
-export default function ({ expose }) {
+import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   return {
     crudOptions: {
       form: {

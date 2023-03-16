@@ -9,7 +9,6 @@
           hide-add
           @update:modelValue="handleClick"
           @edit="handleTabEdit"
-          @contextmenu="handleContextmenu"
         >
           <el-tab-pane
             v-for="item in page.getOpened"
@@ -200,7 +199,7 @@ export default {
         this.close({ tagName });
       }
     }
-  }
+  } as any
 };
 </script>
 <style lang="less">

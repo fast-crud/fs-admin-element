@@ -1,8 +1,8 @@
 import * as api from "./api";
-import { utils } from "@fast-crud/fast-crud";
-import dayjs from "dayjs";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, utils } from "@fast-crud/fast-crud";
+
 console.log("utils", utils);
-export default function ({ expose }) {
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };

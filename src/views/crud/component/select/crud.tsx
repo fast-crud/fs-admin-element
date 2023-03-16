@@ -1,8 +1,9 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
-import { dict } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
 import { ref } from "vue";
 import _ from "lodash-es";
+
 function useSearchRemote() {
   let lastFetchId = 0;
 
@@ -11,7 +12,7 @@ function useSearchRemote() {
     loading: ref(false)
   };
 
-  const fetchUser = _.debounce(async (value) => {
+  const fetchUser = _.debounce(async (value?) => {
     console.log("fetching user", value);
     lastFetchId += 1;
     const fetchId = lastFetchId;
@@ -36,7 +37,8 @@ function useSearchRemote() {
     searchState: state
   };
 }
-export default function ({ expose }) {
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -54,7 +56,7 @@ export default function ({ expose }) {
 
   const { fetchUser, searchState } = useSearchRemote();
 
-  let cityDicts = dict({
+  const cityDicts = dict({
     value: "id",
     label: "text",
     data: [
@@ -203,7 +205,6 @@ export default function ({ expose }) {
           title: "禁用某个选项",
           type: "dict-select",
           dict: dict({
-            cloneable: true,
             url: "/mock/dicts/OpenStatusEnum?disabledOptions"
           }),
           form: {
@@ -227,7 +228,6 @@ export default function ({ expose }) {
           title: "默认值",
           type: "dict-select",
           dict: dict({
-            cloneable: true,
             url: "/mock/dicts/OpenStatusEnum?disabledOptions"
           }),
           form: {

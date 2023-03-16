@@ -43,14 +43,14 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, reactive, ref, toRaw } from "vue";
+import { defineComponent, reactive, Ref, ref, toRaw } from "vue";
 import { useUserStore } from "/src/store/modules/user";
 export default defineComponent({
-  name: "Register",
+  name: "RegisterPage",
   setup() {
     const userStore = useUserStore();
-    const formRef = ref();
-    const formState = reactive({
+    const formRef: Ref = ref();
+    const formState: any = reactive({
       username: "",
       password: ""
     });

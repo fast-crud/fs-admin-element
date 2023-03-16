@@ -1,6 +1,7 @@
 import * as api from "./api";
-import { utils, dict, compute } from "@fast-crud/fast-crud";
-export default function ({ expose }) {
+import { compute, CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };

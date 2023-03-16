@@ -1,7 +1,8 @@
 import * as api from "./api";
-import { dict, compute } from "@fast-crud/fast-crud";
+import { compute, CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
 import { ElMessage } from "element-plus";
-export default function ({ expose }) {
+
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };

@@ -4,8 +4,8 @@ import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 export async function generateSignedUrl(bucket: string, key: string, type: "put" | "get" = "get") {
   const client = new S3Client({
-    s3ForcePathStyle: true,
-    signatureVersion: "v4",
+    // s3ForcePathStyle: true,
+    // signatureVersion: "v4",
     region: "us-east-1",
     forcePathStyle: true,
     endpoint: "https://play.min.io",
