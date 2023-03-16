@@ -35,6 +35,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { useUi } from "@fast-crud/fast-crud";
+import helper from "./helper";
 export default defineComponent({
   name: "PageCover",
   setup() {
