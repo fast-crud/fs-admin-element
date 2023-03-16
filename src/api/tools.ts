@@ -58,7 +58,7 @@ export function errorLog(error) {
 /**
  * @param {String} msg 错误信息
  */
-export function errorCreate(msg) {
+export function errorCreate(msg: any) {
   const error = new Error(msg);
   errorLog(error);
   throw error;
