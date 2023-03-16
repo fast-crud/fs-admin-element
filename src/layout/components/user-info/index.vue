@@ -10,7 +10,7 @@
     </template>
   </el-dropdown>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 import { useUserStore } from "/src/store/modules/user";
 import { ElMessageBox } from "element-plus";

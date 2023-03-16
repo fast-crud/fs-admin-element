@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref, defineComponent } from "vue";
 import FsThemeColorPicker from "./color-picker.vue";
 import { useSettingStore } from "/@/store/modules/settings";

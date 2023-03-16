@@ -56,7 +56,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { usePageStore } from "../../../store/modules/page";
 import { computed } from "vue";
 export default {

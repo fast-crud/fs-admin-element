@@ -32,7 +32,7 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 import helper from "./helper";
 
 import { defineComponent, ref } from "vue";

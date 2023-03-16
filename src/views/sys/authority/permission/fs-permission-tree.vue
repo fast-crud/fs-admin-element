@@ -25,7 +25,7 @@
   </el-tree>
 </template>
 
-<script>
+<script lang="ts">
 import _ from "lodash-es";
 import getEachDeep from "deepdash-es/getEachDeep";
 const eachDeep = getEachDeep(_);

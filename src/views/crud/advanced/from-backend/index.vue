@@ -2,7 +2,7 @@
   <fs-crud v-if="crudBinding" ref="crudRef" v-bind="crudBinding" />
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, dict, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";

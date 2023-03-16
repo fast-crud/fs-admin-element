@@ -38,7 +38,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref } from "vue";
 import { ElMessage } from "element-plus";
 import { useCrud, useExpose, useColumns, useFormWrapper } from "@fast-crud/fast-crud";

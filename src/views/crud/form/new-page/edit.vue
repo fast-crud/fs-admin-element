@@ -12,7 +12,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { useRoute } from "vue-router";
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud, useExpose, useColumns } from "@fast-crud/fast-crud";

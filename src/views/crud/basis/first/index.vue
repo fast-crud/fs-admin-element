@@ -4,7 +4,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import { useExpose } from "@fast-crud/fast-crud";

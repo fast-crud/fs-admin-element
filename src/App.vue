@@ -4,7 +4,7 @@
   </el-config-provider>
 </template>
 
-<script>
+<script lang="ts">
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 import { provide, ref, nextTick } from "vue";
 import { usePageStore } from "/src/store/modules/page";

@@ -12,7 +12,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted } from "vue";
 import createCrudOptions from "./crud";
 import { useExpose, useCrud } from "@fast-crud/fast-crud";

@@ -12,7 +12,7 @@
         <fs-highlight :code="helper.crud" lang="javascript" />
       </div>
       <div class="icon">
-        <fs-icon :icon="$fsui.icons.arrowRight" />
+        <fs-icon :icon="ui.icons.arrowRight" />
       </div>
       <div class="right">
         <img style="border: 1px solid #eee" src="./image/crud.png" />
@@ -32,22 +32,17 @@
     </div>
   </div>
 </template>
-<script>
-import helper from "./helper";
-
+<script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useUi } from "@fast-crud/fast-crud";
 export default defineComponent({
   name: "PageCover",
   setup() {
     const version = ref(import.meta.env.VITE_APP_VERSION);
-
+    const { ui } = useUi();
     return {
-      version
-    };
-  },
-  data() {
-    return {
-      helper: helper
+      version,
+      ui
     };
   }
 });

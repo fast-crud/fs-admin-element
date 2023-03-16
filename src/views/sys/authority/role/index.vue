@@ -25,7 +25,7 @@
   </fs-page>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent, ref, onMounted, nextTick } from "vue";
 import { useCrud, useExpose } from "@fast-crud/fast-crud";
 import createCrudOptions from "./crud";
