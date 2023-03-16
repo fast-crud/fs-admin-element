@@ -42,7 +42,8 @@ export default defineComponent({
     const { ui } = useUi();
     return {
       version,
-      ui
+      ui,
+      helper
     };
   }
 });
