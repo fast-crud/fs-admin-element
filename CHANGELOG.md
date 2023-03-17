@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.11.1](https://github.com/fast-crud/fast-crud/compare/v1.11.0...v1.11.1) (2023-03-17)
+
+**Note:** Version bump only for package @fast-crud/fs-admin-element
+
+
+
+
+
+# [1.11.0](https://github.com/fast-crud/fast-crud/compare/v1.10.0...v1.11.0) (2023-03-16)
+
+
+### Performance Improvements
+
+* 全面ts化 ([168d3a2](https://github.com/fast-crud/fast-crud/commit/168d3a240eb67548195c31a5fa4cb5aedb8a410c))
+* ts定义优化 ([37bbca9](https://github.com/fast-crud/fast-crud/commit/37bbca9ffe10948f97588d0327e80bf77574879e))
+
+
+
+
+
 # [1.10.0](https://github.com/fast-crud/fast-crud/compare/v1.9.2...v1.10.0) (2023-03-11)
 
 

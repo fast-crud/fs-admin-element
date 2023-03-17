@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-admin-element",
-  "version": "1.10.0",
+  "version": "1.11.1",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -22,9 +22,9 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.292.0",
     "@aws-sdk/s3-request-presigner": "^3.292.0",
-    "@fast-crud/fast-crud": "workspace:^1.10.0",
-    "@fast-crud/fast-extends": "workspace:^1.10.0",
-    "@fast-crud/ui-element": "workspace:^1.10.0",
+    "@fast-crud/fast-crud": "workspace:^1.11.1",
+    "@fast-crud/fast-extends": "workspace:^1.11.1",
+    "@fast-crud/ui-element": "workspace:^1.11.1",
     "@iconify/iconify": "^3.1.0",
     "@iconify/json": "^2.2.35",
     "@purge-icons/generated": "^0.9.0",
@@ -49,7 +49,7 @@
     "vue-cropperjs": "^5.0.0",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6",
-    "vuedraggable": "^2.24.3"
+    "vuedraggable": "^4.0.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",

@@ -19,8 +19,7 @@ import { ElMessage } from "element-plus";
 export default defineComponent({
   name: "FeatureTabs",
   setup() {
-    const customValue: any = {}; //自定义变量，传给createCrudOptions的额外参数（可以任意命名，任意多个）
-    const { crudBinding, crudRef, crudExpose, customExport } = useFs({ createCrudOptions, customValue } as UseFsProps);
+    const { crudBinding, crudRef, crudExpose } = useFs({ createCrudOptions });
 
     // 页面打开后获取列表数据
     onMounted(() => {
