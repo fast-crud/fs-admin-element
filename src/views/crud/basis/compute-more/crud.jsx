@@ -1,8 +1,7 @@
 import * as api from "./api";
-import { requestForMock } from "/src/api/service";
 import { useCompute } from "@fast-crud/fast-crud";
-import { ElMessage } from "element-plus";
-import { ref, computed } from "vue";
+import { computed, ref } from "vue";
+
 const { asyncCompute, compute } = useCompute();
 export default function ({ expose }) {
   const pageRequest = async (query) => {
