@@ -12,7 +12,7 @@ import {
 } from "@fast-crud/fast-crud";
 import SubTable from "./sub-table/index.vue";
 
-export default function ({ crudExpose, asideTableRef }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default function ({ crudExpose, context: { asideTableRef } }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
   };

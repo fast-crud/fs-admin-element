@@ -9,7 +9,7 @@ import {
   UserPageRes
 } from "@fast-crud/fast-crud";
 
-export default function ({ crudExpose, ctx }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default function ({ crudExpose, context: { ctx } }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
   };
