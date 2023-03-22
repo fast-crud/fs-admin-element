@@ -1,6 +1,6 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import { ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin } from "@fast-crud/fast-crud";
+import {ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin, setLogger} from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import {
   FsExtendsUploader,
@@ -17,6 +17,7 @@ import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 
 function install(app, options: any = {}) {
   app.use(UiElement);
+  setLogger({ level: "debug" });
   app.use(FastCrud, {
     i18n: options.i18n,
     async dictRequest({ url }) {

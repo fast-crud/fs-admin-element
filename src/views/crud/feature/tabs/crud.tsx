@@ -10,8 +10,11 @@ import {
   UserPageRes
 } from "@fast-crud/fast-crud";
 
-export default function ({ crudExpose, customValue }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
+    if (query.query?.radio === "all") {
+      delete query.query.radio;
+    }
     return await api.GetList(query);
   };
   const editRequest = async ({ form, row }: EditReq) => {
@@ -34,15 +37,20 @@ export default function ({ crudExpose, customValue }: CreateCrudOptionsProps): C
         editRequest,
         delRequest
       },
+      search: {
+        show: true,
+        initialForm: { radio: "all" }
+      },
       tabs: {
         show: true,
-        name: "radio"
-        //type: 'card', //tabs类型
-        // defaultOptions: { //第一个tab页签显示
-        //   show: true,
-        //   value: null, //点击第一个页签，查询值
-        //   label: '全部', // 第一个页签的名称
-        // },
+        name: "radio",
+        type: "card", //tabs类型
+        defaultOption: {
+          //第一个tab页签显示
+          show: true,
+          value: "all", //点击第一个页签，查询值
+          label: "全部" // 第一个页签的名称
+        }
         // options: computed(() => { //选项，默认从name字段的dict里面获取
         //   return statusRef.data;
         // })
