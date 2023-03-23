@@ -1,11 +1,13 @@
 <template>
   <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right>
-        <el-alert class="ml-1" type="warning" title="列设置可以禁用或者隐藏某字段勾选" />
-        <el-button @click="columnsSetToggleMode()"> 切换简单模式 </el-button>
-      </template>
-    </fs-crud>
+    <template #header>
+      <div class="title">
+        列设置
+        <span class="sub">列设置可以禁用或者隐藏某字段勾选</span>
+      </div>
+      <div class="more"></div>
+    </template>
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
@@ -25,16 +27,9 @@ export default defineComponent({
       crudExpose.doRefresh();
     });
 
-    function columnsSetToggleMode() {
-      crudBinding.value.toolbar.columnsFilter.mode =
-        crudBinding.value.toolbar.columnsFilter.mode === "simple" ? "default" : "simple";
-      ElMessage.info("当前列设置组件的模式为：" + crudBinding.value.toolbar.columnsFilter.mode);
-    }
-
     return {
       crudBinding,
-      crudRef,
-      columnsSetToggleMode
+      crudRef
     };
   }
 });
