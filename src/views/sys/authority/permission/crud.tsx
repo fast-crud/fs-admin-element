@@ -137,9 +137,11 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               multiple: false,
               defaultExpandAll: true,
               dict: { cache: false },
-              fieldNames: {
-                value: "id",
-                label: "title"
+              props: {
+                props: {
+                  value: "id",
+                  label: "title"
+                }
               }
             }
           }
