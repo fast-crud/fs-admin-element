@@ -25,8 +25,8 @@ export default defineComponent({
     return {
       crudBinding,
       crudRef,
-      setSearchFormData: expose.setSearchFormData,
-      doRefresh: expose.doRefresh
+      setSearchFormData: crudExpose.setSearchFormData,
+      doRefresh: crudExpose.doRefresh
     };
   }
 });
