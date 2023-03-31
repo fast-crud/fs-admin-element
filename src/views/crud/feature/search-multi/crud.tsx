@@ -25,16 +25,14 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         delRequest
       },
       search: {
-        layout: "multi-line",
+        container: {
+          layout: "multi-line"
+        },
         col: {
           span: 4
         },
         options: {
-          labelCol: {
-            style: {
-              width: "100px"
-            }
-          }
+          labelWidth: "100px"
         }
       },
       columns: {
@@ -72,9 +70,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           }
         },
         text1: {
-          type: "text",
+          type: "datetimerange",
           title: "text1",
-          search: { show: true }
+          search: { show: true, col: { span: 8 } }
         },
         text2: {
           type: "text",

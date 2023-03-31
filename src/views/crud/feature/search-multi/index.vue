@@ -1,8 +1,6 @@
 <template>
-  <fs-page>
-    <fs-crud ref="crudRef" v-bind="crudBinding">
-      <template #actionbar-right> </template>
-    </fs-crud>
+  <fs-page class="PageFeatureSearchMulti">
+    <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>
 </template>
 
@@ -40,3 +38,12 @@ export default defineComponent({
   }
 });
 </script>
+<style lang="less">
+.PageFeatureSearchMulti {
+  .fs-search-multi-line-buttons {
+    position: absolute;
+    bottom: -38px;
+    right: 180px;
+  }
+}
+</style>
