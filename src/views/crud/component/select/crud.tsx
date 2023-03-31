@@ -122,10 +122,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           title: "单选远程",
           search: {
             show: true,
-            rules: null,
-            component: {
-              style: { width: "100px" }
-            }
+            rules: null
           },
           type: "dict-select",
           dict: dict({

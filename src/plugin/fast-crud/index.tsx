@@ -1,6 +1,6 @@
 import { request, requestForMock } from "/src/api/service";
 import "/src/mock";
-import {ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin, setLogger} from "@fast-crud/fast-crud";
+import { ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin, setLogger } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import {
   FsExtendsUploader,
@@ -46,6 +46,13 @@ function install(app, options: any = {}) {
           dropdown: {
             more: {
               size: "default"
+            }
+          }
+        },
+        search: {
+          container: {
+            col: {
+              span: 4
             }
           }
         },
