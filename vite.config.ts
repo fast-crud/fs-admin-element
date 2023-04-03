@@ -21,11 +21,11 @@ export default ({ command, mode }) => {
   if (mode.startsWith("debug")) {
     devAlias = [
       { find: /@fast-crud\/fast-crud\/dist/, replacement: path.resolve("../../fast-crud/src/") },
-      { find: /@fast-crud\/fast-crud$/, replacement: path.resolve("../../fast-crud/src/") },
-      { find: /@fast-crud\/fast-extends\/dist/, replacement: path.resolve("../../fast-extends/src/") },
-      { find: /@fast-crud\/fast-extends$/, replacement: path.resolve("../../fast-extends/src/") },
-      { find: /@fast-crud\/ui-element$/, replacement: path.resolve("../../ui/ui-element/src/") },
-      { find: /@fast-crud\/ui-interface$/, replacement: path.resolve("../../ui/ui-interface/src/") }
+      // { find: /@fast-crud\/fast-crud$/, replacement: path.resolve("../../fast-crud/src/") },
+      { find: /@fast-crud\/fast-extends\/dist/, replacement: path.resolve("../../fast-extends/src/") }
+      // { find: /@fast-crud\/fast-extends$/, replacement: path.resolve("../../fast-extends/src/") },
+      // { find: /@fast-crud\/ui-element$/, replacement: path.resolve("../../ui/ui-element/src/") },
+      // { find: /@fast-crud\/ui-interface$/, replacement: path.resolve("../../ui/ui-interface/src/") }
     ];
     devServerFs = {
       // 这里配置dev启动时读取的项目根目录
