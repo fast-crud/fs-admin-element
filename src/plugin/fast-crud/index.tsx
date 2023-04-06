@@ -35,7 +35,15 @@ function install(app, options: any = {}) {
       const opts = {
         table: {
           size: "default",
-          pagination: false
+          pagination: false,
+          conditionalRender: {
+            match(scope) {
+              return !scope.value;
+            },
+            render(scope) {
+              return "-";
+            }
+          }
         },
         rowHandle: {
           buttons: {
