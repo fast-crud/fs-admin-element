@@ -40,6 +40,32 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         show: true,
         name: "city"
       },
+      actionbar: {
+        show: true
+      },
+      toolbar: {
+        show: true
+      },
+      search: {
+        container: {
+          action: {
+            //按钮栏配置
+            col: {
+              span: 8
+            }
+          }
+        },
+        buttons: {
+          actionbarToggle: {
+            text: "actionbar/toolbar显隐",
+            show: true,
+            click() {
+              crudExpose.crudBinding.value.actionbar.show = !crudExpose.crudBinding.value.actionbar.show;
+              crudExpose.crudBinding.value.toolbar.show = !crudExpose.crudBinding.value.toolbar.show;
+            }
+          }
+        }
+      },
       columns: {
         id: {
           title: "ID",
