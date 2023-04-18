@@ -92,6 +92,15 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             }
           }
         },
+        error: {
+          title: "error",
+          type: "image-uploader",
+          column: {
+            component: {
+              modelValue: null
+            }
+          }
+        },
         cropper: {
           title: "裁剪",
           type: "cropper-uploader",
