@@ -4,7 +4,7 @@
       <template #cell_roles="scope">
         <!-- 后台返回的列表数据已经包含了角色的名称，所以无需通过fs-values-format来从dict里获取label-->
         <template v-if="scope.value">
-          <el-tag v-for="item of scope.value" class="mr-1"> {{ item.name }}</el-tag>
+          <el-tag v-for="item of scope.value" class="mr-2"> {{ item.name }}</el-tag>
         </template>
       </template>
     </fs-crud>

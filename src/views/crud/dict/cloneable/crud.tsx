@@ -18,6 +18,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
   };
 
   const remoteDict = dict({
+    cloneable: true,
     url: "/mock/dicts/OpenStatusEnum"
   });
 
