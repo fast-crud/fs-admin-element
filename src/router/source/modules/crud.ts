@@ -520,6 +520,12 @@ export const crudResources = [
             component: "/crud/feature/local/index.vue"
           },
           {
+            title: "本地编辑-单元格使用控件",
+            name: "FeatureCellWidget",
+            path: "/crud/feature/cell-widget",
+            component: "/crud/feature/cell-widget/index.vue"
+          },
+          {
             title: "v-model",
             name: "FeatureLocalVModel",
             path: "/crud/feature/local-v-model",
