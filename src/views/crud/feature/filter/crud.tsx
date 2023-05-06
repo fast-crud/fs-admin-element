@@ -28,6 +28,17 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         // 表头过滤改变事件
         onFilterChange(e) {
           console.log("onFilterChange", e);
+          for (const key in e) {
+            const i = parseInt(key.replace("el-table_1_column_", ""));
+            if (i === 3) {
+              expose.setSearchFormData({
+                form: {
+                  remote: e[key]
+                }
+              });
+              expose.doRefresh();
+            }
+          }
         }
       },
       columns: {
@@ -43,7 +54,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           }
         },
         radio: {
-          title: "状态",
+          title: "本地过滤",
           search: { show: true },
           type: "dict-radio",
           dict: dict({
@@ -59,6 +70,26 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               return row.radio === value;
             },
             sortable: true
+          }
+        },
+        remote: {
+          title: "服务端过滤",
+          search: {
+            show: true,
+            component: {
+              multiple: true
+            }
+          },
+          type: "dict-radio",
+          dict: dict({
+            url: "/mock/dicts/OpenStatusEnum?single"
+          }),
+          column: {
+            filters: [
+              { text: "开", value: "1" },
+              { text: "关", value: "0" },
+              { text: "停", value: "2" }
+            ]
           }
         }
       }
