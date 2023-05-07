@@ -16,7 +16,7 @@ const createCrudOptions = function ({ expose }) {
   const records = [{ id: 1, name: "Hello World" }];
   const pageRequest = async (query) => {
     return {
-      records,
+      records: [...records],
       currentPage: 1,
       pageSize: 20,
       total: records.length
