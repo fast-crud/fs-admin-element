@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.13.5](https://github.com/fast-crud/fast-crud/compare/v1.13.4...v1.13.5) (2023-05-13)
+
+### Bug Fixes
+
+* 修复element helloworld 添加数据不显示的bug ([752bd24](https://github.com/fast-crud/fast-crud/commit/752bd24ed9e69c76b77dc512d1b74625fd36712b))
+
 ## [1.13.4](https://github.com/fast-crud/fast-crud/compare/v1.13.3...v1.13.4) (2023-05-06)
 
 ### Bug Fixes
