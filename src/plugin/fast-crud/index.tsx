@@ -14,6 +14,7 @@ import UiElement from "@fast-crud/ui-element";
 import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
 import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
+import { ElNotification } from "element-plus";
 
 function install(app, options: any = {}) {
   app.use(UiElement);
@@ -91,10 +92,17 @@ function install(app, options: any = {}) {
             if (res.offset % pageSize === 0) {
               currentPage++;
             }
-            return { currentPage, pageSize, ...res };
+            return { currentPage, pageSize, records: res.records, total: res.total };
           }
         },
         form: {
+          async afterSubmit({ mode }) {
+            if (mode === "add") {
+              ElNotification.success({ message: "添加成功" });
+            } else if (mode === "edit") {
+              ElNotification.success({ message: "保存成功" });
+            }
+          },
           display: "flex", //表单布局
           labelWidth: "100px" //表单label宽度
         }

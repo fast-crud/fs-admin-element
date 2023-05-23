@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, reactive } from "vue";
 import { useCrud } from "@fast-crud/fast-crud";
 import { useExpose } from "@fast-crud/fast-crud";
 import _ from "lodash-es";
@@ -13,10 +13,10 @@ import _ from "lodash-es";
 //此处为crudOptions配置
 const createCrudOptions = function ({ expose }) {
   //本地模拟后台crud接口方法 ----开始
-  const records = [{ id: 1, name: "Hello World" }];
+  const records = reactive([{ id: 1, name: "Hello World" }]);
   const pageRequest = async (query) => {
     return {
-      records: [...records],
+      records,
       currentPage: 1,
       pageSize: 20,
       total: records.length
