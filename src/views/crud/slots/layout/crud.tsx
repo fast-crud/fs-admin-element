@@ -24,6 +24,13 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         editRequest,
         delRequest
       },
+      search: {
+        action: {
+          col: {
+            span: 8 //增加搜索按钮所占宽度，避免换行
+          }
+        }
+      },
       columns: {
         id: {
           title: "ID",
