@@ -5,19 +5,21 @@
         <el-alert class="ml-1" type="info" title=" ← form表单字段插槽，可以做一些很复杂的输入，可配置校验" />
       </template>
       <template #form_multiField="scope">
-        <el-form-item v-if="scope.mode !== 'view'" prop="numBe" class="form-item-num">
-          <el-input v-model="scope.form.numBe" placeholder="请输入数字" @change="onMultiFieldChange(scope.form)" />
+        <el-form-item prop="numBe" class="form-item-num">
+          <el-input v-model="scope.form.numBe" :disabled="scope.mode === 'view'" placeholder="请输入数字" @change="onMultiFieldChange(scope.form)" />
         </el-form-item>
-        <el-form-item v-if="scope.mode !== 'view'" prop="operator" class="form-item-num">
-          <el-select v-model="scope.form.operator" @change="onMultiFieldChange(scope.form)">
+        <el-form-item prop="operator" class="form-item-num">
+          <el-select v-model="scope.form.operator" :disabled="scope.mode === 'view'" @change="onMultiFieldChange(scope.form)">
             <el-option v-for="item in operatorList" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item v-if="scope.mode !== 'view'" prop="numAf" class="form-item-num">
-          <el-input v-model="scope.form.numAf" placeholder="请输入数字" @change="onMultiFieldChange(scope.form)" />
+        <el-form-item prop="numAf" class="form-item-num">
+          <el-input v-model="scope.form.numAf" :disabled="scope.mode === 'view'" placeholder="请输入数字" @change="onMultiFieldChange(scope.form)" />
         </el-form-item>
-        = {{ scope.form.multiField || "？" }}
+        <template v-if="scope.mode !== 'view'">
+          = {{scope.form.multiField || '？' }}
+        </template>
       </template>
 
       <template #form_topics="scope">

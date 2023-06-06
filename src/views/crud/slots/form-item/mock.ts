@@ -5,6 +5,10 @@ const options: any = {
 };
 const list = [
   {
+    multiField: "1+2",
+    numBe: "1",
+    operator: "+",
+    numAf: "2",
     topics: ["fast-crud 666", "fast-crud真好用"]
   }
 ];

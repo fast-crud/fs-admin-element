@@ -1,6 +1,6 @@
 import * as api from "./api";
-import type { FormRules } from 'element-plus';
 import { reactive } from "vue";
+import type { FormRules } from 'element-plus';
 import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
 
 export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
@@ -18,7 +18,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
-  const checkNum = (rule, value, callback) => {
+  const numValidator = (rule, value, callback) => {
     if (value === '') {
       return callback(new Error('全局form校验'));
     }
@@ -49,10 +49,10 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             { required: true, message: "全局form校验" }
           ],
           numBe: [
-            { validator: checkNum, trigger: 'blur' }
+            { validator: numValidator, trigger: 'blur' }
           ]
           // numAf: [
-          //   { validator: checkNum, trigger: 'blur' }
+          //   { validator: numValidator, trigger: 'blur' }
           // ]
         })
       },
@@ -89,7 +89,6 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           }
         },
         // 插槽表单的字段在这里声明，并隐藏。不然编辑弹窗显示不了这些的值
-        // （可能是mock数据的原因，如果你详情接口有二次赋值，可以看看清空下面配置是什么表现）
         // 插槽表单字段的默认值在这配置优先级低于于父级的form.initialForm
         // 表单校验这里配置无效
         numBe: {
