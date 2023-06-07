@@ -1,7 +1,7 @@
 import * as api from "./api";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
 
-export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -30,6 +30,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           console.log("onFilterChange", e);
         }
       },
+      search: {
+        validate: true
+      },
       columns: {
         id: {
           title: "ID",
@@ -44,7 +47,15 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         },
         radio: {
           title: "状态",
-          search: { show: true },
+          search: {
+            show: true,
+            rules: [
+              {
+                required: true,
+                message: "请选择状态"
+              }
+            ]
+          },
           type: "dict-radio",
           dict: dict({
             url: "/mock/dicts/OpenStatusEnum?single"
@@ -62,6 +73,60 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             },
             sorter: (a, b) => a.radio - b.radio,
             sortDirections: ["descend"]
+          }
+        },
+        customRender: {
+          title: "自定义render",
+          search: {
+            show: true
+          },
+          type: "text",
+          form: {
+            component: {
+              vModel: "modelValue",
+              render({ attrs }) {
+                return <el-switch {...attrs} />;
+              },
+              title: "自定义render，可以继承component的属性,可以触发search的自动查询"
+            }
+          }
+        },
+        customRender2: {
+          title: "自定义render2",
+          search: {
+            show: true
+          },
+          type: "text",
+          form: {
+            component: {
+              render({ form }) {
+                //注意此处的v-model写法
+                return (
+                  <el-switch
+                    v-model={[form.customRender2, "modelValue"]}
+                    title={"render配置在component之下，注意vModel的写法,不能触发search的自动查询"}
+                  />
+                );
+              }
+            }
+          }
+        },
+        customRender3: {
+          title: "自定义render3",
+          search: {
+            show: true
+          },
+          type: "text",
+          form: {
+            render({ form }) {
+              //注意此处的v-model写法
+              return (
+                <el-switch
+                  v-model={[form.customRender3, "modelValue"]}
+                  title={"render配置在form之下，注意vModel的写法,不能触发search的自动查询"}
+                />
+              );
+            }
           }
         }
       }
