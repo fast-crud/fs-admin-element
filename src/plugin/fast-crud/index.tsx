@@ -1,5 +1,4 @@
 import { request, requestForMock } from "/src/api/service";
-import "/src/mock";
 import { ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin, setLogger } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import {
