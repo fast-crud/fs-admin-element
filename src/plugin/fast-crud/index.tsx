@@ -1,12 +1,24 @@
 import { request, requestForMock } from "/src/api/service";
-import { ColumnCompositionProps, FastCrud, useColumns, MergeColumnPlugin, setLogger } from "@fast-crud/fast-crud";
+import {
+  ColumnCompositionProps,
+  FastCrud,
+  useColumns,
+  MergeColumnPlugin,
+  setLogger,
+  UseCrudProps,
+  CrudOptions,
+  useUi
+} from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import {
   FsExtendsUploader,
   FsExtendsEditor,
   FsExtendsJson,
   FsExtendsCopyable,
-  FsExtendsTime
+  FsExtendsTime,
+  CsvColumn,
+  ExportUtil,
+  FsExtendsExport
 } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
@@ -14,6 +26,8 @@ import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
 import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 import { ElNotification } from "element-plus";
+import { useAsync } from "@fast-crud/fast-crud/src/use/use-async";
+import { useI18n } from "vue-i18n";
 
 function install(app, options: any = {}) {
   app.use(UiElement);
@@ -29,9 +43,13 @@ function install(app, options: any = {}) {
     },
     /**
      * useCrud时会被执行
-     * @param context，useCrud的参数
+     * @param props
      */
-    commonOptions(context: any = {}) {
+    commonOptions(props: UseCrudProps): CrudOptions {
+      const { t } = useI18n();
+      const { ui } = useUi();
+      const crudExpose = props.expose || props.crudExpose;
+      const crudBinding = crudExpose?.crudBinding;
       const opts = {
         table: {
           size: "default",
@@ -44,6 +62,49 @@ function install(app, options: any = {}) {
             },
             render(scope) {
               return "-";
+            }
+          }
+        },
+        toolbar: {
+          buttons: {
+            export: {
+              show: true,
+              type: "primary",
+              icon: ui.icons.export,
+              order: 4,
+              title: t("fs.toolbar.export.title"), // '导出',
+              circle: true,
+              click: async () => {
+                const columns: CsvColumn[] = [];
+                _.each(crudBinding.value.table.columnsMap, (col: ColumnCompositionProps) => {
+                  if (col.exportable !== false && col.key !== "_index") {
+                    columns.push({
+                      prop: col.key,
+                      label: col.title
+                    });
+                  }
+                });
+
+                const { loadAsyncLib } = useAsync();
+                //加载异步组件，不影响首页加载速度
+                const exportUtil: ExportUtil = await loadAsyncLib({
+                  name: "FsExportUtil"
+                });
+                //导出csv
+                // await exportUtil.csv({
+                //   columns,
+                //   data: crudBinding.value.data,
+                //   title: "table",
+                //   noHeader: false
+                // });
+                //导出excel
+                await exportUtil.excel({
+                  columns,
+                  data: crudBinding.value.data,
+                  title: "table",
+                  noHeader: false
+                });
+              }
             }
           }
         },
@@ -108,7 +169,8 @@ function install(app, options: any = {}) {
       };
 
       // 从 useCrud({permission}) 里获取permission参数，去设置各个按钮的权限
-      const crudPermission = useCrudPermission(context);
+      const permission = props.context?.permission || null;
+      const crudPermission = useCrudPermission({ permission });
       return crudPermission.merge(opts);
     }
   });
@@ -255,6 +317,7 @@ function install(app, options: any = {}) {
   app.use(FsExtendsCopyable);
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
+  app.use(FsExtendsExport);
 
   // 自定义字段合并插件
   const { registerMergeColumnPlugin } = useColumns();

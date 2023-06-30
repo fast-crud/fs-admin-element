@@ -10,6 +10,7 @@ import { provide, ref, nextTick } from "vue";
 import { usePageStore } from "/src/store/modules/page";
 import { useResourceStore } from "/src/store/modules/resource";
 import { useSettingStore } from "/@/store/modules/settings";
+import { useAsync } from "@fast-crud/fast-crud/src/use/use-async";
 export default {
   name: "App",
   setup() {
@@ -30,6 +31,9 @@ export default {
     pageStore.init();
     const settingStore = useSettingStore();
     settingStore.init();
+
+    const { registerAsyncLib } = useAsync();
+    registerAsyncLib("FsExportUtil");
 
     return {
       routerEnabled,
