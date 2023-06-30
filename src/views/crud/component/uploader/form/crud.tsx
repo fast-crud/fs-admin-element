@@ -1,5 +1,5 @@
 import * as api from "./api";
-import { AllUploadSuccessValidator } from "@fast-crud/fast-extends";
+import { createUploaderRules } from "@fast-crud/fast-extends";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
 
 export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
@@ -78,6 +78,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
                 type: "form"
               }
             },
+            rules: createUploaderRules([{ required: true, message: "此项必传", trigger: "change" }]),
             helper: "最大可上传1个文件"
           },
           column: {
@@ -109,7 +110,8 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               uploader: {
                 type: "form"
               }
-            }
+            },
+            rules: createUploaderRules([{ required: true, message: "此项必传", trigger: "change" }])
           }
         },
         keyValueType: {
@@ -179,15 +181,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         validation: {
           title: "校验",
           type: "file-uploader",
+
           form: {
-            rules: [
-              { required: true, message: "此项必传", trigger: "input" },
-              {
-                validator: AllUploadSuccessValidator(), //如果要自定义校验规则则需要手动配置这个
-                message: "还有文件正在上传，请稍候",
-                trigger: "input"
-              }
-            ],
+            rules: createUploaderRules([{ required: true, message: "此项必传", trigger: "change" }]),
             component: {
               uploader: {
                 type: "form"
