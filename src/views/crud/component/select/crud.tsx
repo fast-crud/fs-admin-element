@@ -257,9 +257,11 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           type: "dict-select",
           form: {
             title: "多选本地",
+            value: [],
             component: {
               multiple: true
-            }
+            },
+            rules: [{ required: true, message: "请选择一个选项" }]
           },
           dict: dict({
             data: [
