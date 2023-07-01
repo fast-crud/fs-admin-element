@@ -32,10 +32,6 @@ export default {
     const settingStore = useSettingStore();
     settingStore.init();
 
-    //注册异步lib，懒加载
-    const { registerAsyncLib } = useAsync();
-    registerAsyncLib("FsExportUtil");
-
     return {
       routerEnabled,
       locale: zhCn

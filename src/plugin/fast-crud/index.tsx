@@ -16,9 +16,6 @@ import {
   FsExtendsJson,
   FsExtendsCopyable,
   FsExtendsTime,
-  CsvColumn,
-  ExportUtil,
-  FsExtendsExport
 } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
@@ -62,49 +59,6 @@ function install(app, options: any = {}) {
             },
             render(scope) {
               return "-";
-            }
-          }
-        },
-        toolbar: {
-          buttons: {
-            export: {
-              show: true,
-              type: "primary",
-              icon: ui.icons.export,
-              order: 4,
-              title: t("fs.toolbar.export.title"), // '导出',
-              circle: true,
-              click: async () => {
-                const columns: CsvColumn[] = [];
-                _.each(crudBinding.value.table.columnsMap, (col: ColumnCompositionProps) => {
-                  if (col.exportable !== false && col.key !== "_index") {
-                    columns.push({
-                      prop: col.key,
-                      label: col.title
-                    });
-                  }
-                });
-
-                const { loadAsyncLib } = useAsync();
-                //加载异步组件，不影响首页加载速度
-                const exportUtil: ExportUtil = await loadAsyncLib({
-                  name: "FsExportUtil"
-                });
-                //导出csv
-                // await exportUtil.csv({
-                //   columns,
-                //   data: crudBinding.value.data,
-                //   title: "table",
-                //   noHeader: false
-                // });
-                //导出excel
-                await exportUtil.excel({
-                  columns,
-                  data: crudBinding.value.data,
-                  title: "table",
-                  noHeader: false
-                });
-              }
             }
           }
         },
@@ -317,7 +271,6 @@ function install(app, options: any = {}) {
   app.use(FsExtendsCopyable);
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
-  app.use(FsExtendsExport);
 
   // 自定义字段合并插件
   const { registerMergeColumnPlugin } = useColumns();
