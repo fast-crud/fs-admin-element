@@ -15,7 +15,8 @@
     "pretty-quick": "pretty-quick",
     "lint-fix": "eslint --fix --ext .js --ext .jsx --ext .vue src/",
     "upgrade": "yarn upgrade-interactive --latest",
-    "tsc": "vue-tsc --noEmit --skipLibCheck"
+    "tsc": "vue-tsc --noEmit --skipLibCheck",
+    "afterPubPush": "git add . && git commit -m \"build: publish success\" && git push"
   },
   "author": "Greper",
   "license": "MIT",
