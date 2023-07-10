@@ -15,7 +15,7 @@ import {
   FsExtendsEditor,
   FsExtendsJson,
   FsExtendsCopyable,
-  FsExtendsTime,
+  FsExtendsTime
 } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
@@ -43,10 +43,6 @@ function install(app, options: any = {}) {
      * @param props
      */
     commonOptions(props: UseCrudProps): CrudOptions {
-      const { t } = useI18n();
-      const { ui } = useUi();
-      const crudExpose = props.expose || props.crudExpose;
-      const crudBinding = crudExpose?.crudBinding;
       const opts = {
         table: {
           size: "default",
@@ -60,6 +56,11 @@ function install(app, options: any = {}) {
             render(scope) {
               return "-";
             }
+          }
+        },
+        search: {
+          options: {
+            inline: false
           }
         },
         rowHandle: {
