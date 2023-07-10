@@ -43,7 +43,7 @@ export default defineComponent({
   .fs-search-multi-line-buttons {
     position: absolute;
     bottom: -38px;
-    right: 180px;
+    right: 226px;
   }
 }
 </style>
