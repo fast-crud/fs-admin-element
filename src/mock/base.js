@@ -66,7 +66,7 @@ export default {
           }
           let orderProp, orderAsc;
           if (req && req.body) {
-            const { page, query, sort } = req.body;
+            const { page, sort } = req.body;
             if (page.limit != null) {
               limit = parseInt(page.limit);
             }
@@ -76,6 +76,8 @@ export default {
             orderProp = sort.prop;
             orderAsc = sort.asc;
 
+            let query = req.body.query;
+            query = query || {};
             if (Object.keys(query).length > 0) {
               data = list.filter((item) => {
                 let allFound = true; // 是否所有条件都符合
