@@ -23,8 +23,6 @@ import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
 import { GetSignedUrl } from "/@/views/crud/component/uploader/s3/api";
 import { ElNotification } from "element-plus";
-import { useAsync } from "@fast-crud/fast-crud/src/use/use-async";
-import { useI18n } from "vue-i18n";
 
 function install(app, options: any = {}) {
   app.use(UiElement);
