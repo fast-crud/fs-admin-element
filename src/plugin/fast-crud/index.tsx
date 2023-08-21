@@ -51,7 +51,7 @@ function install(app, options: any = {}) {
               const { value, key } = scope;
               return !value && key != "_index" && value != false;
             },
-            render(scope) {
+            render(scope: any) {
               return "-";
             }
           }
@@ -59,6 +59,11 @@ function install(app, options: any = {}) {
         search: {
           options: {
             inline: false
+          },
+          container: {
+            col: {
+              span: 4
+            }
           }
         },
         rowHandle: {
@@ -70,13 +75,6 @@ function install(app, options: any = {}) {
           dropdown: {
             more: {
               size: "default"
-            }
-          }
-        },
-        search: {
-          container: {
-            col: {
-              span: 4
             }
           }
         },
@@ -118,6 +116,18 @@ function install(app, options: any = {}) {
           },
           display: "flex", //表单布局
           labelWidth: "100px" //表单label宽度
+        },
+        columns: {
+          createdAt: {
+            title: "创建时间",
+            type: "datetime",
+            form: {
+              show: false
+            },
+            column: {
+              order: 1000
+            }
+          }
         }
       };
 
@@ -138,7 +148,7 @@ function install(app, options: any = {}) {
       region: "ap-guangzhou",
       secretId: "", //
       secretKey: "", // 传了secretKey 和secretId 代表使用本地签名模式（不安全，生产环境不推荐）
-      getAuthorization(custom) {
+      getAuthorization(custom: any) {
         // 不传secretKey代表使用临时签名模式,此时此参数必传（安全，生产环境推荐）
         return request({
           url: "http://www.docmirror.cn:7070/api/upload/cos/getAuthorization",
