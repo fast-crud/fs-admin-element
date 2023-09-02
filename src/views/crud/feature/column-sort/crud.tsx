@@ -44,18 +44,18 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             //控制查询字段顺序
             show: true,
             //字段默认order为1，比1大的放最后面
-            order: 2
+            order: 105
           },
           type: "text",
           column: {
             //控制列字段顺序
             //字段默认order为1，比1大的放最后面
-            order: 2
+            order: 101
           },
           form: {
             //控制表单字段顺序
             //字段默认order为1，比1大的放最后面
-            order: 2
+            order: 101
           }
         },
         col3: {
@@ -77,13 +77,13 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           type: "text",
           search: {
             show: true,
-            order: 0
+            order: 99
           },
           column: {
-            order: 0
+            order: 99
           },
           form: {
-            order: 0
+            order: 99
           }
         },
         col5: {
