@@ -285,6 +285,12 @@ export const crudResources = [
         },
         children: [
           {
+            title: "基本表单",
+            name: "FormBase",
+            path: "/crud/form/base",
+            component: "/crud/form/base/index.vue"
+          },
+          {
             title: "表单Grid布局",
             name: "FormLayoutGrid",
             path: "/crud/form/layout-grid",
