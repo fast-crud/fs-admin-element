@@ -148,7 +148,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         daterange: {
           title: "日期范围",
           type: "daterange",
-          search: { show: true, width: 300 },
+          search: { show: true, width: 300, col: { span: 8 } },
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.daterangeStart, row.daterangeEnd)) {
               row[key] = [row.daterangeStart, row.daterangeEnd];
