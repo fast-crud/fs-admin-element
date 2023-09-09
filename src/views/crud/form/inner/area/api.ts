@@ -43,7 +43,7 @@ export function DelObj(id) {
 
 export function GetObj(id) {
   return request({
-    url: apiPrefix + "/info",
+    url: apiPrefix + "/get",
     method: "get",
     params: { id }
   });
