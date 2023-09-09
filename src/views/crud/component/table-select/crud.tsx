@@ -55,15 +55,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             value: "id",
             label: "name",
             getNodesByValues: async (values: any[]) => {
-              const ret = [];
-              if (Array.isArray(values) === false) {
-                values = [values];
-              }
-              for (const value of values) {
-                const obj = await textTableApi.GetObj(value);
-                ret.push(obj);
-              }
-              return ret;
+              return await textTableApi.GetByIds(values);
             }
           }),
           form: {
@@ -92,15 +84,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             value: "id",
             label: "name",
             getNodesByValues: async (values: any[]) => {
-              const ret = [];
-              if (Array.isArray(values) === false) {
-                values = [values];
-              }
-              for (const value of values) {
-                const obj = await textTableApi.GetObj(value);
-                ret.push(obj);
-              }
-              return ret;
+              return await textTableApi.GetByIds(values);
             }
           }),
           form: {

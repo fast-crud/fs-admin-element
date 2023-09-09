@@ -40,3 +40,11 @@ export function GetObj(id) {
     params: { id }
   });
 }
+
+export function GetByIds(ids) {
+  return request({
+    url: apiPrefix + "/byIds",
+    method: "post",
+    data: { ids }
+  });
+}

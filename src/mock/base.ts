@@ -1,4 +1,5 @@
-function copyList(originList, newList, options, parentId) {
+import _ from "lodash-es";
+function copyList(originList: any, newList: any, options: any, parentId?: any) {
   for (const item of originList) {
     const newItem = { ...item, parentId };
     newItem.id = ++options.idGenerator;
@@ -10,7 +11,7 @@ function copyList(originList, newList, options, parentId) {
   }
 }
 
-function delById(req, list) {
+function delById(req: any, list: any) {
   for (let i = 0; i < list.length; i++) {
     const item = list[i];
     console.log("remove i", i, req, req.params.id, item.id);
@@ -25,27 +26,38 @@ function delById(req, list) {
   }
 }
 
-function findById(id, list) {
+function findById(id: any, list: any) {
   for (const item of list) {
     if (item.id === id) {
       return item;
     }
     if (item.children != null && item.children.length > 0) {
-      const sub = findById(id, item.children);
+      const sub: any = findById(id, item.children);
       if (sub != null) {
         return sub;
       }
     }
   }
 }
-export default {
+function findByIds(ids: any[], list: any) {
+  const res = [];
+  for (const id of ids) {
+    const item = findById(id, list);
+    if (item != null) {
+      res.push(item);
+    }
+  }
+  console.log("findbyids", res, ids);
+  return res;
+}
+const mockUtil: any = {
   findById,
-  buildMock(options) {
+  buildMock(options: any) {
     const name = options.name;
     if (options.copyTimes == null) {
       options.copyTimes = 29;
     }
-    const list = [];
+    const list: any = [];
     for (let i = 0; i < options.copyTimes; i++) {
       copyList(options.list, list, options);
     }
@@ -54,7 +66,7 @@ export default {
       {
         path: "/mock/" + name + "/page",
         method: "get",
-        handle(req) {
+        handle(req: any) {
           let data = [...list];
           let limit = 20;
           let offset = 0;
@@ -64,9 +76,10 @@ export default {
               item.lazy = false;
             }
           }
-          let orderProp, orderAsc;
+          let orderProp: any, orderAsc: any;
           if (req && req.body) {
             const { page, sort } = req.body;
+            let query = req.body.query;
             if (page.limit != null) {
               limit = parseInt(page.limit);
             }
@@ -75,11 +88,9 @@ export default {
             }
             orderProp = sort.prop;
             orderAsc = sort.asc;
-
-            let query = req.body.query;
             query = query || {};
             if (Object.keys(query).length > 0) {
-              data = list.filter((item) => {
+              data = list.filter((item: any) => {
                 let allFound = true; // 是否所有条件都符合
                 for (const key in query) {
                   // 判定某一个条件
@@ -170,16 +181,10 @@ export default {
       {
         path: "/mock/" + name + "/get",
         method: "get",
-        handle(req) {
+        handle(req: any) {
           let id = req.params.id;
           id = parseInt(id);
-          let current = null;
-          for (const item of list) {
-            if (item.id === id) {
-              current = item;
-              break;
-            }
-          }
+          const current = findById(req.body.id, list);
           return {
             code: 0,
             msg: "success",
@@ -188,9 +193,22 @@ export default {
         }
       },
       {
+        path: "/mock/" + name + "/byIds",
+        method: "post",
+        handle(req: any) {
+          const ids = req.body.ids;
+          const res = findByIds(ids, list);
+          return {
+            code: 0,
+            msg: "success",
+            data: res
+          };
+        }
+      },
+      {
         path: "/mock/" + name + "/add",
         method: "post",
-        handle(req) {
+        handle(req: any) {
           req.body.id = ++options.idGenerator;
           list.unshift(req.body);
           return {
@@ -203,10 +221,18 @@ export default {
       {
         path: "/mock/" + name + "/update",
         method: "post",
-        handle(req) {
+        handle(req: any): any {
           const item = findById(req.body.id, list);
           if (item) {
-            Object.assign(item, req.body);
+            _.mergeWith(item, req.body, (objValue, srcValue) => {
+              if (srcValue == null) {
+                return;
+              }
+              // 如果被合并对象为数组，则直接被覆盖对象覆盖，只要覆盖对象不为空
+              if (_.isArray(objValue)) {
+                return srcValue;
+              }
+            });
           }
           return {
             code: 0,
@@ -218,7 +244,7 @@ export default {
       {
         path: "/mock/" + name + "/delete",
         method: "post",
-        handle(req) {
+        handle(req: any): any {
           delById(req, list);
           return {
             code: 0,
@@ -230,7 +256,7 @@ export default {
       {
         path: "/mock/" + name + "/batchDelete",
         method: "post",
-        handle(req) {
+        handle(req: any): any {
           const ids = req.body.ids;
           for (let i = list.length - 1; i >= 0; i--) {
             const item = list[i];
@@ -246,9 +272,21 @@ export default {
         }
       },
       {
+        path: "/mock/" + name + "/delete",
+        method: "post",
+        handle(req: any): any {
+          delById(req, list);
+          return {
+            code: 0,
+            msg: "success",
+            data: null
+          };
+        }
+      },
+      {
         path: "/mock/" + name + "/all",
         method: "post",
-        handle(req) {
+        handle(req: any): any {
           return {
             code: 0,
             msg: "success",
@@ -259,3 +297,5 @@ export default {
     ];
   }
 };
+
+export default mockUtil;
