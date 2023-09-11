@@ -90,6 +90,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           form: {
             component: {
               multiple: true,
+              crossPage: true,
               createCrudOptions: createCrudOptionsText,
               crudOptionsOverride: {
                 table: {
