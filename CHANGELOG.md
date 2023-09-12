@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/fast-crud/fast-crud/compare/v1.16.11...v1.17.0) (2023-09-12)
+
+### Performance Improvements
+
+* 默认label宽度超出后省略+title提示 ([3953dee](https://github.com/fast-crud/fast-crud/commit/3953deeaf33e11ef2501ae99e54d15d62d2a5edb))
+
 ## [1.16.11](https://github.com/fast-crud/fast-crud/compare/v1.16.10...v1.16.11) (2023-09-03)
 
 **Note:** Version bump only for package @fast-crud/fs-admin-element
