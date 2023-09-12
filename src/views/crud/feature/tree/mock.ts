@@ -17,13 +17,17 @@ const list = [
         data: "懒加载的子数据",
         province: ["sh", "gz"],
         time: "2020-01-01 11:11:11",
-        amount: 100
+        amount: 100,
+        hasChildren: false,
+        parentId: 1
       },
       {
         data: "懒加载的子数据2",
         province: ["sh", "sz"],
         time: "2020-01-01 11:11:11",
-        amount: 100
+        amount: 100,
+        hasChildren: false,
+        parentId: 1
       }
     ]
   },

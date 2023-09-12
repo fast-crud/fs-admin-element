@@ -132,7 +132,7 @@ export const request = createRequestFunction(service);
 
 // 用于模拟网络请求的实例和请求方法
 export const serviceForMock = createService();
-export const requestForMock = createRequestFunction(serviceForMock);
-
 // 网络请求数据模拟工具
+
+export const requestForMock = createRequestFunction(serviceForMock);
 export const mock = new Adapter(serviceForMock, { delayResponse: 200 });
