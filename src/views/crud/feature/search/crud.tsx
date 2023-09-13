@@ -1,5 +1,6 @@
 import * as api from "./api";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+import { ref } from "vue";
 
 export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
@@ -16,6 +17,7 @@ export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+  const labelPosition = ref("");
   return {
     crudOptions: {
       request: {
@@ -31,7 +33,25 @@ export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
         }
       },
       search: {
-        validate: true
+        options: {
+          labelPosition: labelPosition
+        },
+        validate: true,
+        container: {
+          action: {
+            col: {
+              span: 6
+            }
+          }
+        },
+        buttons: {
+          change: {
+            text: "切换label位置",
+            click() {
+              labelPosition.value = labelPosition.value == "top" ? "" : "top";
+            }
+          }
+        }
       },
       columns: {
         id: {
