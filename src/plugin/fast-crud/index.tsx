@@ -115,6 +115,9 @@ function install(app, options: any = {}) {
               ElNotification.success({ message: "保存成功" });
             }
           },
+          row: {
+            gutter: 20
+          },
           display: "flex", //表单布局
           labelWidth: "100px" //表单label宽度
         },

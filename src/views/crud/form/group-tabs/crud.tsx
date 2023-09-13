@@ -55,17 +55,25 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           type: "textarea",
           column: {
             ellipsis: true
+          },
+          form: {
+            col: {
+              span: 24
+            }
           }
         },
         content: {
           title: "详情",
-          type: "editor-ueditor",
+          type: "editor-wang5",
           form: {
-            labelWidth: "0px"
+            col: {
+              span: 24
+            }
           }
         }
       },
       form: {
+        row: { gutter: 20 },
         group: {
           groupType: "tabs", //collapse， tabs
           accordion: false,
