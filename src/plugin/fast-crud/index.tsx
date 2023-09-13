@@ -1,21 +1,19 @@
 import { request, requestForMock } from "/src/api/service";
 import {
   ColumnCompositionProps,
-  FastCrud,
-  useColumns,
-  MergeColumnPlugin,
-  setLogger,
-  UseCrudProps,
   CrudOptions,
-  useUi
+  FastCrud,
+  setLogger,
+  useColumns,
+  UseCrudProps
 } from "@fast-crud/fast-crud";
 import "@fast-crud/fast-crud/dist/style.css";
 import {
-  FsExtendsUploader,
+  FsExtendsCopyable,
   FsExtendsEditor,
   FsExtendsJson,
-  FsExtendsCopyable,
   FsExtendsTime,
+  FsExtendsUploader,
   FsUploaderS3SignedUrlType
 } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
@@ -144,6 +142,7 @@ function install(app, options: any = {}) {
   app.use(FsExtendsUploader, {
     defaultType: "cos",
     cos: {
+      keepName: true,
       domain: "https://d2p-demo-1251260344.cos.ap-guangzhou.myqcloud.com",
       bucket: "d2p-demo-1251260344",
       region: "ap-guangzhou",
@@ -172,6 +171,7 @@ function install(app, options: any = {}) {
       }
     },
     alioss: {
+      keepName: true,
       domain: "https://d2p-demo.oss-cn-shenzhen.aliyuncs.com",
       bucket: "d2p-demo",
       region: "oss-cn-shenzhen",
@@ -197,6 +197,7 @@ function install(app, options: any = {}) {
       }
     },
     qiniu: {
+      keepName: true,
       bucket: "d2p-demo",
       async getToken(options) {
         const ret = await request({
@@ -213,6 +214,7 @@ function install(app, options: any = {}) {
       domain: "http://d2p.file.handsfree.work"
     },
     s3: {
+      keepName: true,
       //同时也支持minio
       bucket: "fast-crud",
       sdkOpts: {
@@ -239,6 +241,7 @@ function install(app, options: any = {}) {
       }
     },
     form: {
+      keepName: true,
       action: "http://www.docmirror.cn:7070/api/upload/form/upload",
       name: "file",
       withCredentials: false,
