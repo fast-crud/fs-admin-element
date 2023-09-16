@@ -28,6 +28,12 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         wrapper: {
           is: "el-drawer",
           size: "50%" //抽屉宽度50%
+        },
+        onClosed(e) {
+          console.log("onClosed", e);
+        },
+        onOpened(e) {
+          console.log("onOpened", e);
         }
       },
       columns: {
