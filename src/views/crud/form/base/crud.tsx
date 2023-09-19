@@ -38,6 +38,12 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
         delRequest
       },
       form: {
+        onClosed(e) {
+          console.log('onClosed', e);
+        },
+        onOpened(e) {
+          console.log('onOpened', e);
+        },
         labelWidth: computed(() => {
           return context.labelWidthRef.value + "px";
         }),
