@@ -7,7 +7,7 @@ const options: any = {
 const list = [
   {
     title: "无线充电宝",
-    code: "100001",
+    code1: "100001",
     images: "https://img0.bdstatic.com/static/searchdetail/img/logo-2X_0c4ef02.png",
     price: 100,
     stock: 99,

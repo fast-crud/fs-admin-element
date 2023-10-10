@@ -30,7 +30,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           title: "商品标题",
           type: "text"
         },
-        code: {
+        code1: {
           title: "商品代码",
           search: { show: true },
           type: "text",
@@ -90,7 +90,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
                 }
               },
               icon: "el-icon-goods",
-              columns: ["code", "title", "images"]
+              columns: ["code1", "title", "images"]
             },
             price: {
               label: "库存价格",
