@@ -1,21 +1,25 @@
 <template>
   <fs-page>
+    <template #header>
+      <div class="title">导出</div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/toolbar.html#export">文档</a>
+      </div>
+    </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #toolbar-left>
-        <span class="ml-5">
-          导出文件类型
+        <fs-label class="ml-5" label="导出文件类型">
           <el-select v-model="fileType">
             <el-option value="excel">Excel</el-option>
             <el-option value="csv">CSV</el-option>
           </el-select>
-        </span>
-        <span class="ml-5">
-          数据来源
+        </fs-label>
+        <fs-label class="ml-5" label="数据来源">
           <el-select v-model="dataFrom">
             <el-option value="search">查询</el-option>
             <el-option value="local">本页数据</el-option>
           </el-select>
-        </span>
+        </fs-label>
       </template>
     </fs-crud>
   </fs-page>
