@@ -22,7 +22,7 @@ export default defineComponent({
       },
       { immediate: true }
     );
-    const middle = "/fast-crud/fs-admin-element/tree/main/src/views";
+    const middle = "/fast-crud/fs-admin-element/blob/main/src/views";
     function goSource(prefix) {
       const path = router.currentRoute.value.fullPath;
       window.open(prefix + middle + path + "/index.vue");
