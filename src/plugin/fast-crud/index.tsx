@@ -12,6 +12,7 @@ import "@fast-crud/fast-crud/dist/style.css";
 import {
   FsExtendsCopyable,
   FsExtendsEditor,
+  FsExtendsInput,
   FsExtendsJson,
   FsExtendsTime,
   FsExtendsUploader,
@@ -288,6 +289,7 @@ function install(app, options: any = {}) {
   app.use(FsExtendsCopyable);
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
+  app.use(FsExtendsInput);
 
   const { addTypes, getType } = useTypes();
   //此处演示修改官方字段类型
