@@ -92,7 +92,7 @@ export default defineComponent({
         expose.editable.addRow();
       },
       editCol() {
-        expose.editable.editCol({ cols: ["radio"] });
+        expose.editable.activeCols({ cols: ["radio"] });
       }
     };
   }
