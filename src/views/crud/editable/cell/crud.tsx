@@ -123,9 +123,11 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         editable: {
           mode: "cell",
           exclusive: true,
-          exclusiveEffect: "cancel",
+          //排他式激活效果，将其他行的编辑状态触发保存
+          exclusiveEffect: "save", //自动保存其他行编辑状态，cancel = 自动关闭其他行编辑状态
           async updateCell(opts) {
             const { row, key, value } = opts;
+            //如果是添加，需要返回{[rowKey]:xxx},比如:{id:2}
             return await api.UpdateCell(row.id, key, value);
           }
         },
