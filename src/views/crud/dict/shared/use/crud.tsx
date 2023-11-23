@@ -8,9 +8,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
   };
   const editRequest = async ({ form, row }) => {
     if(form.id==null){
-      if(form.id==null){
+      if (form.id == null) {
       form.id = row.id;
-    };
+    }
     };
     return await api.UpdateObj(form);
   };

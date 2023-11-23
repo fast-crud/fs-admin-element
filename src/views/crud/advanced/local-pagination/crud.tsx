@@ -35,9 +35,9 @@ export default function ({ expose, localDataRef }) {
     };
   };
   const editRequest = async ({ form, row }) => {
-    if(form.id==null){
+    if (form.id == null) {
       form.id = row.id;
-    };
+    }
     await api.UpdateObj(form);
     //更新本地数据
     const tableData = localDataRef.value;

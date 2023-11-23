@@ -7,9 +7,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
     return await api.GetList(query);
   };
   const editRequest = async ({ form, row }) => {
-    if(form.id==null){
+    if (form.id == null) {
       form.id = row.id;
-    };
+    }
     await api.UpdateObj(form);
     if (row.parentId) {
       //刷新父节点的状态
