@@ -17,8 +17,6 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   // };
   // const editRequest = async ({ form, row }: EditReq) => {
   //   if (form.id == null) {
-      form.id = row.id;
-    }
   //   return await api.UpdateObj(form);
   // };
   // const delRequest = async ({ row }: DelReq) => {
