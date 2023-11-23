@@ -3,7 +3,9 @@ import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-cr
 
 export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const editRequest = async ({ form, row }) => {
-    form.id = row.id;
+    if(form.id==null){
+      form.id = row.id;
+    };
     return await api.UpdateObj(form);
   };
   const delRequest = async ({ row }) => {
