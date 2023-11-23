@@ -1,7 +1,10 @@
 <template>
   <fs-page>
     <template #header>
-      <div class="title">vModel编辑</div>
+      <div class="title">
+        vModel编辑
+        <span class="sub">子表格作为主表的一个字段，整体编辑，整体提交</span>
+      </div>
       <div class="more">
         <a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/table.html#editable">文档</a>
       </div>
