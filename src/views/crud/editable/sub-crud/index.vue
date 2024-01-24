@@ -21,7 +21,6 @@
 import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud";
 import { useFs } from "@fast-crud/fast-crud";
-import { message } from "ant-design-vue";
 
 export default defineComponent({
   name: "EditableSubCrud",
