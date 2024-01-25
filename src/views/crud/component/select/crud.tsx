@@ -1,6 +1,6 @@
 import * as api from "./api";
 import { requestForMock } from "/src/api/service";
-import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, dict, useUi, utils } from "@fast-crud/fast-crud";
 import { ref } from "vue";
 import _ from "lodash-es";
 
@@ -69,6 +69,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
       { id: "sh", text: "上海" }
     ]
   });
+  const { ui } = useUi();
   return {
     crudOptions: {
       actionbar: {
@@ -118,7 +119,24 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         statusLocal: {
           title: "单选本地",
           type: "dict-select",
-          dict: cityDicts
+          dict: cityDicts,
+          form: {
+            component: {
+              onChange(args) {
+                utils.logger.info("onChange", args);
+              },
+              on: {
+                selectedChange({ form, $event }) {
+                  // $event就是原始的事件值，也就是选中的 option对象
+                  utils.logger.info("onSelectedChange", form, $event);
+                  ui.message.info(`你选择了${JSON.stringify($event)}`);
+                  // 你还可以将选中的label值赋值给表单里其他字段
+                  // context.form.xxxLabel = context.$event.label
+                }
+              }
+            },
+            helper: "selected-change事件可以获取选中的option对象"
+          }
         },
         statusRemote: {
           title: "单选远程",
