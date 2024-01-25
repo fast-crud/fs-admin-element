@@ -84,7 +84,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
                   // 因为props属性名与fs的动态渲染的props命名冲突，所以要多写一层
                   label: "text",
                   value: "id",
-                  isLeaf: "leaf"
+                  isLeaf: "leaf" //重要
                 }
               },
               lazy: true,
@@ -155,14 +155,14 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           }),
           form: {
             component: {
-              props: {
-                props: {
-                  // 为什么这里要写两层props
-                  // 因为props属性名与fs的动态渲染的props命名冲突，所以要多写一层
-                  label: "name",
-                  value: "code"
-                }
-              }
+              // props: {
+              //   props: {
+              //     // 为什么这里要写两层props
+              //     // 因为props属性名与fs的动态渲染的props命名冲突，所以要多写一层
+              //     label: "name",
+              //     value: "code"
+              //   }
+              // }
             }
           }
         }
