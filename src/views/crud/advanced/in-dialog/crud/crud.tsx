@@ -87,18 +87,18 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               render(context) {
                 console.log("context scope", context);
                 return (
-                  <a-input-group compact>
-                    <a-input
+                  <div>
+                    <el-input
                       placeholder={"render1 input"}
                       style="width: 50%"
-                      v-model={[context.form.render, "value"]}
+                      v-model={[context.form.render, "modelValue"]}
                     />
-                    <a-input
+                    <el-input
                       placeholder={"render2 input"}
                       style="width: 50%"
-                      v-model={[context.form.render2, "value"]}
+                      v-model={[context.form.render2, "modelValue"]}
                     />
-                  </a-input-group>
+                  </div>
                 );
               }
             }

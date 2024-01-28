@@ -49,7 +49,7 @@ export default function ({ expose, localDataRef }) {
   };
 
   const addRequest = async ({ form }) => {
-    const id = await api.AddObj(form);
+    const { id } = await api.AddObj(form);
     //本地添加
     form.id = id;
     localDataRef.value.unshift(form);

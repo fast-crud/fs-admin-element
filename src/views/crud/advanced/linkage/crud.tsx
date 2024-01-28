@@ -64,8 +64,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           }),
           form: {
             valueChange({ form, value, getComponentRef }) {
-              form.city = undefined; // 将“city”的值置空
-              form.county = undefined; // 将“county”的值置空
+              form.city = ""; // 将“city”的值置空
+              form.county = ""; // 将“county”的值置空
               if (value) {
                 getComponentRef("city").reloadDict(); // 执行city的select组件的reloadDict()方法，触发“city”重新加载字典
               }
@@ -95,7 +95,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             // 注释同上
             valueChange({ value, form, getComponentRef }) {
               if (value) {
-                form.county = undefined; // 将county的value置空
+                form.county = ""; // 将county的value置空
                 const countySelect = getComponentRef("county");
                 if (form && form.province && form.city) {
                   countySelect.reloadDict(); // 重新加载字典项

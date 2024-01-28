@@ -95,6 +95,13 @@ mock.push({
     const a = tree.filter((item) => {
       return item.id === province;
     });
+    if (a == null || a.length === 0) {
+      return {
+        code: 0,
+        msg: "success",
+        data: []
+      };
+    }
     const list = omitChildren(a[0].children);
     return {
       code: 0,
@@ -112,11 +119,25 @@ mock.push({
     const a = tree.filter((item) => {
       return item.id === province;
     });
+    if (a == null || a.length === 0) {
+      return {
+        code: 0,
+        msg: "success",
+        data: []
+      };
+    }
     const city = parseInt(req.params.city);
     const b = a[0].children.filter((item) => {
       return item.id === city;
     });
 
+    if (b == null || b.length === 0) {
+      return {
+        code: 0,
+        msg: "success",
+        data: []
+      };
+    }
     const list = omitChildren(b[0].children);
     return {
       code: 0,
