@@ -2,7 +2,6 @@ import vue from "@vitejs/plugin-vue";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import visualizer from "rollup-plugin-visualizer";
 import viteCompression from "vite-plugin-compression";
-import PurgeIcons from "vite-plugin-purge-icons";
 import * as path from "path";
 import { generateModifyVars } from "./build/modify-vars";
 // import { configThemePlugin } from "./build/theme-plugin";
@@ -40,20 +39,7 @@ export default ({ command, mode }) => {
       vueJsx(),
       vue(),
       // 压缩build后的代码
-      viteCompression(),
-      PurgeIcons({
-        // iconSource: "local"
-        // remoteDataAPI: "https://gitee.com/fast-crud/collections-json/raw/master/json",
-        // includedCollections: ["ion"]
-      })
-      //主题色替换
-      // ...configThemePlugin(true),
-      // viteThemePlugin({
-      //   // Match the color to be modified
-      //   colorVariables: ["#1890ff", "#40a9ff"]
-      // }),
-      // windicss tailwindcss
-      // WindiCSS()
+      viteCompression()
     ],
     // optimizeDeps: {
     //   exclude: ["@fast-crud/fast-crud-extends"],
