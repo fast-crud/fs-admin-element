@@ -37,7 +37,9 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       table: {
         editable: {
           enabled: true,
-          mode: "free"
+          mode: "free",
+          showAction: false,
+          activeDefault: true
         }
       },
       pagination: { show: false, pageSize: 9999999 },
