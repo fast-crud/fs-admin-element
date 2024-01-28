@@ -9,9 +9,7 @@
       </template>
       <template #search-middle="scope">
         <el-form-item label="自定义">
-          <el-tooltip content="注意：search-middle插槽自定义的内容，无法被重置">
-            <el-input v-model:value="scope.form.custom" placeholder="search-middle插槽" />
-          </el-tooltip>
+          <el-input v-model="scope.form.custom" placeholder="search-middle插槽" />
         </el-form-item>
       </template>
     </fs-crud>

@@ -6,20 +6,32 @@
       </template>
       <template #form_multiField="scope">
         <el-form-item prop="numBe" class="form-item-num">
-          <el-input v-model="scope.form.numBe" :disabled="scope.mode === 'view'" placeholder="请输入数字" @change="onMultiFieldChange(scope.form)" />
+          <el-input
+            v-model="scope.form.numBe"
+            :disabled="scope.mode === 'view'"
+            placeholder="请输入数字"
+            @change="onMultiFieldChange(scope.form)"
+          />
         </el-form-item>
         <el-form-item prop="operator" class="form-item-num">
-          <el-select v-model="scope.form.operator" :disabled="scope.mode === 'view'" @change="onMultiFieldChange(scope.form)">
+          <el-select
+            v-model="scope.form.operator"
+            :disabled="scope.mode === 'view'"
+            @change="onMultiFieldChange(scope.form)"
+          >
             <el-option v-for="item in operatorList" :key="item.value" :label="item.label" :value="item.value">
             </el-option>
           </el-select>
         </el-form-item>
         <el-form-item prop="numAf" class="form-item-num">
-          <el-input v-model="scope.form.numAf" :disabled="scope.mode === 'view'" placeholder="请输入数字" @change="onMultiFieldChange(scope.form)" />
+          <el-input
+            v-model="scope.form.numAf"
+            :disabled="scope.mode === 'view'"
+            placeholder="请输入数字"
+            @change="onMultiFieldChange(scope.form)"
+          />
         </el-form-item>
-        <template v-if="scope.mode !== 'view'">
-          = {{scope.form.multiField || '？' }}
-        </template>
+        <template v-if="scope.mode !== 'view'"> = {{ scope.form.multiField || "？" }} </template>
       </template>
 
       <template #form_topics="scope">
