@@ -2,6 +2,7 @@ import * as api from "./api";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet, utils } from "@fast-crud/fast-crud";
 
 console.log("utils", utils);
+
 export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
@@ -19,6 +20,30 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+
+  const shortcuts = [
+    {
+      text: "今天",
+      value: [new Date(), new Date()]
+    },
+    {
+      text: "昨天",
+      value: () => {
+        const date = new Date();
+        date.setTime(date.getTime() - 3600 * 1000 * 24);
+        return [date, date];
+      }
+    },
+    {
+      text: "前一周",
+      value: () => {
+        const date = new Date();
+        date.setTime(date.getTime() - 3600 * 1000 * 24 * 7);
+        return [date, new Date()];
+      }
+    }
+  ];
+
   return {
     crudOptions: {
       request: {
@@ -70,7 +95,23 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         },
         datetime: {
           title: "日期时间",
-          type: "datetime"
+          type: "datetime",
+          search: {
+            show: true,
+            col: {
+              span: 6
+            },
+            //查询显示范围选择
+            component: {
+              type: "datetimerange"
+            }
+          },
+          form: {
+            component: {
+              //输入输出值格式化
+              valueFormat: "YYYY-MM-DD HH:mm:ss"
+            }
+          }
         },
         format: {
           title: "格式化",
@@ -96,8 +137,10 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           type: "date",
           form: {
             component: {
-              events: {
-                onChange(context) {
+              //输入输出值格式化
+              valueFormat: "YYYY-MM-DD HH:mm:ss",
+              on: {
+                change(context) {
                   console.log("change", context);
                 }
               }
@@ -154,6 +197,11 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           valueBuilder({ row, key }) {
             if (!utils.strings.hasEmpty(row.daterangeStart, row.daterangeEnd)) {
               row[key] = [row.daterangeStart, row.daterangeEnd];
+            }
+          },
+          form: {
+            component: {
+              shortcuts: shortcuts
             }
           }
         },
