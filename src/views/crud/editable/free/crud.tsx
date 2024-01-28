@@ -49,6 +49,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       },
       table: {
         editable: {
+          enabled: true,
           mode: "free",
           activeDefault: true,
           showAction: false

@@ -2,7 +2,9 @@
   <fs-page>
     <template #header>
       <div class="title">自由编辑</div>
-      <div class="more"><a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/table.html#editable">文档</a></div>
+      <div class="more">
+        <a target="_blank" href="http://fast-crud.docmirror.cn/api/crud-options/table.html#editable">文档</a>
+      </div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding">
       <template #actionbar-right>
@@ -28,7 +30,7 @@
 import { defineComponent, onMounted } from "vue";
 import createCrudOptions from "./crud";
 import { useFs } from "@fast-crud/fast-crud";
-
+import { ElMessage } from "element-plus";
 export default defineComponent({
   name: "EditableFree",
   setup() {
@@ -37,7 +39,6 @@ export default defineComponent({
     // 页面打开后获取列表数据
     onMounted(() => {
       crudExpose.doRefresh();
-      crudExpose.editable.enable({ mode: "free", activeDefault: true });
     });
 
     return {
@@ -53,9 +54,10 @@ export default defineComponent({
         const res = await crudExpose.editable.validate();
         if (res !== true) {
           console.error("validate error:", res);
+          ElMessage.error("validate error：" + JSON.stringify(res));
           return;
         }
-        message.success("保存,修改行：" + JSON.stringify(crudBinding.value.data));
+        ElMessage.success("保存,修改行：" + JSON.stringify(crudBinding.value.data));
       },
       log() {
         console.log("table data:", crudBinding.value.data, crudExpose.getTableData());
