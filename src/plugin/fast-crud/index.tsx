@@ -70,6 +70,7 @@ function install(app, options: any = {}) {
         rowHandle: {
           buttons: {
             view: { text: null, icon: "ion:eye-outline", size: "default" },
+            copy: { show: true, text: null, icon: "ion:copy-outline", size: "default" },
             edit: { text: null, icon: "ion:create-outline", size: "default" },
             remove: { type: "danger", text: null, icon: "ion:trash-outline", size: "default" }
           },
