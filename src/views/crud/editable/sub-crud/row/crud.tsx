@@ -85,7 +85,10 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
             url: "/mock/dicts/OpenStatusEnum?single"
           }),
           form: {
-            value: "1"
+            value: "1",
+            valueChange({ value, form }) {
+              console.log("value", value, form);
+            }
           }
         },
         name: {

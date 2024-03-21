@@ -58,7 +58,17 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
           type: "dict-radio",
           dict: dict({
             url: "/mock/dicts/OpenStatusEnum?single"
-          })
+          }),
+          form: {
+            valueChange({ value, form }) {
+              console.log("value", value, form);
+            }
+          },
+          column: {
+            valueChange({ value, form }) {
+              console.log("value", value, form);
+            }
+          }
         },
         name: {
           title: "姓名",
