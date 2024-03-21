@@ -60,7 +60,8 @@ const createCrudOptions = function ({ expose }) {
           form: {
             component: {
               maxlength: 20
-            }
+            },
+            submit: true
           }
         }
       }
