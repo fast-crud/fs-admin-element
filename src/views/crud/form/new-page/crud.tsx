@@ -12,8 +12,8 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
   const editRequest = async ({ form, row }) => {
     if (row.id) {
       if (form.id == null) {
-      form.id = row.id;
-    }
+        form.id = row.id;
+      }
     }
 
     return await api.UpdateObj(form);
@@ -82,9 +82,12 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         },
         content: {
           title: "详情",
-          type: ["editor-wang", "colspan"],
+          type: ["editor-wang5"],
           form: {
-            labelWidth: "0px"
+            // labelWidth: "0px",
+            col: {
+              span: 24
+            }
           }
         },
         product: {
