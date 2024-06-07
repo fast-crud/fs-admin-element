@@ -40,14 +40,14 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         },
         title: {
           title: "标题",
-          type: ["text", "colspan"],
+          type: ["text"],
           column: {
             width: 400
           }
         },
         text: {
           title: "摘要",
-          type: ["textarea", "colspan"],
+          type: ["textarea"],
           viewForm: {
             component: {
               name: null,
@@ -60,7 +60,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         disabled: {
           title: "禁用启用",
           search: { show: false },
-          type: ["dict-switch", "colspan"],
+          type: ["dict-switch"],
           dict: dict({
             data: [
               { value: true, label: "禁用" },
@@ -85,7 +85,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         //   column: {
         //     show: false
         //   },
-        //   type: ["editor-quill", "colspan"],
+        //   type: ["editor-quill"],
         //   form: {
         //     show: compute(({ form }) => {
         //       return form.change === "quill";
@@ -114,13 +114,26 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             width: 300,
             show: false
           },
-          type: ["editor-wang5", "colspan"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
+          type: ["editor-wang5"], // 富文本图片上传依赖file-uploader，请先配置好file-uploader
           form: {
             // 动态显隐字段
             // show: compute(({ form }) => {
             //   return form.change === "wang";
             // }),
-            rules: [{ required: true, message: "此项必填" }],
+            col: {
+              span: 24
+            },
+            rules: [
+              {
+                required: true,
+                message: "此项必填",
+                validator: async (rule, value) => {
+                  if (value.trim() === "<p><br></p>") {
+                    throw new Error("内容不能为空");
+                  }
+                }
+              }
+            ],
             component: {
               disabled: compute(({ form }) => {
                 return form.disabled;
