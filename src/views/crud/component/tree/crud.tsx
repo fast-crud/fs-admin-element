@@ -7,9 +7,8 @@ import {
   GetContextFn,
   ScopeContext
 } from "@fast-crud/fast-crud";
-import { getRandomInt } from "element-plus/es/utils";
 
-export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
     return await api.GetList(query);
   };
@@ -55,7 +54,21 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           dict: dict({
             isTree: true,
             url: "/mock/dicts/cascaderData?single"
-          })
+          }),
+          form: {
+            component: {
+              slots: {
+                //插槽
+                prefix() {
+                  return <fs-icon icon={"ion:search"}></fs-icon>;
+                },
+                //自定义选项text
+                default({ scope }) {
+                  return `${scope.data.label}(${scope.data.value})`;
+                }
+              }
+            }
+          }
         },
         lazy: {
           title: "懒加载",
