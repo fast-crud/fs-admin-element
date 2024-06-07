@@ -15,19 +15,22 @@ const list = [
     address: "123123",
     zip: "518000",
     intro: "王小虎是element-plus的table示例出现的名字",
-    copy: "测试文本"
+    copy: "测试文本",
+    classId: 1
   },
   {
     name: "张三",
     date: "2016-05-04",
     status: "1",
-    province: "2"
+    province: "2",
+    classId: 2
   },
   {
     name: "李四",
     date: 2232433534511,
     status: "1",
-    province: "0"
+    province: "0",
+    classId: 3
   },
   {
     name: "王五",

@@ -38,6 +38,11 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             }
           }
         },
+        classId: {
+          title: "班级id",
+          type: "number", //虽然不写也能正确显示组件，但不建议省略它
+          search: { show: true }
+        },
         search: {
           title: "搜索",
           type: "text",
