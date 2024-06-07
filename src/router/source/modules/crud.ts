@@ -707,6 +707,12 @@ export const crudResources = [
             name: "AdvancedInDialog",
             path: "/crud/advanced/in-dialog",
             component: "/crud/advanced/in-dialog/index.vue"
+          },
+          {
+            title: "大量数据",
+            name: "AdvancedBigData",
+            path: "/crud/advanced/big-data",
+            component: "/crud/advanced/big-data/index.vue"
           }
         ]
       }

@@ -26,6 +26,12 @@ const textStatus2 = [
   { id: "3", text: "关闭", color: "danger" }
 ];
 
+let manyStatus = [
+  { value: "1", label: "打开", color: "success", icon: "ion:radio-button-on" },
+  { value: "2", label: "停止", color: "cyan" },
+  { value: "0", label: "关闭", color: "red", icon: "ion:radio-button-off" }
+];
+
 export function GetTreeChildrenByParentId(parentId) {
   return TreeNodesLazyLoader.getChildren(parentId);
 }
@@ -134,6 +140,17 @@ export default [
         code: 0,
         msg: "success",
         data: list
+      };
+    }
+  },
+  {
+    path: "/mock/dicts/ManyOpenStatusEnum",
+    method: "get",
+    handle() {
+      return {
+        code: 0,
+        msg: "success",
+        data: manyStatus
       };
     }
   }
