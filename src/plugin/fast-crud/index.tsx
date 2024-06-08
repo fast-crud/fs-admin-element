@@ -120,7 +120,10 @@ function install(app, options: any = {}) {
             gutter: 20
           },
           display: "flex", //表单布局
-          labelWidth: "100px" //表单label宽度
+          labelWidth: "100px", //表单label宽度
+          wrapper: {
+            saveRemind: true
+          }
         },
         columns: {
           createdAt: {
