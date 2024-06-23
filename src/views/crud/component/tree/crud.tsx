@@ -64,7 +64,13 @@ export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
                 },
                 //自定义选项text
                 default({ scope }) {
-                  return `${scope.data.label}(${scope.data.value})`;
+                  const label = `${scope.data.label}(${scope.data.value})`;
+                  return (
+                    <div>
+                      <fs-icon icon={"ion:download"}></fs-icon>
+                      <span>{label}</span>
+                    </div>
+                  );
                 }
               }
             }
