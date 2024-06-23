@@ -25,7 +25,7 @@ function useSearchRemote() {
       return;
     }
     const data = body.results.map((user) => ({
-      text: `${user.name.first} ${user.name.last}`,
+      label: `${user.name.first} ${user.name.last}`,
       value: user.login.username
     }));
     state.data.value = data;
