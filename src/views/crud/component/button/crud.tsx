@@ -107,7 +107,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             component: {
               name: "fs-button", //列展示组件为button
               vModel: "text", // 将row.link2的值赋值给text属性
-              type: "text", // 按钮展示为链接样式
+              link: true, // 按钮展示为链接样式
+              buttonProps: {
+                text: false
+              },
               on: {
                 //注册点击事件
                 // 注意：必须要on前缀
