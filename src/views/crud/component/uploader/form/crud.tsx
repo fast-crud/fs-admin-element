@@ -62,7 +62,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               },
               valueType: "key",
               async buildUrl(value) {
-                return value;
+                return "http://www.docmirror.cn:7070/api/upload/form/download?key=" + value;
               }
             }
           },
