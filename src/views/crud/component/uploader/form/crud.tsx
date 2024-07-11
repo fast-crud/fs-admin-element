@@ -55,7 +55,14 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             component: {
               multiple: true, //可选择多个
               uploader: {
-                type: "form"
+                type: "form",
+                successHandle(res) {
+                  return { key: res };
+                }
+              },
+              valueType: "key",
+              async buildUrl(value) {
+                return value;
               }
             }
           },
