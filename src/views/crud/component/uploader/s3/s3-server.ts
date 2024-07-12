@@ -2,6 +2,10 @@
 import { S3Client, GetObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
+/**
+ * TODO 警告，此处为模拟后端返回，实际你应该在后端实现它
+ * 不要复制我
+ */
 export async function generateSignedUrl(bucket: string, key: string, type: "put" | "get" = "get") {
   const client = new S3Client({
     // s3ForcePathStyle: true,

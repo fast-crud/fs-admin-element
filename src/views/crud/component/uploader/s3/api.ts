@@ -51,6 +51,6 @@ export function GetObj(id: any) {
  * @constructor
  */
 export async function GetSignedUrl(bucket: string, key: string, type: FsUploaderS3SignedUrlType) {
-  //此处模拟获取预签名url
+  //TODO 注意此处模拟获取预签名url，你需要在后端实现它
   return await generateSignedUrl(bucket, key, type);
 }

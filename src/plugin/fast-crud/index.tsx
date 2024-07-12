@@ -234,9 +234,9 @@ function install(app, options: any = {}) {
         //minio与s3完全适配
         endpoint: "https://play.min.io",
         credentials: {
-          //不建议在客户端使用secretAccessKey来上传
-          accessKeyId: "Q3AM3UQ867SPQQA43P2F", //访问登录名
-          secretAccessKey: "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG" //访问密码
+          //不建议在客户端使用secretAccessKey来上传， 生产部署请使用getSignedUrl来获取授权
+          accessKeyId: "", //访问登录名
+          secretAccessKey: "" //访问密码
         }
       },
       //预签名配置，向后端获取上传的预签名连接
