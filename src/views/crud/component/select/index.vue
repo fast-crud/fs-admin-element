@@ -81,24 +81,24 @@ export default defineComponent({
     // 页面打开后获取列表数据
     onMounted(async () => {
       await expose.doRefresh();
-      await nextTick();
-      await nextTick();
-
-      var observer = new IntersectionObserver(
-        (a) => {
-          console.log("inte", a);
-        },
-        {
-          root: document.getElementById(".el-table__header-wrapper"),
-          rootMargin: "0px -300px"
-        }
-      );
-      const res = document.querySelectorAll("th.el-table__cell");
-      console.log("11", res);
-      for (const re of res) {
-        observer.observe(re);
-      }
-    });
+    //   await nextTick();
+    //   await nextTick();
+    //
+    //   var observer = new IntersectionObserver(
+    //     (a) => {
+    //       console.log("inte", a);
+    //     },
+    //     {
+    //       root: document.getElementById(".el-table__header-wrapper"),
+    //       rootMargin: "0px -300px"
+    //     }
+    //   );
+    //   const res = document.querySelectorAll("th.el-table__cell");
+    //   console.log("11", res);
+    //   for (const re of res) {
+    //     observer.observe(re);
+    //   }
+    // });
 
     return {
       crudBinding,

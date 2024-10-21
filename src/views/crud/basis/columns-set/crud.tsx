@@ -88,6 +88,14 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
               ElMessage.info("切换第3列的列设置禁用启用");
             }
           },
+          toggleColumnSetDisabled: {
+            text: "手动设置列显隐,且持久化",
+            click() {
+              crudExpose.getToolbarRef().columnsFilterRef.update((columnsRef) => {
+                columnsRef.value[0].show = !columnsRef.value[0].show;
+              });
+            }
+          },
           desc: {
             text: "点击左侧按钮后，再点最右侧的列设置按钮查看效果"
           }
