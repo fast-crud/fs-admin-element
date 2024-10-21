@@ -39,7 +39,7 @@
     "core-js": "^3.32.0",
     "cos-js-sdk-v5": "^1.4.19",
     "dayjs": "^1.11.9",
-    "element-plus": "^2.7.5",
+    "element-plus": "^2.8.3",
     "highlight.js": "^11.8.0",
     "lodash-es": "^4.17.21",
     "mitt": "^3.0.1",
