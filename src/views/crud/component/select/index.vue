@@ -44,8 +44,12 @@ export default defineComponent({
         }
         const cells = document.querySelectorAll(".el-table__header-wrapper .el-table__header .el-table__cell .cell");
         for (const cell of cells) {
+          cell.style.color = "";
+        }
+        for (const cell of cells) {
           //@ts-ignore
           if (cell.innerText.includes(columnSearchValue.value)) {
+            cell.style.color = "red";
             // 获取 el-table__header-wrapper 的横向scroll
             const wrapper = document.querySelector(".el-table__inner-wrapper");
             if (wrapper) {
@@ -81,24 +85,24 @@ export default defineComponent({
     // 页面打开后获取列表数据
     onMounted(async () => {
       await expose.doRefresh();
-    //   await nextTick();
-    //   await nextTick();
-    //
-    //   var observer = new IntersectionObserver(
-    //     (a) => {
-    //       console.log("inte", a);
-    //     },
-    //     {
-    //       root: document.getElementById(".el-table__header-wrapper"),
-    //       rootMargin: "0px -300px"
-    //     }
-    //   );
-    //   const res = document.querySelectorAll("th.el-table__cell");
-    //   console.log("11", res);
-    //   for (const re of res) {
-    //     observer.observe(re);
-    //   }
-    // });
+      //   await nextTick();
+      //   await nextTick();
+      //
+      //   var observer = new IntersectionObserver(
+      //     (a) => {
+      //       console.log("inte", a);
+      //     },
+      //     {
+      //       root: document.getElementById(".el-table__header-wrapper"),
+      //       rootMargin: "0px -300px"
+      //     }
+      //   );
+      //   const res = document.querySelectorAll("th.el-table__cell");
+      //   console.log("11", res);
+      //   for (const re of res) {
+      //     observer.observe(re);
+      //   }
+    });
 
     return {
       crudBinding,
