@@ -6,6 +6,7 @@ import {
   DelReq,
   dict,
   EditReq,
+  FsRemoteStorage,
   UserPageQuery,
   UserPageRes
 } from "@fast-crud/fast-crud";
@@ -29,6 +30,24 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
   const addRequest = async ({ form }: AddReq) => {
     return await api.AddObj(form);
   };
+
+  //自定义列设置storage
+  const customStorage: FsRemoteStorage = {
+    async get(key: string) {
+      const saved = localStorage.getItem("customColumnFilter." + key);
+      if (saved == null) {
+        return;
+      }
+      return JSON.parse(saved);
+    },
+    async set(key: string, value: any) {
+      localStorage.setItem("customColumnFilter." + key, JSON.stringify(value));
+    },
+    async remove(key: string) {
+      localStorage.removeItem("customColumnFilter." + key);
+    }
+  };
+
   return {
     crudOptions: {
       request: {
@@ -39,7 +58,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
       },
       toolbar: {
         columnsFilter: {
-          mode: "default"
+          mode: "default",
+          storage: customStorage
         }
       },
       actionbar: {
