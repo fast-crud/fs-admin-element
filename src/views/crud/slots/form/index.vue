@@ -24,6 +24,13 @@
         <el-alert type="warning" title="form-body-bottom 插槽" />
       </template>
 
+      <template #form-body-left>
+        <el-alert type="warning" title="form-body-left 插槽" />
+      </template>
+      <template #form-body-right>
+        <el-alert type="warning" title="form-body-right 插槽" />
+      </template>
+
       <template #form-footer-left>
         <el-button type="danger">form-footer-left 插槽</el-button>
       </template>
