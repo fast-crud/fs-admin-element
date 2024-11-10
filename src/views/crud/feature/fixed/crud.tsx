@@ -1,7 +1,7 @@
 import * as api from "./api";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
 
-export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default async function ({ expose }: CreateCrudOptionsProps): Promise<CreateCrudOptionsRet> {
   const editRequest = async ({ form, row }) => {
     if (form.id == null) {
       form.id = row.id;
@@ -31,7 +31,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         scroll: {
           //当你表格宽度大到需要使用固定列时，需要设置此值，并且是大于等于列宽度之和的值
           //否则可能会出现将自动宽度列挤变形，或者拖动滚动条表头不动等问题。
-          x: 1400
+          x: 1800
         }
       },
       columns: {
