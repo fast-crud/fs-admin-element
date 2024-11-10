@@ -54,9 +54,21 @@ export default async function ({ expose }: CreateCrudOptionsProps): Promise<Crea
         },
         text2: {
           title: "text2",
-          type: "text",
-          column: {
-            width: 260
+          children: {
+            text2_1: {
+              title: "text2_1",
+              type: "text",
+              column: {
+                width: 260
+              }
+            },
+            text2_2: {
+              title: "text2_2",
+              type: "text",
+              column: {
+                width: 260
+              }
+            }
           }
         },
         text3: {

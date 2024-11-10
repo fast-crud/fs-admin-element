@@ -28,7 +28,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
       },
       form: {
         layout: "flex",
-        labelWidth: "100px" //表单label宽度
+        labelWidth: 100 //表单label宽度
       },
       table: { size: "small" },
       columns: {
