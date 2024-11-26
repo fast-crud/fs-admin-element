@@ -719,6 +719,12 @@ export const crudResources = [
             name: "AdvancedBigData",
             path: "/crud/advanced/big-data",
             component: "/crud/advanced/big-data/index.vue"
+          },
+          {
+            title: "列表以card方式显示",
+            name: "AdvancedCard",
+            path: "/crud/advanced/card",
+            component: "/crud/advanced/card/index.vue"
           }
         ]
       }
