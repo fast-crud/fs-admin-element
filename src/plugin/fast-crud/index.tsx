@@ -333,9 +333,9 @@ function install(app, options: any = {}) {
             columnProps.column.width = 150;
           }
         }
-        if (columnProps.children && columnProps.children.length > 0) {
-          for (const columnProp of columnProps.children) {
-            fillWidth(columnProp);
+        if (columnProps.children && Object.keys(columnProps.children).length > 0) {
+          for (const key in columnProps.children) {
+            fillWidth(columnProps.children[key]);
           }
         }
       }
