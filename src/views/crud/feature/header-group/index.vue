@@ -16,7 +16,7 @@ function headerHolder(crudRef: any, crudBinding: any) {
     //节流执行
     const tableHeader = crudRef.value.$el.querySelector(".el-table-v2__main .el-table-v2__header-wrapper");
     const tableHeaderX = tableHeader.getBoundingClientRect().x;
-    const fixedLeft = tableHeader.querySelector(".el-table-v2__left .el-table-v2__header");
+    const fixedLeft = crudRef.value.$el.querySelector(".el-table-v2__left .el-table-v2__header");
 
     const fixedLeftX = fixedLeft
       ? fixedLeft.getBoundingClientRect().x + fixedLeft.getBoundingClientRect().width
@@ -25,7 +25,6 @@ function headerHolder(crudRef: any, crudBinding: any) {
     const headCells = tableHeader.querySelectorAll(
       ".el-table-v2__main .el-table-v2__header .el-table-v2__header-cell-text"
     );
-    debugger;
     for (const headCell of headCells) {
       if (
         headCell.classList.contains("el-table-fixed-column--left") ||
@@ -34,19 +33,20 @@ function headerHolder(crudRef: any, crudBinding: any) {
         continue;
       }
       const cell = headCell;
-      cell.style.overflow = "hidden";
-      cell.style.overflowWrap = "normal";
+      // cell.style.overflow = "hidden";
+      // cell.style.overflowWrap = "normal";
+      cell.style.whiteSpace = "nowrap";
 
       const headCellX = headCell.getBoundingClientRect().x;
       const headCellXRight = headCell.getBoundingClientRect().x + headCell.getBoundingClientRect().width;
       if (headCellX < fixedLeftX && headCellXRight > fixedLeftX) {
         headCell.style.paddingLeft = `${fixedLeftX - headCellX}px`;
       } else {
-        headCell.style.paddingLeft = "0px";
+        headCell.style.paddingLeft = "8px";
       }
     }
   }, 100);
-  crudBinding.value.table.scroll = handleScroll;
+  crudBinding.value.table.onScroll = handleScroll;
   // crudRef.value.$el.querySelector(".el-table-v2__main .el-virtual-scrollbar")?.addEventListener("scroll", handleScroll);
 }
 export default defineComponent({
