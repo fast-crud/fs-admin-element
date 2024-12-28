@@ -1,7 +1,7 @@
 import * as api from "./api";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
 
-export default async function ({ expose }: CreateCrudOptionsProps): Promise<CreateCrudOptionsRet> {
+export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const editRequest = async ({ form, row }) => {
     if (form.id == null) {
       form.id = row.id;
@@ -54,6 +54,9 @@ export default async function ({ expose }: CreateCrudOptionsProps): Promise<Crea
         },
         text2: {
           title: "text2",
+          column: {
+            alien: "left"
+          },
           children: {
             text2_1: {
               title: "text2_1",

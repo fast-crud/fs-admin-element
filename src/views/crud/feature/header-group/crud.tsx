@@ -54,7 +54,10 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           children: {
             name: {
               title: "姓名",
-              type: "text"
+              type: "text",
+              column: {
+                align: "left"
+              }
             },
             age: {
               title: "年龄",
@@ -67,6 +70,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
           children: {
             area: {
               title: "地区",
+              column: {
+                align: "center"
+              },
               children: {
                 province: {
                   title: "省",
@@ -95,6 +101,34 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               title: "街道",
               type: "text"
             }
+          }
+        },
+        text3: {
+          title: "text3",
+          type: "text",
+          column: {
+            width: 260
+          }
+        },
+        text4: {
+          title: "text4",
+          type: "text",
+          column: {
+            width: 260
+          }
+        },
+        text5: {
+          title: "text5",
+          type: "text",
+          column: {
+            width: 260
+          }
+        },
+        last: {
+          title: "last",
+          type: "text",
+          column: {
+            width: 260
           }
         }
       }
