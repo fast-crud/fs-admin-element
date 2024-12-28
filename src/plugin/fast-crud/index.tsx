@@ -19,6 +19,8 @@ import {
   FsUploaderS3SignedUrlType
 } from "@fast-crud/fast-extends";
 import "@fast-crud/fast-extends/dist/style.css";
+
+import "@fast-crud/ui-element/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
 import _ from "lodash-es";
 import { useCrudPermission } from "../permission";
