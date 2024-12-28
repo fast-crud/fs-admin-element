@@ -30,7 +30,13 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
         layout: "flex",
         labelWidth: 100 //表单label宽度
       },
-      table: { size: "small" },
+      table: {
+        tableVersion: "v2",
+        fixed: true
+      },
+      rowHandle: {
+        fixed: "right"
+      },
       columns: {
         id: {
           title: "ID",

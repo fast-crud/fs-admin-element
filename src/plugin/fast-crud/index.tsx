@@ -318,6 +318,33 @@ function install(app, options: any = {}) {
       return columnProps;
     }
   });
+
+  //默认宽度，支持自动拖动调整列宽
+  registerMergeColumnPlugin({
+    name: "resize-column-plugin",
+    order: 2,
+    handle: (columnProps: ColumnCompositionProps, crudOptions: any) => {
+      function fillWidth(columnProps: ColumnCompositionProps) {
+        if (!columnProps.column) {
+          columnProps.column = {};
+        }
+        if (crudOptions.table.tableVersion === "v2") {
+          if (!columnProps.column.width) {
+            columnProps.column.width = 150;
+          }
+        }
+        if (columnProps.children && columnProps.children.length > 0) {
+          for (const columnProp of columnProps.children) {
+            fillWidth(columnProp);
+          }
+        }
+      }
+
+      fillWidth(columnProps);
+
+      return columnProps;
+    }
+  });
 }
 
 export default {

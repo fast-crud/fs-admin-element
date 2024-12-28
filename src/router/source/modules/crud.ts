@@ -24,6 +24,12 @@ export const crudResources = [
             component: "/crud/basis/first/index.vue"
           },
           {
+            title: "基于虚拟表格",
+            name: "FsCrudTableV2",
+            path: "/crud/basis/table-v2",
+            component: "/crud/basis/table-v2/index.vue"
+          },
+          {
             title: "动态计算",
             name: "BasisCompute",
             path: "/crud/basis/compute",
@@ -719,6 +725,12 @@ export const crudResources = [
             name: "AdvancedBigData",
             path: "/crud/advanced/big-data",
             component: "/crud/advanced/big-data/index.vue"
+          },
+          {
+            title: "大量列",
+            name: "AdvancedManyColumns",
+            path: "/crud/advanced/many-columns",
+            component: "/crud/advanced/many-columns/index.vue"
           },
           {
             title: "列表以card方式显示",

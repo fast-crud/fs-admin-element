@@ -122,6 +122,10 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         }
       },
       table: {
+        //虚拟表格
+        tableVersion: "v2",
+        fixed: true,
+        //可编辑
         editable: {
           mode: "cell",
           exclusive: true,
@@ -147,6 +151,9 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
             }
           }
         }
+      },
+      rowHandle: {
+        fixed: "right"
       },
       columns: {
         id: {
