@@ -1,5 +1,14 @@
 import * as api from "./api";
-import { AddReq, CreateCrudOptionsProps, CreateCrudOptionsRet, DelReq, dict, EditReq, UserPageQuery, UserPageRes } from "@fast-crud/fast-crud";
+import {
+  AddReq,
+  CreateCrudOptionsProps,
+  CreateCrudOptionsRet,
+  DelReq,
+  dict,
+  EditReq,
+  UserPageQuery,
+  UserPageRes
+} from "@fast-crud/fast-crud";
 
 export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
@@ -30,6 +39,8 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
         delRequest
       },
       table: {
+        tableVersion: "v2",
+        fixed: true,
         scroll: {
           //启用横向滚动条，设置一个大于所有列宽之和的值，一般大于表格宽度
           x: 2400
