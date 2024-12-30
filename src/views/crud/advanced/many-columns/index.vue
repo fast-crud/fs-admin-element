@@ -1,7 +1,7 @@
 <template>
   <fs-page>
     <template #header>
-      <div class="title">50列</div>
+      <div class="title">100列</div>
     </template>
     <fs-crud ref="crudRef" v-bind="crudBinding"> </fs-crud>
   </fs-page>

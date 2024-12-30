@@ -29,7 +29,7 @@ const textStatus2 = [
 let manyStatus = [
   { value: "1", label: "打开", color: "success", icon: "ion:radio-button-on" },
   { value: "2", label: "停止", color: "warning" },
-  { value: "0", label: "关闭", color: "red", icon: "ion:radio-button-off" }
+  { value: "0", label: "关闭", color: "danger", icon: "ion:radio-button-off" }
 ];
 
 export function GetTreeChildrenByParentId(parentId) {

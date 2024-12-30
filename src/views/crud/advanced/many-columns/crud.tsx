@@ -62,7 +62,24 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
       },
       table: {
         tableVersion: "v2",
-        fixed: true
+        fixed: true,
+        editable: {
+          //是否启用编辑
+          enabled: false,
+          //模式，free 自由编辑，row：行编辑,cell：单元格编辑
+          mode: "cell", //"free" | "row" | "cell";
+          /**
+           * 是否排他式激活，激活一个，关闭其他
+           */
+          exclusive: true,
+          /**
+           * 排他式激活关闭其他编辑时的效果，是取消还是保存
+           */
+          exclusiveEffect: "cancel", // "cancel" | "save";,
+          updateCell() {
+            console.log("updateCell");
+          }
+        }
       },
       pagination: {
         pageSize: 100
@@ -316,6 +333,356 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
         text40: {
           title: "文本",
           type: "text"
+        },
+        dict11: {
+          title: "字典1",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict1"
+          })
+        },
+        dict12: {
+          title: "字典2",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict2"
+          })
+        },
+        dict13: {
+          title: "字典3",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict3"
+          })
+        },
+        dict14: {
+          title: "字典4",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict4"
+          })
+        },
+        dict15: {
+          title: "字典5",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict16: {
+          title: "字典6",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict6"
+          })
+        },
+        dict17: {
+          title: "字典7",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict7"
+          })
+        },
+        dict18: {
+          title: "字典8",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict8"
+          })
+        },
+        dict19: {
+          title: "字典9",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict9"
+          })
+        },
+        dict110: {
+          title: "字典10",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict10"
+          })
+        },
+        dict21: {
+          title: "字典1",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict1"
+          })
+        },
+        dict22: {
+          title: "字典2",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict2"
+          })
+        },
+        dict23: {
+          title: "字典3",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict3"
+          })
+        },
+        dict24: {
+          title: "字典4",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict4"
+          })
+        },
+        dict25: {
+          title: "字典5",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict26: {
+          title: "字典6",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict6"
+          })
+        },
+        dict27: {
+          title: "字典7",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict7"
+          })
+        },
+        dict28: {
+          title: "字典8",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict8"
+          })
+        },
+        dict29: {
+          title: "字典9",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict9"
+          })
+        },
+        dict210: {
+          title: "字典10",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict10"
+          })
+        },
+        dict31: {
+          title: "字典1",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict1"
+          })
+        },
+        dict32: {
+          title: "字典2",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict3"
+          })
+        },
+        dict33: {
+          title: "字典3",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict3"
+          })
+        },
+        dict34: {
+          title: "字典4",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict4"
+          })
+        },
+        dict35: {
+          title: "字典5",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict36: {
+          title: "字典6",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict6"
+          })
+        },
+        dict37: {
+          title: "字典7",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict7"
+          })
+        },
+        dict38: {
+          title: "字典8",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict8"
+          })
+        },
+        dict39: {
+          title: "字典9",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict9"
+          })
+        },
+        dict310: {
+          title: "字典10",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict10"
+          })
+        },
+        dict41: {
+          title: "字典1",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict1"
+          })
+        },
+        dict42: {
+          title: "字典2",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict4"
+          })
+        },
+        dict43: {
+          title: "字典3",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict4"
+          })
+        },
+        dict44: {
+          title: "字典4",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict4"
+          })
+        },
+        dict45: {
+          title: "字典5",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict46: {
+          title: "字典6",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict6"
+          })
+        },
+        dict47: {
+          title: "字典7",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict7"
+          })
+        },
+        dict48: {
+          title: "字典8",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict8"
+          })
+        },
+        dict49: {
+          title: "字典9",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict9"
+          })
+        },
+        dict410: {
+          title: "字典10",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict10"
+          })
+        },
+        dict51: {
+          title: "字典1",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict1"
+          })
+        },
+        dict52: {
+          title: "字典2",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict53: {
+          title: "字典3",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict54: {
+          title: "字典4",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict55: {
+          title: "字典5",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict5"
+          })
+        },
+        dict56: {
+          title: "字典6",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict6"
+          })
+        },
+        dict57: {
+          title: "字典7",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict7"
+          })
+        },
+        dict58: {
+          title: "字典8",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict8"
+          })
+        },
+        dict59: {
+          title: "字典9",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict9"
+          })
+        },
+        dict510: {
+          title: "字典10",
+          type: "dict-select",
+          dict: dict({
+            url: "/mock/dicts/ManyOpenStatusEnum?from=dict10"
+          })
         }
       }
     }

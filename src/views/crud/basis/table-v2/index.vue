@@ -4,16 +4,15 @@
   </fs-page>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, onMounted, reactive } from "vue";
-import { useCrud, useFs, useFsRef } from "@fast-crud/fast-crud";
-import { useExpose } from "@fast-crud/fast-crud";
+<script lang="tsx" setup>
+import { onMounted, reactive, ref } from "vue";
+import { useFs, useFsRef } from "@fast-crud/fast-crud";
 import _ from "lodash-es";
 
 //此处为crudOptions配置
-const createCrudOptions = function ({ expose }) {
+const createCrudOptions = function ({ crudExpose }) {
   //本地模拟后台crud接口方法 ----开始
-  const records = reactive([{ id: 1, name: "Hello World" }]);
+  const records = reactive([{ id: 1, name: "Hello World", province: "广东省", city: "广州市", area: "天河区" }]);
   const pageRequest = async (query) => {
     return {
       records,
@@ -74,8 +73,6 @@ const createCrudOptions = function ({ expose }) {
       },
       table: {
         tableVersion: "v2",
-        width: 1200,
-        height: 800,
         fixed: true
       },
       rowHandle: {
@@ -87,34 +84,45 @@ const createCrudOptions = function ({ expose }) {
           title: "姓名",
           type: "text",
           search: { show: true },
-          form: {
-            component: {
-              maxlength: 20
+          column: {
+            cellRender({ row }) {
+              return <span>【{row.name}】</span>;
+            }
+          }
+        },
+        address: {
+          title: "地址",
+          type: "text",
+          children: {
+            province: {
+              title: "省",
+              type: "text",
+              search: { show: true }
             },
-            submit: true
+            city: {
+              title: "市",
+              type: "text",
+              search: { show: true }
+            },
+            area: {
+              title: "区",
+              type: "text",
+              search: { show: true }
+            }
           }
         }
       }
     }
   };
 };
-
-//此处为组件定义
-export default defineComponent({
-  name: "FsCrudTablev2",
-  setup() {
-    // crud组件的ref
-    const { crudRef, crudBinding, crudExpose } = useFsRef();
-    useFs({ crudRef, crudBinding, crudExpose, createCrudOptions });
-    // 页面打开后获取列表数据
-    onMounted(() => {
-      crudExpose.doRefresh();
-    });
-
-    return {
-      crudBinding,
-      crudRef
-    };
-  }
+defineOptions({
+  name: "FsCrudTablev2"
+});
+// crud组件的ref
+const { crudRef, crudBinding, crudExpose } = useFsRef();
+useFs({ crudRef, crudBinding, crudExpose, createCrudOptions });
+// 页面打开后获取列表数据
+onMounted(() => {
+  crudExpose.doRefresh();
 });
 </script>
