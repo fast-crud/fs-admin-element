@@ -63,8 +63,8 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
         delRequest
       },
       table: {
-        // tableVersion: "v2",
-        // fixed: true,
+        tableVersion: "v2",
+        fixed: true,
         editable: {
           //是否启用编辑
           enabled: false,
