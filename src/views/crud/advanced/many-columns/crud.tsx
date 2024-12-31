@@ -9,7 +9,7 @@ import {
   UserPageQuery,
   UserPageRes
 } from "@fast-crud/fast-crud";
-import { ref } from "vue";
+import { ref, shallowRef } from "vue";
 
 export default function ({ crudExpose, context }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
@@ -46,7 +46,9 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
               multiple: true,
               crossPage: true,
               selectionFixed: "left",
-              selectedRowKeys,
+              selectedRowKeys() {
+                return selectedRowKeys;
+              },
               onSelectedChanged(selected) {
                 console.log("已选择变化：", selected);
               }
@@ -61,8 +63,8 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
         delRequest
       },
       table: {
-        tableVersion: "v2",
-        fixed: true,
+        // tableVersion: "v2",
+        // fixed: true,
         editable: {
           //是否启用编辑
           enabled: false,
