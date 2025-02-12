@@ -1,6 +1,6 @@
 import * as api from "./api";
 import { createUploaderRules } from "@fast-crud/fast-extends";
-import { CreateCrudOptionsProps, CreateCrudOptionsRet } from "@fast-crud/fast-crud";
+import { CreateCrudOptionsProps, CreateCrudOptionsRet, useUi } from "@fast-crud/fast-crud";
 
 export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
@@ -19,6 +19,7 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
   const addRequest = async ({ form }) => {
     return await api.AddObj(form);
   };
+  const { ui } = useUi();
   return {
     crudOptions: {
       request: {
@@ -162,6 +163,9 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               limit: 1,
               uploader: {
                 type: "form"
+              },
+              onExceed() {
+                ui.message.error("数量超出限制");
               }
             },
             helper: "最大可上传1个文件"
