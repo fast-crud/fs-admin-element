@@ -1,6 +1,8 @@
 import * as api from "./api";
 import { createUploaderRules } from "@fast-crud/fast-extends";
 import { CreateCrudOptionsProps, CreateCrudOptionsRet, useUi } from "@fast-crud/fast-crud";
+import { nextTick } from "vue";
+import { genFileId } from "element-plus";
 
 export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const pageRequest = async (query) => {
@@ -164,8 +166,23 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               uploader: {
                 type: "form"
               },
-              onExceed() {
+              async onExceed(files, fileList) {
                 ui.message.error("数量超出限制");
+
+                // TODO 因为fs-file-uploader 使用了 v-model绑定了fileList ,ref.handleStart(file);将无效，所以无法实现自动覆盖第一个文件
+
+                // const upload = await expose?.getFormComponentRef("limit");
+                // console.log(upload);
+                // debugger;
+                // const ref = upload.$refs.fileUploaderRef;
+                // ref.clearFiles();
+                // await nextTick();
+                // await nextTick();
+                // await nextTick();
+                // const file = files[0] as UploadRawFile;
+                // file.uid = genFileId();
+                // ref.handleStart(file);
+                // ref.submit();
               }
             },
             helper: "最大可上传1个文件"
