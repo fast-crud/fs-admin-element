@@ -72,6 +72,11 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               style: "font-size:18px"
             }
           }
+        },
+        selector: {
+          title: "图标选择器",
+          search: { show: true },
+          type: "icon"
         }
       }
     }
