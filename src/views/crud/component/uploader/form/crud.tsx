@@ -166,6 +166,10 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
               uploader: {
                 type: "form"
               },
+              beforeUpload(file) {
+                console.log("1111");
+                return false;
+              },
               async onExceed(files, fileList) {
                 ui.message.error("数量超出限制");
 
