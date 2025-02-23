@@ -1,6 +1,6 @@
 {
   "name": "@fast-crud/fs-admin-element",
-  "version": "1.25.2",
+  "version": "1.25.3",
   "private": true,
   "scripts": {
     "dev": "vite",
@@ -23,10 +23,10 @@
   "dependencies": {
     "@aws-sdk/client-s3": "^3.383.0",
     "@aws-sdk/s3-request-presigner": "^3.383.0",
-    "@fast-crud/fast-crud": "^1.25.2",
-    "@fast-crud/fast-extends": "^1.25.2",
-    "@fast-crud/ui-element": "^1.25.2",
-    "@fast-crud/ui-interface": "^1.25.2",
+    "@fast-crud/fast-crud": "^1.25.3",
+    "@fast-crud/fast-extends": "^1.25.3",
+    "@fast-crud/ui-element": "^1.25.3",
+    "@fast-crud/ui-interface": "^1.25.3",
     "@iconify/iconify": "^3.1.1",
     "@iconify/json": "^2.2.98",
     "@iconify/vue": "^4.1.1",
