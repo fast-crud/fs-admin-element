@@ -45,6 +45,18 @@ function install(app, options: any = {}) {
      */
     commonOptions(props: UseCrudProps): CrudOptions {
       const opts = {
+        settings: {
+          plugins: {
+            mobile: {
+              enabled: true,
+              props: {
+                rowHandle: {
+                  width: 76
+                }
+              }
+            }
+          }
+        },
         table: {
           size: "default",
           pagination: false,
@@ -57,6 +69,10 @@ function install(app, options: any = {}) {
             render(scope: any) {
               return "-";
             }
+          },
+          scroll: {
+            //启用横向滚动条，设置一个大于所有列宽之和的值，一般大于表格宽度
+            x: 1400
           }
         },
         search: {
