@@ -12,7 +12,7 @@ import {
 } from "@fast-crud/fast-crud";
 import { ElMessage } from "element-plus";
 
-export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOptionsRet {
+export default function ({ crudExpose, context }: CreateCrudOptionsProps): CreateCrudOptionsRet {
   const { crudBinding } = crudExpose;
   const pageRequest = async (query: UserPageQuery): Promise<UserPageRes> => {
     return await api.GetList(query);
@@ -31,22 +31,7 @@ export default function ({ crudExpose }: CreateCrudOptionsProps): CreateCrudOpti
     return await api.AddObj(form);
   };
 
-  //自定义列设置storage
-  const customStorage: FsRemoteStorage = {
-    async get(key: string) {
-      const saved = localStorage.getItem("customColumnFilter." + key);
-      if (saved == null) {
-        return;
-      }
-      return JSON.parse(saved);
-    },
-    async set(key: string, value: any) {
-      localStorage.setItem("customColumnFilter." + key, JSON.stringify(value));
-    },
-    async remove(key: string) {
-      localStorage.removeItem("customColumnFilter." + key);
-    }
-  };
+  const customStorage = context.customStorage;
 
   return {
     crudOptions: {
