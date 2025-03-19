@@ -73,7 +73,7 @@ export default function ({ crudExpose, context }: CreateCrudOptionsProps): Creat
               ElMessage.info("切换第3列的列设置禁用启用");
             }
           },
-          toggleColumnSetDisabled: {
+          toggleColumnSetDisabled2: {
             text: "手动设置列显隐,且持久化",
             click() {
               crudExpose.getToolbarRef().columnsFilterRef.update((columnsRef) => {

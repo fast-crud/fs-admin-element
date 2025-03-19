@@ -1,5 +1,12 @@
 import _ from "lodash-es";
-export default {
+export const common = {
+  async sleep(time = 1000) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(1);
+      }, time);
+    });
+  },
   arrayToMap(array) {
     if (!array) {
       return {};

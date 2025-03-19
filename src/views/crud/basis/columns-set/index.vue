@@ -21,6 +21,7 @@ import createCrudOptions from "./crud.jsx";
 import { useFs, CrudBinding, UseFsProps, useMerge, FsRemoteStorage } from "@fast-crud/fast-crud";
 import { ElMessage } from "element-plus";
 import { cloneDeep } from "lodash-es";
+import { util } from "/@/utils";
 export default defineComponent({
   name: "BasisColumnsSet",
   setup() {
@@ -33,16 +34,19 @@ export default defineComponent({
         if (saved == null) {
           return;
         }
+        await util.common.sleep(1000);
         console.log("get", saveKey, saved);
         return JSON.parse(saved);
       },
       async set(key: string, value: any) {
         let saveKey = `customColumnFilter.` + key;
+        await util.common.sleep(1000);
         console.log("set", saveKey, value);
         localStorage.setItem(saveKey, JSON.stringify(value));
       },
       async remove(key: string) {
         let saveKey = `customColumnFilter.` + key;
+        await util.common.sleep(1000);
         console.log("remove", saveKey);
         localStorage.removeItem(saveKey);
       }
