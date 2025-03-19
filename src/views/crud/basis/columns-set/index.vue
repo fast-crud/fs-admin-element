@@ -28,7 +28,7 @@ export default defineComponent({
     //自定义列设置storage
     const customStorage: FsRemoteStorage = {
       async get(key: string) {
-        let saveKey = `customColumnFilter.${currentIsOld}.` + key;
+        let saveKey = `customColumnFilter.` + key;
         const saved = localStorage.getItem(saveKey);
         if (saved == null) {
           return;
@@ -37,12 +37,12 @@ export default defineComponent({
         return JSON.parse(saved);
       },
       async set(key: string, value: any) {
-        let saveKey = `customColumnFilter.${currentIsOld}.` + key;
+        let saveKey = `customColumnFilter.` + key;
         console.log("set", saveKey, value);
         localStorage.setItem(saveKey, JSON.stringify(value));
       },
       async remove(key: string) {
-        let saveKey = `customColumnFilter.${currentIsOld}.` + key;
+        let saveKey = `customColumnFilter.` + key;
         console.log("remove", saveKey);
         localStorage.removeItem(saveKey);
       }
@@ -91,6 +91,7 @@ export default defineComponent({
       currentIsOld = !currentIsOld;
 
       crudOptions.columns = columns;
+      crudOptions.id = currentIsOld ? "old" : "new";
       const newCrudOptions = cloneDeep(crudOptions);
       resetCrudOptions(newCrudOptions);
     }
