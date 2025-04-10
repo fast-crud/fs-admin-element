@@ -1,8 +1,5 @@
-import { registerWorker } from "@fast-crud/fast-extends/src/editor/components/fs-editor-code/workers";
+import { initWorkers } from "@fast-crud/fast-extends/src/editor/components/fs-editor-code/worker";
 
 export function setupMonaco() {
-  registerWorker(["yaml", "yml"], async () => {
-    const worker = await import("./yaml.worker?worker");
-    return worker.default;
-  });
+  initWorkers();
 }
