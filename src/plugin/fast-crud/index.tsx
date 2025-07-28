@@ -18,6 +18,9 @@ import {
   FsExtendsUploader,
   FsUploaderS3SignedUrlType
 } from "@fast-crud/fast-extends";
+
+import { FsEditorCode } from "@fast-crud/editor-code";
+
 import "@fast-crud/fast-extends/dist/style.css";
 
 import "@fast-crud/ui-element/dist/style.css";
@@ -312,6 +315,8 @@ function install(app, options: any = {}) {
   app.use(FsExtendsJson);
   app.use(FsExtendsTime);
   app.use(FsExtendsInput);
+  // 安装editor code
+  app.use(FsEditorCode);
 
   const { addTypes, getType } = useTypes();
   //此处演示修改官方字段类型

@@ -73,6 +73,11 @@ export default function ({}: CreateCrudOptionsProps): CreateCrudOptionsRet {
                   );
                 }
               }
+            },
+            valueChange({ getComponentRef }) {
+              const comp = getComponentRef("tree");
+              console.log("dict tree ref:", comp);
+              console.log("treeRef", comp.treeRef);
             }
           }
         },

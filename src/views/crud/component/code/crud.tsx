@@ -1,6 +1,6 @@
 import * as api from "./api";
 
-import { FsEditorCodeValidators } from "@fast-crud/fast-extends";
+import { FsEditorCodeValidators } from "@fast-crud/editor-code";
 import {
   AddReq,
   CreateCrudOptionsProps,
