@@ -502,6 +502,12 @@ export const crudResources = [
             component: "/crud/feature/tree/index.vue"
           },
           {
+            title: "自定义表头",
+            name: "FeatureHeader",
+            path: "/crud/feature/header",
+            component: "/crud/feature/header/index.vue"
+          },
+          {
             title: "多级表头",
             name: "FeatureHeaderGroup",
             path: "/crud/feature/header-group",
