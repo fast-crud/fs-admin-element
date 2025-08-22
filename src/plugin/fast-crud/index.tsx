@@ -18,10 +18,10 @@ import {
   FsExtendsUploader,
   FsUploaderS3SignedUrlType
 } from "@fast-crud/fast-extends";
+import "@fast-crud/fast-extends/dist/style.css";
 
 import { FsEditorCode } from "@fast-crud/editor-code";
-
-import "@fast-crud/fast-extends/dist/style.css";
+import "@fast-crud/editor-code/dist/style.css";
 
 import "@fast-crud/ui-element/dist/style.css";
 import UiElement from "@fast-crud/ui-element";
