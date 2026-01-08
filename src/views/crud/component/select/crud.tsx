@@ -328,11 +328,10 @@ export default function ({ expose }: CreateCrudOptionsProps): CreateCrudOptionsR
             helper: "直接使用el-select组件",
             component: {
               name: "el-select",
-              slots: {
-                default() {
-                  return <el-option value={"1"} label={"test"} />;
-                }
-              }
+              options: [
+                { value: "1", label: "test" },
+                { value: "2", label: "test2" }
+              ]
             }
           }
         }
